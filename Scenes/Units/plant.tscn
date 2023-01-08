@@ -10,4 +10,4 @@ script = ExtResource("3_qhici")
 type = 2
 passable = false
 maxhp = 1
-subtype = 2
+subtype = 1

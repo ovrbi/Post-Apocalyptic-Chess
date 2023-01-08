@@ -194,6 +194,7 @@ func has_neutral(loc:Vector2i, subtype:int):
 func try_fertilize(loc : Vector2i):
 	var units = get_units(loc)
 	if has_neutral(loc,0) && has_neutral(loc,2):
+		print("peepis")
 		for i in units:
 			if i.type==2 && i.subtype!=1:
 				i.die()
