@@ -1,7 +1,6 @@
 extends "res://Scripts/unit.gd"
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
@@ -23,6 +22,4 @@ func attack(loc:Vector2i):
 
 
 func takedamage(amount:int, from : Vector2i): #returns true if lethal
-	move_to(tilemap.local_to_map(position)+tilemap.biggest_dimension(tilemap.local_to_map(position)-from))
 	return false
-	

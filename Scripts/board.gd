@@ -1,7 +1,8 @@
 extends TileMap
 
-const size = 6
+const size = 8
 var input_lock = 0
+var mode = 0 #0:normal 1:plant 2:harvest
 var selected : Node2D
 var processqueue = []
 @export var node_selector : Node2D
@@ -28,6 +29,11 @@ var summon_units = [
 	preload("res://Scenes/Units/war_leader.tscn")		#14
 ]
 
+var wrath = 0
+var ms_boost = 0
+var extra_attack = 0
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	selected = null
@@ -44,9 +50,14 @@ func _ready():
 func _process(delta):
 	var mouseloc = local_to_map(get_viewport().get_mouse_position()-position)
 	if mouseloc != prev_cursor_loc:
-		if mouseloc.x>-2&&mouseloc.y>-2&&mouseloc.x<=size &&mouseloc.y<=size:
+		if mouseloc.x>=0&&mouseloc.y>=0&&mouseloc.x<size &&mouseloc.y<size:
 			node_selector.visible=true
 			node_selector.position=map_to_local(mouseloc)
+			if mode == 1:
+				clear_layer(1)
+				var units = get_units(mouseloc)
+				if units.is_empty()||((units[0].passable || !has_neutral(mouseloc,2))&&!has_neutral(mouseloc,0)&&!has_neutral(mouseloc,1)):
+					set_cell(1,mouseloc,0,Vector2i(0,0))
 		else:
 			node_selector.visible=false
 		if selected != null && selected.type == 0 && selected.state == 1:
@@ -62,27 +73,48 @@ func _unhandled_input(event : InputEvent):
 		if event.is_action_pressed("LeftClick"):
 			var mouseloc = local_to_map(get_viewport().get_mouse_position()-position)
 			var mouse_t = get_units(mouseloc)
-			if get_cell_source_id(1,mouseloc)==-1||(selected!=null&&mouse_t.has(selected)):
-				if mouse_t.is_empty():
-					select(null)
-				else:
-					if mouse_t[0] == selected:
-						if mouse_t.size()>1:
-							select(mouse_t[1])
+			if mode == 0:
+				if get_cell_source_id(1,mouseloc)==-1:
+					if mouse_t.is_empty():
+						select(null)
 					else:
-						select(mouse_t[0])
-			else:
-				if selected.state == 0:
-					selected.move_to(mouseloc)
+						if mouse_t[0] == selected:
+							if mouse_t.size()>1:
+								select(mouse_t[1])
+						else:
+							select(mouse_t[0])
 				else:
-					selected.attack(mouseloc)
+					if selected.state == 0:
+						selected.move_to(mouseloc)
+					else:
+						selected.attack(mouseloc)
+			elif mode == 1:
+				if get_cell_source_id(1,mouseloc)!=-1:
+					summon(mouseloc,6)
+					mode = 0
+					can_harvest = false
+					select(null)
+			elif mode == 2:
+				pass
 		if event.is_action_pressed("RightClick"):
 			select(null)
 		if event.is_action_pressed("EndTurn"):
 			end_turn()
+		if event.is_action_pressed("Plant"):
+			select(null)
+			if can_harvest: mode=1
+		if event.is_action_pressed("Harvest"):
+			select(null)
+			if can_harvest: mode=2
+		if event.is_action_pressed("Wrath"):
+			if can_harvest:
+				wrath = 1
+				can_harvest = false
+				select(null)
 
 func end_turn():
 	select(null)
+	wrath = 0
 	#process dying units
 	for unit in get_children():
 		if unit.is_in_group("non_unit"): continue
@@ -123,6 +155,7 @@ func summon(loc:Vector2i, unit:int):
 
 func select(target : Node2D):
 	if target == null:
+		mode=0
 		node_selected.visible=false
 		clear_layer(1)
 		clear_layer(2)
@@ -144,24 +177,23 @@ func select(target : Node2D):
 
 func attack_tile(loc : Vector2i, from : Vector2i, dmg : int):
 	var targets = get_units(loc)
-	targets.reverse()
 	var dieded = false
 	for i in targets:
 		dieded = dieded || i.takedamage(dmg, from)
+		if !i.passable: break
 	return dieded
-	
+
+func has_neutral(loc:Vector2i, subtype:int):
+	var units = get_units(loc)
+	for i in units:
+		if i.type==2:
+			if i.subtype == subtype:
+				return true
+	return false
 
 func try_fertilize(loc : Vector2i):
 	var units = get_units(loc)
-	var has_sprout = false
-	var has_corpse = false
-	for i in units:
-		if i.type==2:
-			if i.subtype == 0:
-				has_sprout = true
-			elif i.subtype == 2:
-				has_corpse = true
-	if has_sprout && has_corpse:
+	if has_neutral(loc,0) && has_neutral(loc,2):
 		for i in units:
 			if i.type==2:
 				i.die()
