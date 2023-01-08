@@ -1,6 +1,6 @@
 extends Sprite2D
 
-const speed = 200
+const speed = 1000
 @export var type : int #0:player side 1:enemy 2:neutral (no one controls)
 var state : int #0:base 1:has moved 2:has attacked (player controlled only)
 @export var passable : bool
