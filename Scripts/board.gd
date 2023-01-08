@@ -154,11 +154,11 @@ func summon(loc:Vector2i, unit:int):
 	add_child(inst)
 
 func select(target : Node2D):
+	clear_layer(1)
+	clear_layer(2)
 	if target == null:
 		mode=0
 		node_selected.visible=false
-		clear_layer(1)
-		clear_layer(2)
 		selected = null
 	else:
 		node_selected.position=map_to_local(local_to_map(target.position))
@@ -195,7 +195,7 @@ func try_fertilize(loc : Vector2i):
 	var units = get_units(loc)
 	if has_neutral(loc,0) && has_neutral(loc,2):
 		for i in units:
-			if i.type==2:
+			if i.type==2 && i.subtype!=1:
 				i.die()
 		summon(loc, 7)
 
