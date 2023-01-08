@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjkbqugsyppoy"]
+
+[ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_nvba8"]
+[ext_resource type="Script" path="res://Scripts/Units/druid.gd" id="2_74nik"]
+[ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_sa0mb"]
+
+[node name="Druid" instance=ExtResource("1_nvba8")]
+texture = ExtResource("2_sa0mb")
+script = ExtResource("2_74nik")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyehjbqcd4luk"]
+
+[ext_resource type="Script" path="res://Scripts/board.gd" id="1_6iyyg"]
+[ext_resource type="TileSet" uid="uid://d3qapdqch1luv" path="res://Tilesets/indicators.tres" id="1_8agqs"]
+[ext_resource type="Texture2D" uid="uid://b3f6qdv4q2u1q" path="res://Textures/tmp_selector.png" id="3_4fp7k"]
+[ext_resource type="Texture2D" uid="uid://c5md238axscnw" path="res://Textures/tmp_selected.png" id="4_hk28d"]
+
+[node name="Board" type="TileMap" node_paths=PackedStringArray("node_selector", "node_selected")]
+tile_set = ExtResource("1_8agqs")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 0, 0, 589840, 0, 0)
+script = ExtResource("1_6iyyg")
+node_selector = NodePath("selector")
+node_selected = NodePath("selected")
+
+[node name="selector" type="Sprite2D" parent="." groups=["non_unit"]]
+texture = ExtResource("3_4fp7k")
+
+[node name="selected" type="Sprite2D" parent="." groups=["non_unit"]]
+visible = false
+texture = ExtResource("4_hk28d")
