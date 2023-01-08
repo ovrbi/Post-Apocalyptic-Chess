@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqlf2e8bqq3vb"]
+
+[ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_0bev7"]
+
+[node name="Foot Soldier" instance=ExtResource("1_0bev7")]

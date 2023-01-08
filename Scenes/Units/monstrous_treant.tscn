@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnibrxt7si8uy"]
+
+[ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_nfriy"]
+
+[node name="Monstrous Treant" instance=ExtResource("1_nfriy")]

@@ -1,19 +1,23 @@
 extends Sprite2D
 
 const speed = 200
-var type : int #0:player side 1:enemy 2:neutral (no one controls)
+@export var type : int #0:player side 1:enemy 2:neutral (no one controls)
 var state : int #0:base 1:has moved 2:has attacked (player controlled only)
-var passable : bool
-var maxhp : int
-var curhp = maxhp
+@export var passable : bool
+@export var maxhp : int
+var curhp :int
 var borderlands = 1 #0:no 1:extra turn 2:revive on kill
-var move_amount : int
+@export var move_amount : int
+@export var damage : int
 var tilemap : TileMap
 var movequeue = []
+@export_multiline var desc
+@export var subtype : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tilemap = get_parent()
+	curhp = maxhp
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,24 +28,36 @@ func _process(delta):
 			movequeue.pop_front()
 			if movequeue.is_empty():
 				if type == 0:
-					tilemap.input_lock = false
 					tilemap.select(self)
-				
+				elif type ==2:
+					tilemap.try_fertilize(tilemap.local_to_map(position))
+				tilemap.input_lock -=1
 		else:
 			position += (tilemap.map_to_local(movequeue[0])-position).normalized()*speed*delta
 
 func get_attacks():
-	pass
+	return []
+func preview_attacks(loc:Vector2i):
+	return []
 func attack(loc:Vector2i): 
 	pass
+func do_damage(loc:Vector2i, from:Vector2i):
+	if tilemap.attack_tile(loc, from, damage) && type==0 && curhp<=0 && borderlands==2:
+		curhp = 1
+
+func autopilot():
+	tilemap.process_next()
+
+func die():
+	queue_free()
 
 func move_to(to : Vector2i):
-	tilemap.input_lock = true
+	tilemap.input_lock +=1
 	var locs = []
 	var to_process = [tilemap.local_to_map(position)]
 	var locs_prev = []
 	var proc_prev = [null]
-	while to_process[0]!=to:
+	while to_process[0]!=to&&!to_process.is_empty():
 		var delta = Vector2i(1,0)
 		for i in range(4):
 			delta = Vector2i((-1)*delta.y, delta.x)
@@ -55,16 +71,22 @@ func move_to(to : Vector2i):
 			proc_prev.append(locs_prev.size())
 		locs.append(to_process[0])
 		locs_prev.append(proc_prev[0])
+		if proc_prev.size() <=1:
+			to_process=[]
+			break
 		to_process.pop_front()
 		proc_prev.pop_front()
-	var target = proc_prev[0]
-	var ans = [to_process[0]]
-	while target != null:
-		ans.push_front(locs[target])
-		target = locs_prev[target]
-	movequeue = ans
-	tilemap.select(null)
-	state = 1
+	if to_process.is_empty():
+		pass #can't move
+	else:
+		var target = proc_prev[0]
+		var ans = [to_process[0]]
+		while target != null:
+			ans.push_front(locs[target])
+			target = locs_prev[target]
+		movequeue = ans
+		tilemap.select(null)
+		state = 1
 	
 func get_moves():
 	var locs = []
@@ -87,5 +109,10 @@ func get_moves():
 		moves.pop_front()
 	return locs
 
-func takedamage(amount:int):
-	pass
+func takedamage(amount:int, from : Vector2i): #returns true if lethal
+	curhp -= amount
+	if curhp <= 0:
+		if type != 0 || borderlands ==0:
+			die()
+			return true
+	return false

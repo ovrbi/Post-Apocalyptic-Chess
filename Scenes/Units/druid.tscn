@@ -7,3 +7,6 @@
 [node name="Druid" instance=ExtResource("1_nvba8")]
 texture = ExtResource("2_sa0mb")
 script = ExtResource("2_74nik")
+maxhp = 3
+move_amount = 3
+damage = 1
