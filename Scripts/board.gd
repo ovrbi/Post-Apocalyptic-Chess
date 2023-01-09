@@ -39,9 +39,29 @@ var wrath = 0
 var ms_boost = 0
 var extra_attack = 0
 
+var tb_nextturn
+var tb_plant
+var tb_harvest
+var tb_wrath
+var tb_one
+var tb_two
+var tb_three
+var tb_four
+var tb_five
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#import buttons
+	tb_nextturn = $/root/MainScene/Control/NextTurn
+	tb_plant = $/root/MainScene/Control/Plant
+	tb_harvest = $/root/MainScene/Control/Harvest
+	tb_wrath = $/root/MainScene/Control/Wrath
+	tb_one = $/root/MainScene/Control/One
+	tb_two = $/root/MainScene/Control/Two
+	tb_three = $/root/MainScene/Control/Three
+	tb_four = $/root/MainScene/Control/Four
+	tb_five = $/root/MainScene/Control/Five
+	
 	selected = null
 	prev_cursor_loc = null
 	summon(Vector2i(2,2),0)
@@ -99,8 +119,12 @@ func _unhandled_input(event : InputEvent):
 						selected.move_to(mouseloc)
 					else:
 						selected.attack(mouseloc)
-			elif mode == 1:
+			elif mode == 1: #planting
 				if get_cell_source_id(1,mouseloc)!=-1:
+					tb_nextturn.visible = true
+					tb_plant.visible = false
+					tb_harvest.visible = false
+					tb_wrath.visible = false
 					summon(mouseloc,6)
 					mode = 0
 					can_harvest = false
@@ -110,20 +134,50 @@ func _unhandled_input(event : InputEvent):
 		if event.is_action_pressed("RightClick"):
 			select(null)
 		if event.is_action_pressed("EndTurn"):
-			if !can_harvest:
-				end_turn()
+			button_endturn()
 		if event.is_action_pressed("Plant"):
-			highlight_plant()
+			button_plant()
 		if event.is_action_pressed("Harvest"):
-			select(null)
-			if can_harvest: 
-				prev_cursor_loc = null
-				mode=2
+			button_harvest()
 		if event.is_action_pressed("Wrath"):
-			if can_harvest:
-				wrath = 1
-				can_harvest = false
-				select(null)
+			button_wrath()
+
+func button_endturn():
+	if !can_harvest:
+		end_turn()
+
+func button_plant():
+	if tb_plant.button_pressed == true:
+		highlight_plant()
+		tb_plant.button_pressed = true
+	else:
+		select(null)
+
+func button_harvest():
+	if tb_harvest.button_pressed == true:
+		select(null)
+		if can_harvest: 
+			tb_one.visible = true
+			tb_two.visible = true
+			tb_three.visible = true
+			tb_four.visible = true
+			tb_five.visible = true
+			prev_cursor_loc = null
+			mode=2
+			tb_harvest.button_pressed = true
+	else:
+		select(null)
+
+func button_wrath():
+	if can_harvest:
+		tb_nextturn.visible = true
+		tb_plant.visible = false
+		tb_harvest.visible = false
+		tb_wrath.visible = false
+		wrath = 1
+		can_harvest = false
+		select(null)
+
 
 func highlight_plant():
 	select(null)
@@ -150,6 +204,12 @@ func check_friendly(loc:Vector2i):
 	var units = get_units(loc)
 	return !units.is_empty()&&units[0].type==0
 func end_turn():
+	if turn!=0:
+		#tb_nextturn.disabled = true
+		tb_nextturn.visible = false
+		tb_plant.visible = true
+		tb_harvest.visible = true
+		tb_wrath.visible = true
 	turn+=1
 	emit_signal("next_turn")
 	select(null)
@@ -239,6 +299,13 @@ func select(target : Node2D):
 	clear_layer(1)
 	clear_layer(2)
 	if target == null:
+		tb_one.visible = false
+		tb_two.visible = false
+		tb_three.visible = false
+		tb_four.visible = false
+		tb_five.visible = false
+		tb_harvest.button_pressed = false
+		tb_plant.button_pressed = false
 		mode=0
 		node_selected.visible=false
 		selected = null
@@ -297,6 +364,10 @@ func try_harvest(loc:Vector2i, size:int):
 	for i in targets:
 		canharvest = canharvest && has_neutral(i,1)
 	if canharvest:
+		tb_nextturn.visible = true
+		tb_plant.visible = false
+		tb_harvest.visible = false
+		tb_wrath.visible = false
 		for i in targets:
 			get_units(i)[0].queue_free()
 		points+=size
@@ -320,3 +391,39 @@ func biggest_dimension(vec : Vector2i): #this is used to determine the push dire
 	return Vector2i(sign(vec.x)*int(abs(vec.x)>=abs(vec.y)),sign(vec.y)*int(abs(vec.y)>=abs(vec.x)))
 func is_in_map(loc:Vector2i):
 	return loc.x>=0 && loc.x<size&&loc.y>=0 &&loc.y<size
+
+# sync up buttons with game logic
+func _on_next_turn_pressed():
+	button_endturn()
+func _on_wrath_pressed():
+	button_wrath()
+func _on_plant_pressed():
+	button_plant()
+func _on_harvest_pressed():
+	button_harvest()
+func clear_harvest_buttons():
+	tb_one.button_pressed = false
+	tb_two.button_pressed = false
+	tb_three.button_pressed = false
+	tb_four.button_pressed = false
+	tb_five.button_pressed = false
+func _on_one_pressed():
+	clear_harvest_buttons()
+	tb_one.button_pressed = true
+	harvestsize = 1
+func _on_two_pressed():
+	clear_harvest_buttons()
+	tb_two.button_pressed = true
+	harvestsize = 2
+func _on_three_pressed():
+	clear_harvest_buttons()
+	tb_three.button_pressed = true
+	harvestsize = 3
+func _on_four_pressed():
+	clear_harvest_buttons()
+	tb_four.button_pressed = true
+	harvestsize = 4
+func _on_five_pressed():
+	clear_harvest_buttons()
+	tb_five.button_pressed = true
+	harvestsize = 5
