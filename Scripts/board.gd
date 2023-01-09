@@ -3,6 +3,7 @@ extends TileMap
 const size = 8
 var input_lock = 0
 var mode = 0 #0:normal 1:plant 2:harvest
+var harvestsize = 5
 var selected : Node2D
 var processqueue = []
 @export var node_selector : Node2D
@@ -10,7 +11,7 @@ var processqueue = []
 var turn = 0
 var points = 0
 var can_harvest = true
-var prev_cursor_loc :Vector2i
+var prev_cursor_loc 
 var summon_units = [
 	preload("res://Scenes/Units/druid.tscn"),			#0
 	preload("res://Scenes/Units/sproutling.tscn"),		#1
@@ -37,7 +38,7 @@ var extra_attack = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	selected = null
-	prev_cursor_loc = Vector2i(0,0)
+	prev_cursor_loc = null
 	summon(Vector2i(2,2),0)
 	summon(Vector2i(3,2),0)
 	summon(Vector2i(2,3),0)
@@ -53,11 +54,14 @@ func _process(delta):
 		if mouseloc.x>=0&&mouseloc.y>=0&&mouseloc.x<size &&mouseloc.y<size:
 			node_selector.visible=true
 			node_selector.position=map_to_local(mouseloc)
-			if mode == 1:
+			if mode==2:
 				clear_layer(1)
-				var units = get_units(mouseloc)
-				if units.is_empty()||((units[0].passable || !has_neutral(mouseloc,2))&&!has_neutral(mouseloc,0)&&!has_neutral(mouseloc,1)):
-					set_cell(1,mouseloc,0,Vector2i(0,0))
+				var places = get_harvest(mouseloc,harvestsize)
+				for i in places:
+					if has_neutral(i,1):
+						set_cell(1,i,0,Vector2i(0,0))
+					else:
+						set_cell(1,i,0,Vector2i(1,0))
 		else:
 			node_selector.visible=false
 		if selected != null && selected.type == 0 && selected.state == 1:
@@ -95,23 +99,49 @@ func _unhandled_input(event : InputEvent):
 					can_harvest = false
 					select(null)
 			elif mode == 2:
-				pass
+				try_harvest(mouseloc,harvestsize)
 		if event.is_action_pressed("RightClick"):
 			select(null)
 		if event.is_action_pressed("EndTurn"):
-			end_turn()
+			if !can_harvest:
+				end_turn()
 		if event.is_action_pressed("Plant"):
-			select(null)
-			if can_harvest: mode=1
+			highlight_plant()
 		if event.is_action_pressed("Harvest"):
 			select(null)
-			if can_harvest: mode=2
+			if can_harvest: 
+				prev_cursor_loc = null
+				mode=2
 		if event.is_action_pressed("Wrath"):
 			if can_harvest:
 				wrath = 1
 				can_harvest = false
 				select(null)
 
+func highlight_plant():
+	select(null)
+	if can_harvest: 
+		prev_cursor_loc = null
+		mode=1
+		for x in range(size):
+			for y in range(size):
+				var show_cell = false
+				var units = get_units(Vector2i(x,y))
+				show_cell=show_cell||check_friendly(Vector2i(x+1,y))
+				show_cell=show_cell||check_friendly(Vector2i(x,y+1))
+				show_cell=show_cell||check_friendly(Vector2i(x-1,y))
+				show_cell=show_cell||check_friendly(Vector2i(x,y-1))
+				show_cell=show_cell||check_friendly(Vector2i(x+1,y+1))
+				show_cell=show_cell||check_friendly(Vector2i(x+1,y-1))
+				show_cell=show_cell||check_friendly(Vector2i(x-1,y+1))
+				show_cell=show_cell||check_friendly(Vector2i(x-1,y-1))
+				show_cell=show_cell&&(units.is_empty()||((units[0].passable || !has_neutral(Vector2i(x,y),2))&&!has_neutral(Vector2i(x,y),0)&&!has_neutral(Vector2i(x,y),1)))
+				if show_cell: 
+					set_cell(1,Vector2i(x,y),0,Vector2i(0,0))
+					
+func check_friendly(loc:Vector2i):
+	var units = get_units(loc)
+	return !units.is_empty()&&units[0].type==0
 func end_turn():
 	select(null)
 	wrath = 0
@@ -194,12 +224,32 @@ func has_neutral(loc:Vector2i, subtype:int):
 func try_fertilize(loc : Vector2i):
 	var units = get_units(loc)
 	if has_neutral(loc,0) && has_neutral(loc,2):
-		print("peepis")
 		for i in units:
 			if i.type==2 && i.subtype!=1:
 				i.die()
 		summon(loc, 7)
 
+func get_harvest(loc:Vector2i, size:int):
+	var ans = [loc]
+	if size != 1 && size != 3 && is_in_map(loc+Vector2i(0,1)): ans.append(loc+Vector2i(0,1))
+	if size>2 && is_in_map(loc+Vector2i(1,0)): ans.append(loc+Vector2i(1,0))
+	if size==3||size==5 && is_in_map(loc+Vector2i(-1,0)): ans.append(loc+Vector2i(-1,0))
+	if size == 4 && is_in_map(loc+Vector2i(1,1)): ans.append(loc+Vector2i(1,1))
+	if size == 5 && is_in_map(loc+Vector2i(0,-1)): ans.append(loc+Vector2i(0,-1))
+	return ans
+
+func try_harvest(loc:Vector2i, size:int):
+	var targets = get_harvest(loc,size)
+	var canharvest = true
+	for i in targets:
+		canharvest = canharvest && has_neutral(i,1)
+	if canharvest:
+		for i in targets:
+			get_units(i)[0].queue_free()
+		summon(loc,size)
+		mode = 0
+		can_harvest = false
+		select(null)
 func get_units(loc : Vector2i):
 	var ans = []
 	for unit in get_children():

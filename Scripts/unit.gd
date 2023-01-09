@@ -42,7 +42,7 @@ func preview_attacks(loc:Vector2i):
 func attack(loc:Vector2i): 
 	pass
 func do_damage(loc:Vector2i, from:Vector2i):
-	if tilemap.attack_tile(loc, from, damage) && type==0 && curhp<=0 && borderlands==2:
+	if tilemap.attack_tile(loc, from, damage+tilemap.wrath*int(type==0)) && type==0 && curhp<=0 && borderlands==2:
 		curhp = 1
 
 func autopilot():

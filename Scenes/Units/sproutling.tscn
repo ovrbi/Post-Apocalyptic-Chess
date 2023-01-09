@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://wl3qeo0aop32"]
+[gd_scene load_steps=3 format=3 uid="uid://wl3qeo0aop32"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_siyu0"]
+[ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_sxb1w"]
 
 [node name="Sproutling" instance=ExtResource("1_siyu0")]
+texture = ExtResource("2_sxb1w")
