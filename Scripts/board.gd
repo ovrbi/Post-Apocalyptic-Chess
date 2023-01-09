@@ -216,6 +216,7 @@ func end_turn():
 		tb_harvest.visible = true
 		tb_wrath.visible = true
 	turn+=1
+	input_lock+=1
 	emit_signal("next_turn")
 	select(null)
 	wrath = 0
@@ -224,14 +225,6 @@ func end_turn():
 		if unit.is_in_group("non_unit"): continue
 		if unit.curhp<=0:
 			unit.die()
-		if unit.type==1:
-			if unit.passable:
-				var units = get_units(local_to_map(unit.position))
-				if !units.is_empty()&&!units[0].passable:
-					if units[0].type==1 && units[0].subtype == 3: ms_boost-=2
-					if units[0].type==1 && units[0].subtype == 5: extra_attack-=1
-					units[0].queue_free()
-			unit.passable = false
 	#process enemy actions
 	for unit in get_children():
 		if unit.is_in_group("non_unit"): continue
@@ -254,7 +247,7 @@ func process_next():
 				unit.state = 0
 		if turn>1:
 			can_harvest = true
-		
+		input_lock-=1
 
 func spawn_enemies():
 	var pts = turn+4
@@ -279,13 +272,24 @@ func spawn_enemies():
 
 func edge_summon(unit:int):
 	var locs = []
+	var backuplocs = []
 	for i in range(size):
-		if get_units(Vector2i(0,i)).is_empty()||!has_enemy(Vector2i(0,i)): locs.append(Vector2i(0,i))
-		if get_units(Vector2i(size-1,i)).is_empty()||!has_enemy(Vector2i(size-1,i)): locs.append(Vector2i(size-1,i))
+		if get_units(Vector2i(0,i)).is_empty()||!get_units(Vector2i(0,i))[0].passable: locs.append(Vector2i(0,i))
+		if get_units(Vector2i(size-1,i)).is_empty()||!get_units(Vector2i(size-1,i))[0].passable: locs.append(Vector2i(size-1,i))
+		backuplocs.append(Vector2i(0,i))
+		backuplocs.append(Vector2i(size-1,i))
 	for i in range(1,size-1):
-		if get_units(Vector2i(i,0)).is_empty()||!has_enemy(Vector2i(i,0)): locs.append(Vector2i(i,0))
-		if get_units(Vector2i(i,size-1)).is_empty()||!has_enemy(Vector2i(i,size-1)): locs.append(Vector2i(i,size-1))
+		if get_units(Vector2i(i,0)).is_empty()||!get_units(Vector2i(i,0))[0].passable: locs.append(Vector2i(i,0))
+		if get_units(Vector2i(i,size-1)).is_empty()||!get_units(Vector2i(i,size-1))[0].passable: locs.append(Vector2i(i,size-1))
+		backuplocs.append(Vector2i(i,0))
+		backuplocs.append(Vector2i(i,size-1))
 	if !locs.is_empty(): summon(locs[randi_range(0,locs.size()-1)],unit)
+	else:
+		var loc = backuplocs[randi_range(0,backuplocs.size()-1)]
+		var units = get_units(loc)
+		if !units[0].passable:
+			units[0].queue_free()
+		summon(loc, unit)
 
 func has_enemy(loc:Vector2i):
 	var ans = false
