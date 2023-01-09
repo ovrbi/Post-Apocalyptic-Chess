@@ -2,11 +2,41 @@
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_xhlor"]
 [ext_resource type="Texture2D" uid="uid://wffk14r843ei" path="res://Textures/tmp_corpse.png" id="2_md7ee"]
-[ext_resource type="Script" path="res://Scripts/Units/corpse.gd" id="3_d04al"]
+
+[sub_resource type="GDScript" id="GDScript_1safl"]
+script/source = "extends \"res://Scripts/unit.gd\"
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	super._ready()
+	tilemap.try_fertilize(tilemap.local_to_map(position))
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	super._process(delta)
+
+func get_attacks():
+	pass
+func preview_attacks(loc:Vector2i):
+	pass
+func attack(loc:Vector2i): 
+	pass
+	
+
+
+func takedamage(amount:int, from : Vector2i): #returns true if lethal
+	move_to(tilemap.local_to_map(position)+tilemap.biggest_dimension(tilemap.local_to_map(position)-from))
+	return false
+	
+"
 
 [node name="Corpse" instance=ExtResource("1_xhlor")]
 texture = ExtResource("2_md7ee")
-script = ExtResource("3_d04al")
+script = SubResource("GDScript_1safl")
 type = 2
 passable = true
 maxhp = 1

@@ -1,5 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnibrxt7si8uy"]
+[gd_scene load_steps=3 format=3 uid="uid://dnibrxt7si8uy"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_nfriy"]
 
+[sub_resource type="GDScript" id="GDScript_2xibq"]
+script/source = "extends \"res://Scripts/unit.gd\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	super._ready()
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	super._process(delta)
+
+func get_attacks():
+	var ans = []
+	var delta = Vector2i(1,0)
+	for i in range(4):
+		delta = Vector2i((-1)*delta.y, delta.x)
+		if tilemap.is_in_map(tilemap.local_to_map(position)+delta): ans.append(tilemap.local_to_map(position)+delta)
+	return ans
+func preview_attacks(loc:Vector2i):
+	var ans = []
+	var dir = tilemap.biggest_dimension(tilemap.local_to_map(position)-loc)
+	var delta1 = Vector2i(1,0)
+	var delta2 = Vector2i(1,1)
+	for i in range(4):
+		delta1 = Vector2i((-1)*delta1.y, delta1.x)
+		delta2 = Vector2i((-1)*delta2.y, delta2.x)
+		if tilemap.is_in_map(tilemap.local_to_map(position)+delta1)&&delta1!=dir: ans.append(tilemap.local_to_map(position)+delta1)
+		if tilemap.is_in_map(tilemap.local_to_map(position)+delta2): ans.append(tilemap.local_to_map(position)+delta2)
+	return ans
+func attack(loc:Vector2i): 
+	var targets = preview_attacks(loc)
+	var dir = tilemap.biggest_dimension(tilemap.local_to_map(position)-loc)
+	for i in targets:
+		do_damage(i, tilemap.local_to_map(position)+dir*10)
+	state = 2
+	tilemap.select(null)
+
+func die():
+	tilemap.summon(tilemap.local_to_map(position),6)
+	queue_free()
+"
+
 [node name="Monstrous Treant" instance=ExtResource("1_nfriy")]
+script = SubResource("GDScript_2xibq")
+maxhp = 4
+move_amount = 3
+damage = 3
+subtype = 5

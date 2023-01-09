@@ -1,10 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://wl3qeo0aop32"]
-
-[ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_siyu0"]
-[ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_sxb1w"]
-
-[sub_resource type="GDScript" id="GDScript_58gnt"]
-script/source = "extends \"res://Scripts/unit.gd\"
+extends "res://Scripts/unit.gd"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,12 +28,3 @@ func attack(loc:Vector2i):
 func die():
 	tilemap.summon(tilemap.local_to_map(position),6)
 	queue_free()
-"
-
-[node name="Sproutling" instance=ExtResource("1_siyu0")]
-texture = ExtResource("2_sxb1w")
-script = SubResource("GDScript_58gnt")
-maxhp = 1
-move_amount = 4
-damage = 1
-subtype = 1
