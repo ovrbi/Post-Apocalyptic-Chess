@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b4223m5red1f3" path="res://Textures/Corpse_1.png" id="2_8afjy"]
 [ext_resource type="Texture2D" uid="uid://c68o4th4hmd6c" path="res://Textures/Corpse_2.png" id="3_l7n7r"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gbq02"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cmrt"]
 animations = [{
 "frames": [ExtResource("2_8afjy"), ExtResource("3_l7n7r")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_tnnyn"]
+[sub_resource type="GDScript" id="GDScript_rdaic"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -45,8 +45,8 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 
 [node name="Corpse" instance=ExtResource("1_xhlor")]
 z_index = -10
-frames = SubResource("SpriteFrames_gbq02")
-script = SubResource("GDScript_tnnyn")
+frames = SubResource("SpriteFrames_7cmrt")
+script = SubResource("GDScript_rdaic")
 type = 2
 passable = true
 maxhp = 1

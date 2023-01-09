@@ -111,7 +111,7 @@ func move_to(to : Vector2i):
 	var to_process = [tilemap.local_to_map(position)]
 	var locs_prev = []
 	var proc_prev = [null]
-	while to_process[0]!=to&&!to_process.is_empty():
+	while !to_process.is_empty()&&to_process[0]!=to:
 		var delta = Vector2i(1,0)
 		for i in range(4):
 			delta = Vector2i((-1)*delta.y, delta.x)
@@ -131,7 +131,7 @@ func move_to(to : Vector2i):
 		to_process.pop_front()
 		proc_prev.pop_front()
 	if to_process.is_empty():
-		pass #can't move
+		tilemap.input_lock -=1
 	else:
 		var target = proc_prev[0]
 		var ans = [to_process[0]]
@@ -168,6 +168,7 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 	curhp -= amount
 	update_label()
 	if curhp <= 0:
+		curhp =0
 		if type != 0 || borderlands ==0:
 			die()
 			return true
