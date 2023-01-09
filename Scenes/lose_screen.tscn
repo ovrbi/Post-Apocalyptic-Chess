@@ -69,11 +69,9 @@ horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="."]
 layout_mode = 1
-offset_left = 55.0
-offset_top = 585.0
-offset_right = 666.0
-offset_bottom = 695.0
-text = "Made by ovrbi, ruby, BirbMom and Finn Talisker
-in 72 hours for Ludum Dare 52."
-label_settings = SubResource("LabelSettings_xufsy")
-horizontal_alignment = 1
+offset_left = 109.0
+offset_top = 592.0
+offset_right = 607.0
+offset_bottom = 702.0
+text = "Made by ovrbi, rubr and BirbMom
+in 72 hours for Ludum Dare 52"
