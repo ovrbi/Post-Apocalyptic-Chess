@@ -35,17 +35,21 @@ func _process(delta):
 	if cooldown >0:
 		cooldown -= delta
 		if cooldown <= 0:
-			var tgets = preview_attacks(tilemap.local_to_map(position)+atk_dir)
-			for i in tgets:
-				tilemap.set_cell(2,i,0,Vector2i(0,0))
-				var uits = tilemap.get_units(i)
-				if !uits.is_empty() && uits[0].type!=2:
-					uits[0].hp_vis -=1
-					uits[0].update_label()
-			attack(tilemap.local_to_map(position)+atk_dir)
-			tilemap.clear_layer(2)
-			tilemap.input_lock -=1
-			tilemap.process_next()
+			if state==0:
+				attack(tilemap.local_to_map(position)+atk_dir)
+				state = 1
+				cooldown = 0.5
+			else:
+				var tgets = preview_attacks(tilemap.local_to_map(position)+atk_dir)
+				for i in tgets:
+					var uits = tilemap.get_units(i)
+					if !uits.is_empty() && uits[0].type!=2:
+						uits[0].hp_vis -=1
+						uits[0].update_label()
+				state = 0
+				tilemap.clear_layer(2)
+				tilemap.input_lock -=1
+				tilemap.process_next()
 	if !movequeue.is_empty():
 		if position.distance_to(tilemap.map_to_local(movequeue[0]))<speed * delta:
 			position = tilemap.map_to_local(movequeue[0])
@@ -57,7 +61,8 @@ func _process(delta):
 					tilemap.try_fertilize(tilemap.local_to_map(position))
 				elif type==1:
 					if atk_dir != Vector2i(0,0):
-						cooldown = 1.0
+						cooldown = 0.5
+						state = 0
 						tilemap.input_lock+=1
 						var tgets = preview_attacks(tilemap.local_to_map(position)+atk_dir)
 						for i in tgets:
