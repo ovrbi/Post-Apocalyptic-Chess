@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c66fnmu0m3akn"]
 
-[ext_resource type="Texture2D" uid="uid://cjelmhluee3ba" path="res://Textures/gameboard_clear.png" id="1_83mbq"]
 [ext_resource type="Script" path="res://Scripts/lose_screen.gd" id="1_ri158"]
 [ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="1_w81tr"]
+[ext_resource type="Texture2D" uid="uid://bqt5pnnob11u1" path="res://Textures/gameboard_clear_new.png" id="2_mfdn3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7qtra"]
 font = ExtResource("1_w81tr")
@@ -30,7 +30,7 @@ grow_vertical = 2
 script = ExtResource("1_ri158")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_83mbq")
+texture = ExtResource("2_mfdn3")
 centered = false
 
 [node name="Label" type="Label" parent="."]
