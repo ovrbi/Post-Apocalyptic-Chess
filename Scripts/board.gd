@@ -174,6 +174,7 @@ func button_plant():
 
 func button_harvest():
 	if tb_harvest.button_pressed == true:
+		select(null)
 		if can_harvest: 
 			tb_one.visible = true
 			tb_two.visible = true
@@ -183,7 +184,7 @@ func button_harvest():
 			prev_cursor_loc = null
 			mode=2
 			tb_harvest.button_pressed = true
-	select(null)
+	else: select(null)
 
 func button_wrath():
 	if can_harvest:
