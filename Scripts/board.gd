@@ -332,7 +332,8 @@ func edge_summon(unit:int):
 			if units[0].type==0:
 				friendlies_alive-=1
 				if friendlies_alive<=0:
-					get_tree().change_scene_to_file("res://Scenes/lose_screen.tscn")
+					get_node("/root").add_child(preload("res://Scenes/lose_screen.tscn").instantiate())
+					input_lock+=1
 			units[0].queue_free()
 		summon(loc, unit)
 
@@ -388,7 +389,7 @@ func attack_tile(loc : Vector2i, from : Vector2i, dmg : int):
 	var dieded = false
 	for i in targets:
 		dieded = dieded || i.takedamage(dmg, from)
-		if !i.passable: break
+		if !i.passable: return dieded
 	return dieded
 
 func has_neutral(loc:Vector2i, subtype:int):

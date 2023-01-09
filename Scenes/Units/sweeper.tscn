@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_00tc8"]
 [ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_e8mwr"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vokvq"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6p62"]
 animations = [{
 "frames": [ExtResource("2_e8mwr")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_3knjk"]
+[sub_resource type="GDScript" id="GDScript_m70im"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -42,10 +42,10 @@ func die():
 "
 
 [node name="Sweeper" instance=ExtResource("1_00tc8")]
-frames = SubResource("SpriteFrames_vokvq")
-script = SubResource("GDScript_3knjk")
+frames = SubResource("SpriteFrames_k6p62")
+script = SubResource("GDScript_m70im")
 type = 1
-passable = true
+passable = false
 maxhp = 5
 move_amount = 4
 damage = 3
