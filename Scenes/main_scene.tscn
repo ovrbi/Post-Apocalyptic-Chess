@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxfulqdn8yuyx"]
+[gd_scene load_steps=6 format=3 uid="uid://cxfulqdn8yuyx"]
 
 [ext_resource type="PackedScene" uid="uid://cyehjbqcd4luk" path="res://Scenes/board.tscn" id="1_y7kby"]
 [ext_resource type="Texture2D" uid="uid://c2ry4wey7uffj" path="res://Textures/gameboard_mockup.png" id="2_uw4gw"]
 [ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="3_jyos6"]
+[ext_resource type="Script" path="res://Scripts/Turn Number.gd" id="4_n0qe0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_63tcg"]
-line_spacing = 0.0
+line_spacing = -20.0
 font = ExtResource("3_jyos6")
 font_size = 44
 font_color = Color(0, 0, 0, 1)
@@ -26,12 +27,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Turn Number" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 72.0
 offset_top = 62.0
 offset_right = 197.0
 offset_bottom = 115.0
-text = "TURN #69
-dsfgs"
+text = "TURN #69"
 label_settings = SubResource("LabelSettings_63tcg")
+script = ExtResource("4_n0qe0")
