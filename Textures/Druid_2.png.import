@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m5cbctj68eer"
-path="res://.godot/imported/LVM_color_1.png-60dad9afbf5da923988a77aac2d5bdd5.ctex"
+uid="uid://cyto3fji8gixx"
+path="res://.godot/imported/Druid_2.png-e9f735c2e332fc910de5e7724ca78b39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/LVM_color_1.png"
-dest_files=["res://.godot/imported/LVM_color_1.png-60dad9afbf5da923988a77aac2d5bdd5.ctex"]
+source_file="res://Textures/Druid_2.png"
+dest_files=["res://.godot/imported/Druid_2.png-e9f735c2e332fc910de5e7724ca78b39.ctex"]
 
 [params]
 
