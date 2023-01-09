@@ -33,7 +33,8 @@ var summon_units = [
 	preload("res://Scenes/Units/sweeper.tscn"),			#13
 	preload("res://Scenes/Units/war_leader.tscn")		#14
 ]
-var costs = [5,9,13,17,21,25]
+var startcost = 8
+var costs = [5,13,18,23,28,33]
 var harvest_cheats = true
 
 var friendlies_alive = 0
@@ -300,7 +301,7 @@ func process_next():
 		input_lock-=1
 
 func spawn_enemies():
-	var pts = turn+4
+	var pts = turn+startcost
 	var sums = [0,0,0,0,0,0]
 	if pts>costs[4]*(size+size-2):
 		sums = [0,0,0,0,12,2]
