@@ -117,6 +117,24 @@ func _process(delta):
 		for child in children:
 			if child.is_in_group("non_unit"): continue
 			child.frame = prev_frame
+		tb_five.texture_hover.current_frame = prev_frame
+		tb_five.texture_pressed.current_frame = prev_frame
+		tb_four.texture_hover.current_frame = prev_frame
+		tb_four.texture_pressed.current_frame = prev_frame
+		tb_harvest.texture_hover.current_frame = prev_frame
+		tb_harvest.texture_pressed.current_frame = prev_frame
+		tb_nextturn.texture_hover.current_frame = prev_frame
+		tb_nextturn.texture_pressed.current_frame = prev_frame
+		tb_one.texture_hover.current_frame = prev_frame
+		tb_one.texture_pressed.current_frame = prev_frame
+		tb_plant.texture_hover.current_frame = prev_frame
+		tb_plant.texture_pressed.current_frame = prev_frame
+		tb_three.texture_hover.current_frame = prev_frame
+		tb_three.texture_pressed.current_frame = prev_frame
+		tb_two.texture_hover.current_frame = prev_frame
+		tb_two.texture_pressed.current_frame = prev_frame
+		tb_wrath.texture_hover.current_frame = prev_frame
+		tb_wrath.texture_pressed.current_frame = prev_frame
 
 func _unhandled_input(event : InputEvent):
 	if input_lock==0:

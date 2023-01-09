@@ -44,6 +44,7 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_1ive8"]
 frames = 2
+pause = true
 speed_scale = 2.0
 frame_0/texture = ExtResource("6_gyr0k")
 frame_1/texture = ExtResource("7_vfelc")
@@ -51,6 +52,7 @@ frame_1/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_xiqtj"]
 frames = 2
+pause = true
 speed_scale = 2.0
 frame_0/texture = ExtResource("6_gyr0k")
 frame_1/texture = ExtResource("7_vfelc")
@@ -58,6 +60,7 @@ frame_1/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_uwrkp"]
 frames = 2
+pause = true
 speed_scale = 2.0
 frame_0/texture = ExtResource("9_7lwk8")
 frame_1/texture = ExtResource("10_cs01b")
@@ -65,6 +68,7 @@ frame_1/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_pm3bg"]
 frames = 2
+pause = true
 speed_scale = 2.0
 frame_0/texture = ExtResource("9_7lwk8")
 frame_1/texture = ExtResource("10_cs01b")
@@ -72,6 +76,7 @@ frame_1/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_iwve7"]
 frames = 2
+pause = true
 speed_scale = 2.0
 frame_0/texture = ExtResource("12_sdah8")
 frame_1/texture = ExtResource("13_nw4e0")
@@ -79,6 +84,7 @@ frame_1/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_4xac7"]
 frames = 2
+pause = true
 speed_scale = 2.0
 frame_0/texture = ExtResource("12_sdah8")
 frame_1/texture = ExtResource("13_nw4e0")
@@ -86,6 +92,7 @@ frame_1/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_1ppxi"]
 frames = 2
+pause = true
 speed_scale = 2.0
 frame_0/texture = ExtResource("15_okwfl")
 frame_1/texture = ExtResource("16_hd18j")
@@ -93,6 +100,7 @@ frame_1/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_ym6yw"]
 frames = 2
+pause = true
 speed_scale = 2.0
 frame_0/texture = ExtResource("15_okwfl")
 frame_1/texture = ExtResource("16_hd18j")
@@ -100,6 +108,7 @@ frame_1/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_tlwfn"]
 frames = 2
+pause = true
 speed_scale = 2.0
 frame_0/texture = ExtResource("17_v2nwm")
 frame_1/texture = ExtResource("18_a5jsc")
@@ -107,6 +116,7 @@ frame_1/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_sm3px"]
 frames = 2
+pause = true
 speed_scale = 2.0
 frame_0/texture = ExtResource("17_v2nwm")
 frame_1/texture = ExtResource("18_a5jsc")
@@ -240,7 +250,7 @@ texture_focused = ExtResource("14_ii3y3")
 
 [node name="One" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 1
+layout_mode = 0
 offset_left = 222.0
 offset_top = 645.0
 offset_right = 278.0
@@ -258,7 +268,7 @@ playing = true
 
 [node name="Two" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 1
+layout_mode = 0
 offset_left = 278.0
 offset_top = 645.0
 offset_right = 334.0
@@ -292,7 +302,7 @@ playing = true
 
 [node name="Four" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 1
+layout_mode = 0
 offset_left = 389.0
 offset_top = 645.0
 offset_right = 445.0
@@ -309,7 +319,7 @@ playing = true
 
 [node name="Five" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 1
+layout_mode = 0
 offset_left = 445.0
 offset_top = 645.0
 offset_right = 501.0
