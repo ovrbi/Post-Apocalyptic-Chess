@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c55j5xnlqqs2l" path="res://Textures/Treant_1.png" id="2_noen4"]
 [ext_resource type="Texture2D" uid="uid://2l15aqoafnai" path="res://Textures/Treant_2.png" id="3_pihy1"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_mm41a"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_lsbmx"]
 animations = [{
 "frames": [ExtResource("2_noen4"), ExtResource("3_pihy1")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_mb4s6"]
+[sub_resource type="GDScript" id="GDScript_xxd7h"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -58,11 +58,11 @@ func die():
 "
 
 [node name="Monstrous Treant" instance=ExtResource("1_nfriy")]
-frames = SubResource("SpriteFrames_mm41a")
-script = SubResource("GDScript_mb4s6")
+frames = SubResource("SpriteFrames_lsbmx")
+script = SubResource("GDScript_xxd7h")
 maxhp = 4
 move_amount = 3
 damage = 3
-desc = "A Monstrous Treant, awakened to rid the Grove of invaders.
+desc = "A Monstrous Treant, woken to rid the Grove of invaders.
 Attacks in an area around itself, dealing 3 damage."
 subtype = 5
