@@ -1,8 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://cxfulqdn8yuyx"]
+[gd_scene load_steps=48 format=3 uid="uid://cxfulqdn8yuyx"]
 
 [ext_resource type="Texture2D" uid="uid://cjelmhluee3ba" path="res://Textures/gameboard_clear.png" id="1_afp6s"]
 [ext_resource type="PackedScene" uid="uid://cyehjbqcd4luk" path="res://Scenes/board.tscn" id="1_y7kby"]
 [ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="3_jyos6"]
+[ext_resource type="Script" path="res://Scripts/Score.gd" id="4_gpd3u"]
 [ext_resource type="Script" path="res://Scripts/Turn Number.gd" id="4_n0qe0"]
 [ext_resource type="Script" path="res://Scripts/Hover.gd" id="5_42i8b"]
 [ext_resource type="Texture2D" uid="uid://capswnn5cr8qs" path="res://Textures/NEXTTURN.png" id="5_l4j6t"]
@@ -178,12 +179,22 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Turn Number" type="Label" parent="Control"]
+[node name="Score" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 72.0
-offset_top = 62.0
+offset_top = 42.0
 offset_right = 197.0
-offset_bottom = 115.0
+offset_bottom = 95.0
+text = "SCORE: 6969"
+label_settings = SubResource("LabelSettings_63tcg")
+script = ExtResource("4_gpd3u")
+
+[node name="Turn Number2" type="Label" parent="Control"]
+layout_mode = 1
+offset_left = 72.0
+offset_top = 80.0
+offset_right = 197.0
+offset_bottom = 133.0
 text = "TURN #69"
 label_settings = SubResource("LabelSettings_63tcg")
 script = ExtResource("4_n0qe0")
@@ -335,8 +346,9 @@ speed_scale = 2.0
 playing = true
 
 [connection signal="change_hover" from="Board" to="Control/Hover" method="_on_board_change_hover"]
+[connection signal="change_mode" from="Board" to="Control/Score" method="_on_board_change_mode"]
 [connection signal="change_mode" from="Board" to="Control/Hover" method="_on_board_change_mode"]
-[connection signal="next_turn" from="Board" to="Control/Turn Number" method="_on_board_next_turn"]
+[connection signal="next_turn" from="Board" to="Control/Score" method="_on_board_next_turn"]
 [connection signal="hidden" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_hidden"]
 [connection signal="mouse_entered" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_mouse_entered"]
 [connection signal="mouse_exited" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_mouse_exited"]
