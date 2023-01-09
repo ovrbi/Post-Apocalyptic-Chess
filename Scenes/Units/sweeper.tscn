@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_00tc8"]
 [ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_e8mwr"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_k6p62"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0lhxn"]
 animations = [{
 "frames": [ExtResource("2_e8mwr")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_m70im"]
+[sub_resource type="GDScript" id="GDScript_4xhb0"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -27,7 +27,6 @@ func _process(delta):
 
 func attack(loc:Vector2i): 
 	var dir = tilemap.biggest_dimension(tilemap.local_to_map(position)-loc)
-	do_damage(loc, tilemap.local_to_map(position))
 	var delta1 = Vector2i(1,0)
 	var delta2 = Vector2i(1,1)
 	for i in range(4):
@@ -36,14 +35,26 @@ func attack(loc:Vector2i):
 		if tilemap.is_in_map(tilemap.local_to_map(position)+delta1)&&delta1!=dir: do_damage(tilemap.local_to_map(position)+delta1,tilemap.local_to_map(position)+dir*10)
 		if tilemap.is_in_map(tilemap.local_to_map(position)+delta2)&&(delta2-dir).lenght_squared()>1: do_damage(tilemap.local_to_map(position)+delta2,tilemap.local_to_map(position)+dir*10)
 
+func preview_attacks(loc:Vector2i):
+	var ans = []
+	var dir = tilemap.biggest_dimension(tilemap.local_to_map(position)-loc)
+	var delta1 = Vector2i(1,0)
+	var delta2 = Vector2i(1,1)
+	for i in range(4):
+		delta1 = Vector2i((-1)*delta1.y, delta1.x)
+		delta2 = Vector2i((-1)*delta2.y, delta2.x)
+		if tilemap.is_in_map(tilemap.local_to_map(position)+delta1)&&delta1!=dir: ans.append(tilemap.local_to_map(position)+delta1)
+		if tilemap.is_in_map(tilemap.local_to_map(position)+delta2)&&(delta2-dir).lenght_squared()>1: ans.append(tilemap.local_to_map(position)+delta2)
+	return ans
+
 func die():
 	tilemap.summon(tilemap.local_to_map(position),8)
 	super.die()
 "
 
 [node name="Sweeper" instance=ExtResource("1_00tc8")]
-frames = SubResource("SpriteFrames_k6p62")
-script = SubResource("GDScript_m70im")
+frames = SubResource("SpriteFrames_0lhxn")
+script = SubResource("GDScript_4xhb0")
 type = 1
 passable = false
 maxhp = 5
