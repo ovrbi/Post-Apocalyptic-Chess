@@ -34,6 +34,7 @@ var summon_units = [
 	preload("res://Scenes/Units/war_leader.tscn")		#14
 ]
 var costs = [5,9,13,17,21,25]
+var harvest_cheats = true
 
 var wrath = 0
 var ms_boost = 0
@@ -369,9 +370,9 @@ func get_harvest(loc:Vector2i, size:int):
 
 func try_harvest(loc:Vector2i, size:int):
 	var targets = get_harvest(loc,size)
-	var canharvest = true
+	var canharvest = harvest_cheats || targets.size()==size
 	for i in targets:
-		canharvest = canharvest && has_neutral(i,1)
+		canharvest = canharvest && has_neutral(i,1) 
 	if canharvest:
 		tb_nextturn.visible = true
 		tb_plant.visible = false
