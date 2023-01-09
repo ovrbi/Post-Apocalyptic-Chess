@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 
 const speed = 1000
 @export var type : int #0:player side 1:enemy 2:neutral (no one controls)

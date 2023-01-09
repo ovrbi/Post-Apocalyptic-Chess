@@ -1,8 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7e7lcs4drj73"]
+[gd_scene load_steps=5 format=3 uid="uid://b7e7lcs4drj73"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_mbp0x"]
+[ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_d0uys"]
 
-[sub_resource type="GDScript" id="GDScript_tpmqx"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbsrl"]
+animations = [{
+"frames": [ExtResource("2_d0uys")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_j0vkc"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -27,7 +36,8 @@ func die():
 "
 
 [node name="War Leader" instance=ExtResource("1_mbp0x")]
-script = SubResource("GDScript_tpmqx")
+frames = SubResource("SpriteFrames_dbsrl")
+script = SubResource("GDScript_j0vkc")
 type = 1
 maxhp = 5
 move_amount = 3

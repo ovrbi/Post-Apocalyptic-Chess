@@ -1,8 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxklxcqtn0vff"]
+[gd_scene load_steps=5 format=3 uid="uid://cxklxcqtn0vff"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_0ympl"]
+[ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_v81ec"]
 
-[sub_resource type="GDScript" id="GDScript_qwoqn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2vjg7"]
+animations = [{
+"frames": [ExtResource("2_v81ec")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_81mw5"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -47,7 +56,8 @@ func die():
 "
 
 [node name="Lavender Mender" instance=ExtResource("1_0ympl")]
-script = SubResource("GDScript_qwoqn")
+frames = SubResource("SpriteFrames_2vjg7")
+script = SubResource("GDScript_81mw5")
 maxhp = 3
 move_amount = 4
 subtype = 4

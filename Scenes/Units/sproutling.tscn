@@ -1,9 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://wl3qeo0aop32"]
+[gd_scene load_steps=5 format=3 uid="uid://wl3qeo0aop32"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_siyu0"]
 [ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_sxb1w"]
 
-[sub_resource type="GDScript" id="GDScript_dur3n"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_pgc3u"]
+animations = [{
+"frames": [ExtResource("2_sxb1w")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_d8ik2"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -37,8 +45,8 @@ func die():
 "
 
 [node name="Sproutling" instance=ExtResource("1_siyu0")]
-texture = ExtResource("2_sxb1w")
-script = SubResource("GDScript_dur3n")
+frames = SubResource("SpriteFrames_pgc3u")
+script = SubResource("GDScript_d8ik2")
 maxhp = 1
 move_amount = 4
 damage = 1

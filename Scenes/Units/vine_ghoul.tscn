@@ -1,8 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdixql75bxjvj"]
+[gd_scene load_steps=5 format=3 uid="uid://cdixql75bxjvj"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_jkwib"]
+[ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_stwa8"]
 
-[sub_resource type="GDScript" id="GDScript_fuy12"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_siucm"]
+animations = [{
+"frames": [ExtResource("2_stwa8")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_c223x"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -45,7 +54,8 @@ func die():
 "
 
 [node name="Vine Ghoul" instance=ExtResource("1_jkwib")]
-script = SubResource("GDScript_fuy12")
+frames = SubResource("SpriteFrames_siucm")
+script = SubResource("GDScript_c223x")
 maxhp = 3
 move_amount = 4
 damage = 1

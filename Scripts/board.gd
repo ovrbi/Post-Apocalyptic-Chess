@@ -179,7 +179,8 @@ func process_next():
 			if unit.is_in_group("non_unit"): continue
 			if unit.type==0:
 				unit.state = 0
-		can_harvest = true
+		if turn>0:
+			can_harvest = true
 		turn+=1
 
 func spawn_enemies():
