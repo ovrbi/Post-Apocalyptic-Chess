@@ -17,7 +17,6 @@ var rooted = false
 var atk_dir
 var alpha_amount = 0.5
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tilemap = get_parent()
@@ -101,7 +100,9 @@ func die():
 	if type==0:
 		tilemap.friendlies_alive-=1
 		if tilemap.friendlies_alive<=0:
-			get_tree().change_scene_to_file("res://Scenes/lose_screen.tscn")
+#			print(get_tree().change_scene_to_packed(preload("res://Scenes/unit.tscn")))
+			get_node("/root").add_child(preload("res://Scenes/lose_screen.tscn").instantiate())
+			tilemap.input_lock+=1
 	queue_free()
 
 func move_to(to : Vector2i):
