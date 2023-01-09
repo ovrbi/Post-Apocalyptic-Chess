@@ -47,3 +47,5 @@ script = SubResource("GDScript_uy28u")
 type = 2
 passable = true
 maxhp = 1
+desc = "A small sprout of new life. Requires natural
+fertilizer to grow."

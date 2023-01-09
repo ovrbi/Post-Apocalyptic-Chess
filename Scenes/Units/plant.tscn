@@ -43,4 +43,6 @@ frames = SubResource("SpriteFrames_fdb5t")
 script = SubResource("GDScript_c63eg")
 type = 2
 maxhp = 1
+desc = "A plant which has fed and grown fully.
+Ripe for harvesting."
 subtype = 1

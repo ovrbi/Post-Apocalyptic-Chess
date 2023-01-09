@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_p6oyy"]
 [ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_4uut7"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_lq1t0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fy4tu"]
 animations = [{
 "frames": [ExtResource("2_4uut7")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_dy753"]
+[sub_resource type="GDScript" id="GDScript_l83ca"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -34,11 +34,13 @@ func die():
 "
 
 [node name="Cavalry" instance=ExtResource("1_p6oyy")]
-frames = SubResource("SpriteFrames_lq1t0")
-script = SubResource("GDScript_dy753")
+frames = SubResource("SpriteFrames_fy4tu")
+script = SubResource("GDScript_l83ca")
 type = 1
-passable = false
+passable = true
 maxhp = 3
 move_amount = 4
 damage = 3
+desc = "Ferocious Cavalry, which flattens everything in their path.
+Attacks one unit, dealing 3 damage."
 subtype = 1

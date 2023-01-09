@@ -51,7 +51,7 @@ func update_text():
 # hover change
 func _on_board_change_hover():
 	board = $/root/MainScene/Board
-	var units = board.get_units(board.local_to_map(get_viewport().get_mouse_position()-position))
+	var units = board.get_units(board.local_to_map(get_viewport().get_mouse_position()-board.position))
 	if units.is_empty(): hover = null
 	else: 
 		hover = units[0]

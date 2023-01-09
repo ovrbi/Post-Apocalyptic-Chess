@@ -50,4 +50,6 @@ script = SubResource("GDScript_kkovb")
 type = 2
 passable = true
 maxhp = 1
+desc = "The corpse of a fallen warrior. Perfect fertilizer.
+Push it around with attacks."
 subtype = 2

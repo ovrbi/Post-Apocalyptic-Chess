@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_00tc8"]
 [ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_e8mwr"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_suffx"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_n34j8"]
 animations = [{
 "frames": [ExtResource("2_e8mwr")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_ibu5a"]
+[sub_resource type="GDScript" id="GDScript_v6ksk"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -42,11 +42,13 @@ func die():
 "
 
 [node name="Sweeper" instance=ExtResource("1_00tc8")]
-frames = SubResource("SpriteFrames_suffx")
-script = SubResource("GDScript_ibu5a")
+frames = SubResource("SpriteFrames_n34j8")
+script = SubResource("GDScript_v6ksk")
 type = 1
-passable = false
+passable = true
 maxhp = 5
 move_amount = 4
 damage = 3
+desc = "A horrifying monstrocity that can barely even be called human.
+Attacks in an area around itself, dealing 3 damage. Doesn't care for what's in its path."
 subtype = 4

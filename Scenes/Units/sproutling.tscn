@@ -51,4 +51,6 @@ script = SubResource("GDScript_r1bqx")
 maxhp = 1
 move_amount = 5
 damage = 1
+desc = "A tiny Sproutling, which has adapted its victim's ribs as new appendages.
+Fast, but lacking in reach. Deals 1 damage."
 subtype = 1
