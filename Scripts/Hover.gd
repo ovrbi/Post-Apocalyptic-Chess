@@ -16,7 +16,9 @@ func _process(delta):
 
 func update_text():
 	if button != "none": # hovering button
-		pass
+		match button:
+			"endturn":
+				text = "End the current turn."
 	elif mode != 0: # planting or harvesting
 		pass
 	elif hovering != null: # hovering over a unit
@@ -35,8 +37,9 @@ func _on_board_change_mode():
 
 
 func _on_next_turn_mouse_entered():
-	pass # Replace with function body.
-
+	button = "endturn"
+	update_text()
 
 func _on_next_turn_mouse_exited():
-	pass # Replace with function body.
+	if button == "endturn": button = "none"
+	update_text()
