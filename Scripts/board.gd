@@ -415,7 +415,7 @@ func try_harvest(loc:Vector2i, hsize:int):
 			get_units(i)[0].queue_free()
 		points+=hsize
 		if size==5: points+=5
-		summon(loc,size)
+		summon(loc,hsize)
 		mode = 0
 		can_harvest = false
 		select(null)
