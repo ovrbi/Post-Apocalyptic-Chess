@@ -147,7 +147,7 @@ func _process(delta):
 				else:
 					child_w.visible=false
 			if child.type == 1:
-				child.get_node("Wrath").frame = prev_frame
+				child.get_node("Root").frame = prev_frame
 		tb_five.texture_hover.current_frame = prev_frame
 		tb_five.texture_pressed.current_frame = prev_frame
 		tb_four.texture_hover.current_frame = prev_frame
