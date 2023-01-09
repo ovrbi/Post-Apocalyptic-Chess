@@ -28,18 +28,18 @@ func update_text():
 		text = "Summon a Monstrous Treant."
 	if mode == 2: #harvesting
 		text = "Choose the shape of the harvest:"
-	elif button != "none": # hovering button
+	elif button != "none" && button != "plant": # hovering button
 		match button:
 			"endturn":
 				text = "End the current turn."
-			"plant":
-				text = "Plant a new sprout.\nSprouts need to be fertilized by corses to grow."
+			"harvest":
+				text = "Harvest fully grown plants to\ncreate new units."
 			"wrath":
 				text = "Evoke natures wrath, making all friendly\nunits do one extra damage this turn."
 	elif mode == 1: # planting
 		text = "Choose where to seed the new sprout."
-	elif button == "harvest":
-		text = "Harvest fully grown plants to\ncreate new units."
+	elif button == "plant":
+		text = "Plant a new sprout.\nSprouts need to be fertilized by corses to grow."
 	elif hovering != null: # hovering over a unit
 		pass
 	else: # nothing is being hovered
