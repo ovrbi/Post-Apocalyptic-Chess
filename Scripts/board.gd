@@ -149,6 +149,8 @@ func _process(delta):
 		tb_two.texture_pressed.current_frame = prev_frame
 		tb_wrath.texture_hover.current_frame = prev_frame
 		tb_wrath.texture_pressed.current_frame = prev_frame
+		node_selector.texture.current_frame = prev_frame
+		node_selected.texture.current_frame = prev_frame
 
 func _unhandled_input(event : InputEvent):
 	if input_lock==0:
