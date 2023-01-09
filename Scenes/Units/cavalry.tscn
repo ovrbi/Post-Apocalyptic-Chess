@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4sh6xdc4ifh1"]
+[gd_scene load_steps=6 format=3 uid="uid://c4sh6xdc4ifh1"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_p6oyy"]
-[ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_4uut7"]
+[ext_resource type="Texture2D" uid="uid://dawfwwmjynmxi" path="res://Textures/Cavalry_1.png" id="2_mblxa"]
+[ext_resource type="Texture2D" uid="uid://tdn3qhsxchf6" path="res://Textures/Cavalry_2.png" id="3_18d4o"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_mlay3"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vdulk"]
 animations = [{
-"frames": [ExtResource("2_4uut7")],
+"frames": [ExtResource("2_mblxa"), ExtResource("3_18d4o")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_m43t0"]
+[sub_resource type="GDScript" id="GDScript_p5mdg"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -36,8 +37,8 @@ func die():
 "
 
 [node name="Cavalry" instance=ExtResource("1_p6oyy")]
-frames = SubResource("SpriteFrames_mlay3")
-script = SubResource("GDScript_m43t0")
+frames = SubResource("SpriteFrames_vdulk")
+script = SubResource("GDScript_p5mdg")
 type = 1
 passable = false
 maxhp = 3
