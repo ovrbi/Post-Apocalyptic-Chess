@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c66fnmu0m3akn"]
+[gd_scene load_steps=6 format=3 uid="uid://c66fnmu0m3akn"]
 
 [ext_resource type="Texture2D" uid="uid://cjelmhluee3ba" path="res://Textures/gameboard_clear.png" id="1_83mbq"]
+[ext_resource type="Script" path="res://Scripts/lose_screen.gd" id="1_ri158"]
 [ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="1_w81tr"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_3ah82"]
+[sub_resource type="LabelSettings" id="LabelSettings_0l5mn"]
 font = ExtResource("1_w81tr")
 font_size = 72
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_a0npc"]
+[sub_resource type="LabelSettings" id="LabelSettings_tmftg"]
 line_spacing = -17.0
 font = ExtResource("1_w81tr")
 font_size = 51
@@ -21,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ri158")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_83mbq")
@@ -33,7 +35,7 @@ offset_top = 240.0
 offset_right = 448.0
 offset_bottom = 324.0
 text = "You lose!"
-label_settings = SubResource("LabelSettings_3ah82")
+label_settings = SubResource("LabelSettings_0l5mn")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 1
@@ -42,7 +44,7 @@ offset_top = 297.0
 offset_right = 521.0
 offset_bottom = 381.0
 text = "Final SCORE: xyz"
-label_settings = SubResource("LabelSettings_3ah82")
+label_settings = SubResource("LabelSettings_0l5mn")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
@@ -52,7 +54,7 @@ offset_top = 362.0
 offset_right = 607.0
 offset_bottom = 446.0
 text = "Congrats on reaching 100!"
-label_settings = SubResource("LabelSettings_a0npc")
+label_settings = SubResource("LabelSettings_tmftg")
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="."]
@@ -61,8 +63,8 @@ offset_left = 109.0
 offset_top = 412.0
 offset_right = 607.0
 offset_bottom = 496.0
-text = "Press something to TRY AGAIN."
-label_settings = SubResource("LabelSettings_a0npc")
+text = "Press ENTER or CLICK to TRY AGAIN."
+label_settings = SubResource("LabelSettings_tmftg")
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="."]
@@ -73,5 +75,5 @@ offset_right = 607.0
 offset_bottom = 702.0
 text = "Made by ovrbi, rubr and BirbMom
 in 72 hours for Ludum Dare 52"
-label_settings = SubResource("LabelSettings_a0npc")
+label_settings = SubResource("LabelSettings_tmftg")
 horizontal_alignment = 1

@@ -97,6 +97,7 @@ func _process(delta):
 				tmp[0].hp_vis -= 1
 				tmp[0].update_label()
 			
+			
 		if mouseloc.x>=0&&mouseloc.y>=0&&mouseloc.x<size &&mouseloc.y<size: 
 			node_selector.visible=true
 			node_selector.position=map_to_local(mouseloc)
@@ -220,6 +221,11 @@ func button_harvest():
 			tb_three.visible = true
 			tb_four.visible = true
 			tb_five.visible = true
+			if prev_cursor_loc!=null:
+				var tmp = get_units(prev_cursor_loc)
+				if !tmp.is_empty()&&tmp[0].type !=2: 
+					tmp[0].hp_vis -= 1
+					tmp[0].update_label()
 			prev_cursor_loc = null
 			mode=2
 			emit_signal("change_mode")
@@ -240,6 +246,11 @@ func button_wrath():
 func highlight_plant():
 	select(null)
 	if can_harvest: 
+		if prev_cursor_loc!=null:
+			var tmp = get_units(prev_cursor_loc)
+			if !tmp.is_empty()&&tmp[0].type !=2: 
+				tmp[0].hp_vis -= 1
+				tmp[0].update_label()
 		prev_cursor_loc = null
 		mode=1
 		emit_signal("change_mode")

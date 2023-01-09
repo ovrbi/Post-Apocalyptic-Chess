@@ -72,6 +72,11 @@ func _process(delta):
 								uits[0].hp_vis +=1
 								uits[0].update_label()
 					else: tilemap.process_next()
+				if tilemap.prev_cursor_loc!=null:
+					var tmp = tilemap.get_units(tilemap.prev_cursor_loc)
+					if !tmp.is_empty()&&tmp[0].type !=2: 
+						tmp[0].hp_vis -= 1
+						tmp[0].update_label()
 				tilemap.prev_cursor_loc = null
 				tilemap.input_lock -=1
 		else:
@@ -129,7 +134,6 @@ func die():
 	if type==0:
 		tilemap.friendlies_alive-=1
 		if tilemap.friendlies_alive<=0:
-
 			get_node("/root").add_child(preload("res://Scenes/lose_screen.tscn").instantiate())
 			tilemap.input_lock+=1
 	queue_free()
@@ -198,15 +202,17 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 	update_label()
 	if curhp <= 0:
 		curhp =0
+		update_label()
 		if type != 0 || borderlands ==0:
 			die()
 			return true
 	return false
 
 func update_label():
-	if hp_vis > 0:
-		$Label.visible=true
-	else:
-		$Label.visible=false
 	if type!=2:
-		$Label.text = str(curhp)+"/"+str(maxhp)
+		if hp_vis > 0:
+			$Label.visible=true
+		else:
+			$Label.visible=false
+		if type!=2:
+			$Label.text = str(curhp)+"/"+str(maxhp)
