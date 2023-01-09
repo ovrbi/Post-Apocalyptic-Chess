@@ -43,7 +43,7 @@ func update_text():
 	elif button == "plant":
 		text = "Plant a new sprout.\nSprouts need to be fertilized by corses to grow."
 	elif hover != null: # hovering over a unit
-		pass
+		text = hover.desc
 	else: # nothing is being hovered
 		text = " "
 	
