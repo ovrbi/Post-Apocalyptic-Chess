@@ -1,5 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://biiagqgj50nrl"]
+[gd_scene load_steps=3 format=3 uid="uid://biiagqgj50nrl"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_fwv5h"]
 
+[sub_resource type="GDScript" id="GDScript_vj4fd"]
+script/source = "extends \"res://Scripts/unit.gd\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	super._ready()
+	tilemap.ms_boost += 2
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	super._process(delta)
+
+func attack(loc:Vector2i): 
+	pass
+
+func die():
+	tilemap.ms_boost-=2
+	tilemap.summon(tilemap.local_to_map(position),8)
+	queue_free()
+"
+
 [node name="Battle Drummer" instance=ExtResource("1_fwv5h")]
+script = SubResource("GDScript_vj4fd")
+type = 1
+maxhp = 3
+move_amount = 3
+subtype = 3

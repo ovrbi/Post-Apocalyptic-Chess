@@ -1,5 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://13isqplbvyc3"]
+[gd_scene load_steps=3 format=3 uid="uid://13isqplbvyc3"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_00tc8"]
 
+[sub_resource type="GDScript" id="GDScript_6m2ve"]
+script/source = "extends \"res://Scripts/unit.gd\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	super._ready()
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	super._process(delta)
+
+func attack(loc:Vector2i): 
+	var dir = tilemap.biggest_dimension(tilemap.local_to_map(position)-loc)
+	do_damage(loc, tilemap.local_to_map(position))
+	var delta1 = Vector2i(1,0)
+	var delta2 = Vector2i(1,1)
+	for i in range(4):
+		delta1 = Vector2i((-1)*delta1.y, delta1.x)
+		delta2 = Vector2i((-1)*delta2.y, delta2.x)
+		if tilemap.is_in_map(tilemap.local_to_map(position)+delta1)&&delta1!=dir: do_damage(tilemap.local_to_map(position)+delta1,tilemap.local_to_map(position)+dir*10)
+		if tilemap.is_in_map(tilemap.local_to_map(position)+delta2)&&(delta2-dir).lenght_squared()>1: do_damage(tilemap.local_to_map(position)+delta2,tilemap.local_to_map(position)+dir*10)
+
+func die():
+	tilemap.summon(tilemap.local_to_map(position),8)
+	queue_free()
+"
+
 [node name="Sweeper" instance=ExtResource("1_00tc8")]
+script = SubResource("GDScript_6m2ve")
+type = 1
+maxhp = 5
+move_amount = 4
+damage = 3
+subtype = 4

@@ -49,6 +49,7 @@ func _ready():
 	summon(Vector2i(3,3),0)
 	#spawn initial enemies
 	end_turn()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -162,7 +163,8 @@ func end_turn():
 	for unit in get_children():
 		if unit.is_in_group("non_unit"): continue
 		if unit.type==1:
-			processqueue.append(unit)
+			for i in range(extra_attack+1):
+				processqueue.append(unit)
 	process_next()
 
 func process_next():

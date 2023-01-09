@@ -14,6 +14,7 @@ var movequeue = []
 @export_multiline var desc
 @export var subtype : int
 var rooted = false
+var atk_dir
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +33,10 @@ func _process(delta):
 					tilemap.select(self)
 				elif type ==2:
 					tilemap.try_fertilize(tilemap.local_to_map(position))
+				elif type==1:
+					if damage>0:
+						attack(tilemap.local_to_map(position)+atk_dir)
+					tilemap.process_next()
 				tilemap.prev_cursor_loc = null
 				tilemap.input_lock -=1
 		else:
@@ -48,7 +53,44 @@ func do_damage(loc:Vector2i, from:Vector2i):
 		curhp = 1
 
 func autopilot():
-	tilemap.process_next()
+	var alllocs = get_moves()
+	if damage <= 0:
+		move_to(alllocs[randi()%alllocs.size()])
+	else:
+		if subtype == 2:
+			for i in alllocs:
+				var check = check_all_adjacent(i,true)
+				if check>0:
+					if check >= 8: atk_dir=Vector2i(0,-1)
+					elif check >= 4: atk_dir=Vector2i(0,1)
+					elif check >= 2: atk_dir=Vector2i(-1,0)
+					else: atk_dir=Vector2i(1,0)
+					move_to(i)
+					return
+		for i in alllocs:
+			var check = check_all_adjacent(i,true)
+			if check>0:
+				if check >= 8: atk_dir=Vector2i(0,-1)
+				elif check >= 4: atk_dir=Vector2i(0,1)
+				elif check >= 2: atk_dir=Vector2i(-1,0)
+				else: atk_dir=Vector2i(1,0)
+				move_to(i)
+				return
+			
+
+func check_all_adjacent(loc:Vector2i, plant:bool):
+	var ans = 0
+	ans += int(check_adjacent(loc+Vector2i(1,0),plant))*1
+	ans += int(check_adjacent(loc+Vector2i(-1,0),plant))*2
+	ans += int(check_adjacent(loc+Vector2i(0,1),plant))*4
+	ans += int(check_adjacent(loc+Vector2i(0,-1),plant))*8
+	return ans
+func check_adjacent(loc:Vector2i, plant:bool):
+	if !tilemap.is_in_map(loc): return false
+	if plant:
+		return tilemap.has_neutral(loc, 1)
+	else:
+		return tilemap.check_friendly(loc) && tilemap.get_units(loc)[0].curhp>0
 
 func die():
 	queue_free()
@@ -93,7 +135,7 @@ func move_to(to : Vector2i):
 func get_moves():
 	var locs = []
 	var to_process = [tilemap.local_to_map(position)]
-	var moves = [move_amount]
+	var moves = [move_amount+tilemap.ms_boost*int(type==1)]
 	while !to_process.is_empty() && moves[0]>=0:
 		var delta = Vector2i(1,0)
 		for i in range(4):
