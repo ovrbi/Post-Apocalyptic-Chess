@@ -82,6 +82,7 @@ func _process(delta):
 					var tmp = tilemap.get_units(tilemap.prev_cursor_loc)
 					if !tmp.is_empty()&&tmp[0].type !=2: 
 						tmp[0].hp_vis -= 1
+						print("a")
 						tmp[0].update_label()
 				tilemap.prev_cursor_loc = null
 				tilemap.input_lock -=1
