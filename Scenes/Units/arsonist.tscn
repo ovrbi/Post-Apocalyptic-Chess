@@ -37,6 +37,7 @@ func die():
 frames = SubResource("SpriteFrames_y805g")
 script = SubResource("GDScript_nlhgu")
 type = 1
+passable = true
 maxhp = 3
 move_amount = 3
 damage = 3
