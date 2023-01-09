@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxklxcqtn0vff"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_0ympl"]
-[ext_resource type="Texture2D" uid="uid://dnxlr28vm62yb" path="res://Textures/LM_frame_1_color.png" id="2_nwagh"]
-[ext_resource type="Texture2D" uid="uid://d3abcjr434x1u" path="res://Textures/LM_frame_2_color.png" id="3_tkm5x"]
+[ext_resource type="Texture2D" uid="uid://m5cbctj68eer" path="res://Textures/LVM_color_1.png" id="2_oqsmo"]
+[ext_resource type="Texture2D" uid="uid://4hxoak50es03" path="res://Textures/LVM_color_2.png" id="3_2rtgs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2gdl2"]
 animations = [{
-"frames": [ExtResource("2_nwagh"), ExtResource("3_tkm5x")],
+"frames": [ExtResource("2_oqsmo"), ExtResource("3_2rtgs")],
 "loop": true,
 "name": &"default",
 "speed": 1.0

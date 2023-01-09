@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnxlr28vm62yb"
-path="res://.godot/imported/LM_frame_1_color.png-f59890df05661307fe4ce70103a68d36.ctex"
+uid="uid://4hxoak50es03"
+path="res://.godot/imported/LVM_color_2.png-30f194d4e357c043dd52464fee87221b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/LM_frame_1_color.png"
-dest_files=["res://.godot/imported/LM_frame_1_color.png-f59890df05661307fe4ce70103a68d36.ctex"]
+source_file="res://Textures/LVM_color_2.png"
+dest_files=["res://.godot/imported/LVM_color_2.png-30f194d4e357c043dd52464fee87221b.ctex"]
 
 [params]
 
