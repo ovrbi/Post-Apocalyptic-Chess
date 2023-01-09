@@ -1,6 +1,6 @@
 [gd_scene load_steps=51 format=3 uid="uid://cxfulqdn8yuyx"]
 
-[ext_resource type="Texture2D" uid="uid://bqt5pnnob11u1" path="res://Textures/gameboard_clear_new.png" id="1_ppyds"]
+[ext_resource type="Texture2D" uid="uid://s2ve7ywk3smd" path="res://Textures/gameboard_new.png" id="1_ugffd"]
 [ext_resource type="PackedScene" uid="uid://cyehjbqcd4luk" path="res://Scenes/board.tscn" id="1_y7kby"]
 [ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="3_jyos6"]
 [ext_resource type="Script" path="res://Scripts/Score.gd" id="4_gpd3u"]
@@ -170,7 +170,7 @@ animations = [{
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -4096
-texture = ExtResource("1_ppyds")
+texture = ExtResource("1_ugffd")
 centered = false
 
 [node name="Board" parent="." instance=ExtResource("1_y7kby")]
@@ -266,9 +266,9 @@ texture_focused = ExtResource("14_ii3y3")
 visible = false
 layout_mode = 0
 offset_left = 222.0
-offset_top = 645.0
+offset_top = 636.0
 offset_right = 278.0
-offset_bottom = 701.0
+offset_bottom = 692.0
 toggle_mode = true
 button_pressed = true
 texture_pressed = SubResource("AnimatedTexture_d6sbh")
@@ -284,9 +284,9 @@ playing = true
 visible = false
 layout_mode = 0
 offset_left = 278.0
-offset_top = 645.0
+offset_top = 636.0
 offset_right = 334.0
-offset_bottom = 701.0
+offset_bottom = 692.0
 toggle_mode = true
 texture_pressed = SubResource("AnimatedTexture_d6sbh")
 texture_hover = SubResource("AnimatedTexture_qpxot")
@@ -301,9 +301,9 @@ playing = true
 visible = false
 layout_mode = 0
 offset_left = 333.0
-offset_top = 645.0
+offset_top = 636.0
 offset_right = 389.0
-offset_bottom = 701.0
+offset_bottom = 692.0
 toggle_mode = true
 texture_pressed = SubResource("AnimatedTexture_d6sbh")
 texture_hover = SubResource("AnimatedTexture_qpxot")
@@ -318,9 +318,9 @@ playing = true
 visible = false
 layout_mode = 0
 offset_left = 389.0
-offset_top = 645.0
+offset_top = 636.0
 offset_right = 445.0
-offset_bottom = 701.0
+offset_bottom = 692.0
 toggle_mode = true
 texture_pressed = SubResource("AnimatedTexture_d6sbh")
 texture_hover = SubResource("AnimatedTexture_qpxot")
@@ -335,9 +335,9 @@ playing = true
 visible = false
 layout_mode = 0
 offset_left = 445.0
-offset_top = 645.0
+offset_top = 636.0
 offset_right = 501.0
-offset_bottom = 701.0
+offset_bottom = 692.0
 toggle_mode = true
 texture_pressed = SubResource("AnimatedTexture_d6sbh")
 texture_hover = SubResource("AnimatedTexture_qpxot")
