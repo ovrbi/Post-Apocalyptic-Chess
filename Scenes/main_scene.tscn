@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cxfulqdn8yuyx"]
+[gd_scene load_steps=46 format=3 uid="uid://cxfulqdn8yuyx"]
 
 [ext_resource type="Texture2D" uid="uid://cjelmhluee3ba" path="res://Textures/gameboard_clear.png" id="1_afp6s"]
 [ext_resource type="PackedScene" uid="uid://cyehjbqcd4luk" path="res://Scenes/board.tscn" id="1_y7kby"]
@@ -18,8 +18,16 @@
 [ext_resource type="Texture2D" uid="uid://c3ruyqx18x57s" path="res://Textures/HARVEST_hover1.png" id="16_hd18j"]
 [ext_resource type="Texture2D" uid="uid://djxy30bl38nkl" path="res://Textures/0_0.png" id="17_v2nwm"]
 [ext_resource type="Texture2D" uid="uid://0malby2e8phr" path="res://Textures/0_1.png" id="18_a5jsc"]
+[ext_resource type="Texture2D" uid="uid://de74wvkil807s" path="res://Textures/1_0.png" id="19_h0yhr"]
+[ext_resource type="Texture2D" uid="uid://cpdr6w8hy0vrk" path="res://Textures/1_1.png" id="20_k6wfs"]
 [ext_resource type="Texture2D" uid="uid://bd1lqcp4wu3h4" path="res://Textures/5_1.png" id="20_rv0lr"]
 [ext_resource type="Texture2D" uid="uid://blkgflpdqomap" path="res://Textures/5_0.png" id="20_v47vd"]
+[ext_resource type="Texture2D" uid="uid://tfpyhuaiuvw3" path="res://Textures/2_0.png" id="21_f3gej"]
+[ext_resource type="Texture2D" uid="uid://bvu42ap88safj" path="res://Textures/2_1.png" id="22_wrrxw"]
+[ext_resource type="Texture2D" uid="uid://cj27xx5mt0ds7" path="res://Textures/3_0.png" id="23_po1dk"]
+[ext_resource type="Texture2D" uid="uid://b6g8c7kpmcb5j" path="res://Textures/3_1.png" id="24_smg3s"]
+[ext_resource type="Texture2D" uid="uid://c41fj56oml1gh" path="res://Textures/4_0.png" id="25_ny1if"]
+[ext_resource type="Texture2D" uid="uid://b3po4lbnay5s6" path="res://Textures/4_1.png" id="26_1s5xm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_63tcg"]
 line_spacing = -20.0
@@ -102,6 +110,38 @@ speed_scale = 2.0
 frame_0/texture = ExtResource("17_v2nwm")
 frame_1/texture = ExtResource("18_a5jsc")
 frame_1/duration = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iq5bc"]
+animations = [{
+"frames": [ExtResource("19_h0yhr"), ExtResource("20_k6wfs")],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gkbb"]
+animations = [{
+"frames": [ExtResource("21_f3gej"), ExtResource("22_wrrxw")],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbbww"]
+animations = [{
+"frames": [ExtResource("23_po1dk"), ExtResource("24_smg3s")],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ckqr"]
+animations = [{
+"frames": [ExtResource("25_ny1if"), ExtResource("26_1s5xm")],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3tb3d"]
 animations = [{
@@ -191,12 +231,72 @@ texture_pressed = SubResource("AnimatedTexture_1ppxi")
 texture_hover = SubResource("AnimatedTexture_ym6yw")
 texture_focused = ExtResource("14_ii3y3")
 
-[node name="5" type="TextureButton" parent="Control"]
+[node name="1" type="TextureButton" parent="Control"]
+layout_mode = 1
+offset_left = 222.0
+offset_top = 645.0
+offset_right = 278.0
+offset_bottom = 701.0
+texture_pressed = SubResource("AnimatedTexture_tlwfn")
+texture_hover = SubResource("AnimatedTexture_sm3px")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/1"]
+position = Vector2(28, 28)
+frames = SubResource("SpriteFrames_iq5bc")
+speed_scale = 2.0
+playing = true
+
+[node name="2" type="TextureButton" parent="Control"]
+layout_mode = 1
+offset_left = 278.0
+offset_top = 645.0
+offset_right = 334.0
+offset_bottom = 701.0
+texture_pressed = SubResource("AnimatedTexture_tlwfn")
+texture_hover = SubResource("AnimatedTexture_sm3px")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/2"]
+position = Vector2(28, 28)
+frames = SubResource("SpriteFrames_8gkbb")
+speed_scale = 2.0
+playing = true
+
+[node name="3" type="TextureButton" parent="Control"]
 layout_mode = 0
-offset_left = 326.0
-offset_top = 647.0
-offset_right = 382.0
-offset_bottom = 703.0
+offset_left = 333.0
+offset_top = 645.0
+offset_right = 389.0
+offset_bottom = 701.0
+texture_pressed = SubResource("AnimatedTexture_tlwfn")
+texture_hover = SubResource("AnimatedTexture_sm3px")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/3"]
+position = Vector2(28, 28)
+frames = SubResource("SpriteFrames_bbbww")
+speed_scale = 2.0
+playing = true
+
+[node name="4" type="TextureButton" parent="Control"]
+layout_mode = 1
+offset_left = 389.0
+offset_top = 645.0
+offset_right = 445.0
+offset_bottom = 701.0
+texture_pressed = SubResource("AnimatedTexture_tlwfn")
+texture_hover = SubResource("AnimatedTexture_sm3px")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/4"]
+position = Vector2(28, 28)
+frames = SubResource("SpriteFrames_2ckqr")
+speed_scale = 2.0
+playing = true
+
+[node name="5" type="TextureButton" parent="Control"]
+layout_mode = 1
+offset_left = 445.0
+offset_top = 645.0
+offset_right = 501.0
+offset_bottom = 701.0
 texture_pressed = SubResource("AnimatedTexture_tlwfn")
 texture_hover = SubResource("AnimatedTexture_sm3px")
 
