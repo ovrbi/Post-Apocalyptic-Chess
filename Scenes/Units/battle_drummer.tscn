@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://biiagqgj50nrl"]
+[gd_scene load_steps=6 format=3 uid="uid://biiagqgj50nrl"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_fwv5h"]
-[ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_uonnd"]
+[ext_resource type="Texture2D" uid="uid://cg5fta2bev6p1" path="res://Textures/Battle_drummer_1.png" id="2_bygtv"]
+[ext_resource type="Texture2D" uid="uid://byxl6g7yo0h4a" path="res://Textures/Battle_Drummer_2.png" id="3_rp1oo"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_noicb"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_mlcmc"]
 animations = [{
-"frames": [ExtResource("2_uonnd")],
+"frames": [ExtResource("2_bygtv"), ExtResource("3_rp1oo")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_wqcjy"]
+[sub_resource type="GDScript" id="GDScript_ilc77"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -36,8 +37,8 @@ func die():
 "
 
 [node name="Battle Drummer" instance=ExtResource("1_fwv5h")]
-frames = SubResource("SpriteFrames_noicb")
-script = SubResource("GDScript_wqcjy")
+frames = SubResource("SpriteFrames_mlcmc")
+script = SubResource("GDScript_ilc77")
 type = 1
 passable = false
 maxhp = 3
