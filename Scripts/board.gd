@@ -97,13 +97,13 @@ func _process(delta):
 		var tmp = get_units(mouseloc)
 		if !tmp.is_empty()&&tmp[0].type !=2: 
 			tmp[0].hp_vis +=1
-			print("+hover"+str(tmp[0]))
+#			print("+hover"+str(tmp[0]))
 			tmp[0].update_label()
 		if prev_cursor_loc!=null:
 			tmp = get_units(prev_cursor_loc)
 			if !tmp.is_empty()&&tmp[0].type !=2: 
 				tmp[0].hp_vis -= 1
-				print("-hover"+str(tmp[0]))
+#				print("-hover"+str(tmp[0]))
 				tmp[0].update_label()
 			
 			
@@ -146,6 +146,8 @@ func _process(delta):
 					child_w.frame = prev_frame
 				else:
 					child_w.visible=false
+			if child.type == 1:
+				child.get_node("Wrath").frame = prev_frame
 		tb_five.texture_hover.current_frame = prev_frame
 		tb_five.texture_pressed.current_frame = prev_frame
 		tb_four.texture_hover.current_frame = prev_frame
@@ -241,7 +243,7 @@ func button_harvest():
 				var tmp = get_units(prev_cursor_loc)
 				if !tmp.is_empty()&&tmp[0].type !=2: 
 					tmp[0].hp_vis -= 1
-					print("-harvest"+str(tmp[0]))
+#					print("-harvest"+str(tmp[0]))
 					tmp[0].update_label()
 			prev_cursor_loc = null
 			mode=2
@@ -269,7 +271,7 @@ func highlight_plant():
 			var tmp = get_units(prev_cursor_loc)
 			if !tmp.is_empty()&&tmp[0].type !=2: 
 				tmp[0].hp_vis -= 1
-				print("-plant"+str(tmp[0]))
+#				print("-plant"+str(tmp[0]))
 				tmp[0].update_label()
 		prev_cursor_loc = null
 		mode=1
@@ -333,6 +335,9 @@ func process_next():
 			if unit.type==0:
 				unit.state = 0
 				unit.modulate.a=1
+			if unit.type==1&&unit.rooted:
+				unit.rooted = false
+				unit.get_node("Root").visible = false
 		if turn>1:
 			can_harvest = true
 		input_lock-=1
@@ -403,7 +408,7 @@ func select(target : Node2D):
 	if target == null:
 		if selected!= null&&selected.type!=2:
 			selected.hp_vis -= 1
-			print("-selectnull"+str(selected))
+#			print("-selectnull"+str(selected))
 			selected.update_label()
 		tb_one.visible = false
 		tb_two.visible = false
@@ -418,14 +423,14 @@ func select(target : Node2D):
 	else:
 		if selected!=null && selected.type!=2:
 			selected.hp_vis -=1
-			print("-select"+str(selected))
+#			print("-select"+str(selected))
 			selected.update_label()
 		node_selected.position=map_to_local(local_to_map(target.position))
 		node_selected.visible = true
 		selected = target
 		if selected.type!=2:
 			selected.hp_vis +=1
-			print("+select"+str(selected))
+#			print("+select"+str(selected))
 			selected.update_label()
 		#add show desc here
 		if target.type == 0:

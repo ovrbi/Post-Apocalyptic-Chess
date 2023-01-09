@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5w8q2qgwrn60"]
+[gd_scene load_steps=9 format=3 uid="uid://b5w8q2qgwrn60"]
 
 [ext_resource type="Texture2D" uid="uid://ki5smb05f8me" path="res://Textures/Wrath_1.png" id="2_05wrs"]
 [ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="2_blji8"]
 [ext_resource type="Texture2D" uid="uid://c2os4bjgi0xyd" path="res://Textures/Wrath_2.png" id="3_hasft"]
+[ext_resource type="Texture2D" uid="uid://cklwr1kqr8omg" path="res://Textures/Roots_1.png" id="4_wp4ck"]
+[ext_resource type="Texture2D" uid="uid://biy363gm87k8n" path="res://Textures/roots_2.png" id="5_u1cng"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7fw3j"]
 font = ExtResource("2_blji8")
@@ -11,6 +13,14 @@ font_size = 32
 [sub_resource type="SpriteFrames" id="SpriteFrames_vrfhc"]
 animations = [{
 "frames": [ExtResource("2_05wrs"), ExtResource("3_hasft")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0bhl"]
+animations = [{
+"frames": [ExtResource("4_wp4ck"), ExtResource("5_u1cng")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -32,3 +42,7 @@ horizontal_alignment = 1
 [node name="Wrath" type="AnimatedSprite2D" parent="."]
 visible = false
 frames = SubResource("SpriteFrames_vrfhc")
+
+[node name="Root" type="AnimatedSprite2D" parent="."]
+visible = false
+frames = SubResource("SpriteFrames_n0bhl")

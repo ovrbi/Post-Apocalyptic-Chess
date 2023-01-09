@@ -82,7 +82,7 @@ func _process(delta):
 					var tmp = tilemap.get_units(tilemap.prev_cursor_loc)
 					if !tmp.is_empty()&&tmp[0].type !=2: 
 						tmp[0].hp_vis -= 1
-						print("a")
+#						print("a")
 						tmp[0].update_label()
 				tilemap.prev_cursor_loc = null
 				tilemap.input_lock -=1
@@ -218,6 +218,7 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 	return false
 
 func update_label():
+	if hp_vis<0: hp_vis=0
 	if type!=2:
 		if hp_vis > 0:
 			$Label.visible=true
