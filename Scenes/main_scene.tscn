@@ -1,9 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://cxfulqdn8yuyx"]
+[gd_scene load_steps=47 format=3 uid="uid://cxfulqdn8yuyx"]
 
 [ext_resource type="Texture2D" uid="uid://cjelmhluee3ba" path="res://Textures/gameboard_clear.png" id="1_afp6s"]
 [ext_resource type="PackedScene" uid="uid://cyehjbqcd4luk" path="res://Scenes/board.tscn" id="1_y7kby"]
 [ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="3_jyos6"]
 [ext_resource type="Script" path="res://Scripts/Turn Number.gd" id="4_n0qe0"]
+[ext_resource type="Script" path="res://Scripts/Hover.gd" id="5_42i8b"]
 [ext_resource type="Texture2D" uid="uid://capswnn5cr8qs" path="res://Textures/NEXTTURN.png" id="5_l4j6t"]
 [ext_resource type="Texture2D" uid="uid://bv37wiyb8eyvi" path="res://Textures/NEXTTURN_hover0.png" id="6_gyr0k"]
 [ext_resource type="Texture2D" uid="uid://cfgor68f3eo27" path="res://Textures/NEXTTURN_hover2.png" id="7_vfelc"]
@@ -186,6 +187,7 @@ offset_bottom = 720.0
 text = "Choose the shape of the harvest:"
 label_settings = SubResource("LabelSettings_tvu40")
 horizontal_alignment = 1
+script = ExtResource("5_42i8b")
 
 [node name="NextTurn" type="TextureButton" parent="Control"]
 layout_mode = 0
@@ -322,7 +324,11 @@ frames = SubResource("SpriteFrames_3tb3d")
 speed_scale = 2.0
 playing = true
 
+[connection signal="change_hover" from="Board" to="Control/Hover" method="_on_board_change_hover"]
+[connection signal="change_mode" from="Board" to="Control/Hover" method="_on_board_change_mode"]
 [connection signal="next_turn" from="Board" to="Control/Turn Number" method="_on_board_next_turn"]
+[connection signal="mouse_entered" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_mouse_entered"]
+[connection signal="mouse_exited" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_mouse_exited"]
 [connection signal="pressed" from="Control/NextTurn" to="Board" method="_on_next_turn_pressed"]
 [connection signal="pressed" from="Control/Wrath" to="Board" method="_on_wrath_pressed"]
 [connection signal="pressed" from="Control/Plant" to="Board" method="_on_plant_pressed"]
