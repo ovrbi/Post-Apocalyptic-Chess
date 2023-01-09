@@ -68,7 +68,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Turn Number" type="Label" parent="Control"]
-layout_mode = 0
 offset_left = 72.0
 offset_top = 62.0
 offset_right = 197.0

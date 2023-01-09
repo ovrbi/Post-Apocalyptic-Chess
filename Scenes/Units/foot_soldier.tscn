@@ -8,13 +8,16 @@ script/source = "extends \"res://Scripts/unit.gd\"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	super._ready()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	super._process(delta)
 
+func attack(loc:Vector2i): 
+	do_damage(loc, tilemap.local_to_map(position))
 
 func die():
 	tilemap.summon(tilemap.local_to_map(position),8)
@@ -23,3 +26,7 @@ func die():
 
 [node name="Foot Soldier" instance=ExtResource("1_0bev7")]
 script = SubResource("GDScript_gevmp")
+type = 1
+maxhp = 2
+move_amount = 2
+damage = 1
