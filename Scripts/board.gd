@@ -35,7 +35,7 @@ var summon_units = [
 ]
 var startcost = 8
 var costs = [5,13,18,23,28,33]
-var harvest_cheats = true
+var harvest_cheats = false
 
 var friendlies_alive = 0
 var wrath = 0
@@ -147,7 +147,7 @@ func _process(delta):
 				else:
 					child_w.visible=false
 			if child.type == 1:
-				child.get_node("Wrath").frame = prev_frame
+				child.get_node("Root").frame = prev_frame
 		tb_five.texture_hover.current_frame = prev_frame
 		tb_five.texture_pressed.current_frame = prev_frame
 		tb_four.texture_hover.current_frame = prev_frame
