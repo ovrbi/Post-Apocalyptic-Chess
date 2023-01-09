@@ -34,6 +34,7 @@ func _process(delta):
 	if cooldown >0:
 		cooldown -= delta
 		if cooldown <= 0:
+
 			attack(tilemap.local_to_map(position)+atk_dir)
 			tilemap.clear_layer(2)
 			tilemap.input_lock -=1
@@ -54,6 +55,7 @@ func _process(delta):
 						var tgets = preview_attacks(tilemap.local_to_map(position)+atk_dir)
 						for i in tgets:
 							tilemap.set_cell(2,i,0,Vector2i(0,0))
+							
 					else: tilemap.process_next()
 				tilemap.prev_cursor_loc = null
 				tilemap.input_lock -=1
@@ -112,7 +114,7 @@ func die():
 	if type==0:
 		tilemap.friendlies_alive-=1
 		if tilemap.friendlies_alive<=0:
-#			print(get_tree().change_scene_to_packed(preload("res://Scenes/unit.tscn")))
+
 			get_node("/root").add_child(preload("res://Scenes/lose_screen.tscn").instantiate())
 			tilemap.input_lock+=1
 	queue_free()

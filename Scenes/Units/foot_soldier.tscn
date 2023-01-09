@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_0bev7"]
 [ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_oawsl"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_eyhaa"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_g0kmn"]
 animations = [{
 "frames": [ExtResource("2_oawsl")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_tlxoh"]
+[sub_resource type="GDScript" id="GDScript_3ew5g"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -24,6 +24,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta)
+func preview_attacks(loc:Vector2i):
+	return [loc]
 
 func attack(loc:Vector2i): 
 	do_damage(loc, tilemap.local_to_map(position))
@@ -34,8 +36,8 @@ func die():
 "
 
 [node name="Foot Soldier" instance=ExtResource("1_0bev7")]
-frames = SubResource("SpriteFrames_eyhaa")
-script = SubResource("GDScript_tlxoh")
+frames = SubResource("SpriteFrames_g0kmn")
+script = SubResource("GDScript_3ew5g")
 type = 1
 passable = false
 maxhp = 2
