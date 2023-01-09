@@ -214,6 +214,8 @@ func button_endturn():
 func button_plant():
 	if tb_plant.button_pressed == true:
 		highlight_plant()
+		audio1.stream = preload("res://Sounds/button.wav")
+		audio1.play()
 		tb_plant.button_pressed = true
 	else:
 		select(null)
@@ -222,6 +224,8 @@ func button_harvest():
 	if tb_harvest.button_pressed == true:
 		select(null)
 		if can_harvest: 
+			audio1.stream = preload("res://Sounds/button.wav")
+			audio1.play()
 			tb_one.visible = true
 			tb_two.visible = true
 			tb_three.visible = true
@@ -240,6 +244,8 @@ func button_harvest():
 
 func button_wrath():
 	if can_harvest:
+		audio1.stream = preload("res://Sounds/button.wav")
+		audio1.play()
 		tb_nextturn.visible = true
 		tb_plant.visible = false
 		tb_harvest.visible = false
@@ -286,7 +292,7 @@ func end_turn():
 		tb_plant.visible = true
 		tb_harvest.visible = true
 		tb_wrath.visible = true
-		audio1.stream = preload("res://Sounds/nextturn_2.wav")
+		audio1.stream = preload("res://Sounds/button.wav")
 		audio1.play()
 	turn+=1
 	input_lock+=1

@@ -1,9 +1,12 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://df2wybygrwgmj"]
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://df2wybygrwgmj"]
 
 [ext_resource type="AudioStream" uid="uid://dwgcdlgscf8dn" path="res://Sounds/nextturn.wav" id="1_av2mn"]
+[ext_resource type="AudioStream" uid="uid://dck1ptd1utlku" path="res://Sounds/nextturn_2.wav" id="2_aouu5"]
 
 [resource]
-streams_count = 1
-random_pitch = 1.2
+streams_count = 2
+random_pitch = 1.5
 stream_0/stream = ExtResource("1_av2mn")
 stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_aouu5")
+stream_1/weight = 1.0
