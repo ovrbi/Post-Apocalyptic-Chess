@@ -40,6 +40,7 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 "
 
 [node name="Sprout" type="AnimatedSprite2D"]
+z_index = -10
 frames = SubResource("SpriteFrames_joubh")
 speed_scale = 2.0
 script = SubResource("GDScript_uy28u")

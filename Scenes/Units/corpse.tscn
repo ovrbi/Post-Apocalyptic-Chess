@@ -44,6 +44,7 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 "
 
 [node name="Corpse" instance=ExtResource("1_xhlor")]
+z_index = -10
 frames = SubResource("SpriteFrames_1hatr")
 script = SubResource("GDScript_kkovb")
 type = 2
