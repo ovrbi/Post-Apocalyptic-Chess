@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4ttnp68byqt4"
-path="res://.godot/imported/Post Apocalyptic Chess.icon.png-46d63b05a9bd62cbaeb6cdfa93faa30b.ctex"
+path="res://.godot/imported/Post Apocalyptic Chess.icon.png-e88e021822558dd7c1c07f40cb0f3dbb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Builds/0_1/Post Apocalyptic Chess.icon.png"
-dest_files=["res://.godot/imported/Post Apocalyptic Chess.icon.png-46d63b05a9bd62cbaeb6cdfa93faa30b.ctex"]
+source_file="res://builds/0_1/Post Apocalyptic Chess.icon.png"
+dest_files=["res://.godot/imported/Post Apocalyptic Chess.icon.png-e88e021822558dd7c1c07f40cb0f3dbb.ctex"]
 
 [params]
 
