@@ -183,6 +183,7 @@ func button_harvest():
 			tb_five.visible = true
 			prev_cursor_loc = null
 			mode=2
+			emit_signal("change_mode")
 			tb_harvest.button_pressed = true
 	else: select(null)
 
