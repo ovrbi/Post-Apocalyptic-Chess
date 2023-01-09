@@ -361,6 +361,10 @@ autoplay = true
 [node name="PunchAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("33_vramj")
 
+[connection signal="change_hover" from="Board" to="Control/Hover" method="_on_board_change_hover"]
+[connection signal="change_mode" from="Board" to="Control/Score" method="_on_board_change_mode"]
+[connection signal="change_mode" from="Board" to="Control/Hover" method="_on_board_change_mode"]
+[connection signal="next_turn" from="Board" to="Control/Turn Number2" method="_on_board_next_turn"]
 [connection signal="hidden" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_hidden"]
 [connection signal="mouse_entered" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_mouse_entered"]
 [connection signal="mouse_exited" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_mouse_exited"]

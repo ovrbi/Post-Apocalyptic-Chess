@@ -56,6 +56,7 @@ var tb_five
 
 var audio
 var audio1
+var punch_audio
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -71,6 +72,7 @@ func _ready():
 	tb_five = $/root/MainScene/Control/Five
 	audio = $/root/MainScene/Audio
 	audio1 = $/root/MainScene/Audio1
+	punch_audio = $/root/MainScene/PunchAudio
 	
 	selected = null
 	prev_cursor_loc = null
@@ -184,12 +186,14 @@ func _unhandled_input(event : InputEvent):
 						audio.play()
 					else:
 						selected.attack(mouseloc)
+						punch_audio.play()
 			elif mode == 1: #planting
 				if get_cell_source_id(1,mouseloc)!=-1:
 					tb_nextturn.visible = true
 					tb_plant.visible = false
 					tb_harvest.visible = false
 					tb_wrath.visible = false
+					audio.play()
 					summon(mouseloc,6)
 					mode = 0
 					can_harvest = false
@@ -467,6 +471,7 @@ func try_harvest(loc:Vector2i, hsize:int):
 	for i in targets:
 		canharvest = canharvest && has_neutral(i,1) 
 	if canharvest:
+		audio.play()
 		tb_nextturn.visible = true
 		tb_plant.visible = false
 		tb_harvest.visible = false
