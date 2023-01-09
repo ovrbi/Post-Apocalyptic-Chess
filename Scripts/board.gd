@@ -216,6 +216,7 @@ func end_turn():
 		tb_harvest.visible = true
 		tb_wrath.visible = true
 	turn+=1
+	input_lock+=1
 	emit_signal("next_turn")
 	select(null)
 	wrath = 0
@@ -246,7 +247,7 @@ func process_next():
 				unit.state = 0
 		if turn>1:
 			can_harvest = true
-		
+		input_lock-=1
 
 func spawn_enemies():
 	var pts = turn+4

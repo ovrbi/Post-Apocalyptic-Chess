@@ -34,7 +34,7 @@ func _process(delta):
 				elif type ==2:
 					tilemap.try_fertilize(tilemap.local_to_map(position))
 				elif type==1:
-					if damage>0:
+					if atk_dir != Vector2i(0,0):
 						attack(tilemap.local_to_map(position)+atk_dir)
 					tilemap.process_next()
 				tilemap.prev_cursor_loc = null
@@ -53,20 +53,9 @@ func do_damage(loc:Vector2i, from:Vector2i):
 		curhp = 1
 
 func autopilot():
+	atk_dir = Vector2i(0,0)
 	var alllocs = get_moves()
-	if damage <= 0:
-		move_to(alllocs[randi()%alllocs.size()])
-	else:
-		if subtype == 2:
-			for i in alllocs:
-				var check = check_all_adjacent(i,true)
-				if check>0:
-					if check >= 8: atk_dir=Vector2i(0,-1)
-					elif check >= 4: atk_dir=Vector2i(0,1)
-					elif check >= 2: atk_dir=Vector2i(-1,0)
-					else: atk_dir=Vector2i(1,0)
-					move_to(i)
-					return
+	if subtype == 2:
 		for i in alllocs:
 			var check = check_all_adjacent(i,true)
 			if check>0:
@@ -76,7 +65,16 @@ func autopilot():
 				else: atk_dir=Vector2i(1,0)
 				move_to(i)
 				return
-			
+	for i in alllocs:
+		var check = check_all_adjacent(i,false)
+		if check>0:
+			if check >= 8: atk_dir=Vector2i(0,-1)
+			elif check >= 4: atk_dir=Vector2i(0,1)
+			elif check >= 2: atk_dir=Vector2i(-1,0)
+			else: atk_dir=Vector2i(1,0)
+			move_to(i)
+			return
+	move_to(alllocs[randi()%alllocs.size()])
 
 func check_all_adjacent(loc:Vector2i, plant:bool):
 	var ans = 0
