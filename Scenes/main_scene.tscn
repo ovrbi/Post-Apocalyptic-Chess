@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxfulqdn8yuyx"]
+[gd_scene load_steps=17 format=3 uid="uid://cxfulqdn8yuyx"]
 
 [ext_resource type="Texture2D" uid="uid://cjelmhluee3ba" path="res://Textures/gameboard_clear.png" id="1_afp6s"]
 [ext_resource type="PackedScene" uid="uid://cyehjbqcd4luk" path="res://Scenes/board.tscn" id="1_y7kby"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://capswnn5cr8qs" path="res://Textures/NEXTTURN.png" id="5_l4j6t"]
 [ext_resource type="Texture2D" uid="uid://bv37wiyb8eyvi" path="res://Textures/NEXTTURN_hover0.png" id="6_gyr0k"]
 [ext_resource type="Texture2D" uid="uid://cfgor68f3eo27" path="res://Textures/NEXTTURN_hover2.png" id="7_vfelc"]
+[ext_resource type="Texture2D" uid="uid://c8ppojj0xldlw" path="res://Textures/WRATH.png" id="8_r7y2m"]
+[ext_resource type="Texture2D" uid="uid://b8mu2jhrrkr6i" path="res://Textures/WRATH_hover0.png" id="9_7lwk8"]
+[ext_resource type="Texture2D" uid="uid://0xwasbpqw20a" path="res://Textures/WRATH_hover1.png" id="10_cs01b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_63tcg"]
 line_spacing = -20.0
@@ -32,6 +35,20 @@ frames = 2
 speed_scale = 2.0
 frame_0/texture = ExtResource("6_gyr0k")
 frame_1/texture = ExtResource("7_vfelc")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_uwrkp"]
+frames = 2
+speed_scale = 2.0
+frame_0/texture = ExtResource("9_7lwk8")
+frame_1/texture = ExtResource("10_cs01b")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_pm3bg"]
+frames = 2
+speed_scale = 2.0
+frame_0/texture = ExtResource("9_7lwk8")
+frame_1/texture = ExtResource("10_cs01b")
 frame_1/duration = 1.0
 
 [node name="MainScene" type="Node2D"]
@@ -67,11 +84,11 @@ offset_top = 607.0
 offset_right = 701.0
 offset_bottom = 720.0
 text = "This is hover text.
-There are two lines here isn't that neat!"
+There are two lines here, isn't that neat!"
 label_settings = SubResource("LabelSettings_tvu40")
 horizontal_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="Next Turn" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 501.0
 offset_top = 56.0
@@ -81,5 +98,16 @@ texture_normal = ExtResource("5_l4j6t")
 texture_pressed = SubResource("AnimatedTexture_1ive8")
 texture_hover = SubResource("AnimatedTexture_xiqtj")
 texture_focused = ExtResource("5_l4j6t")
+
+[node name="Wrath" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 561.0
+offset_top = 54.0
+offset_right = 673.0
+offset_bottom = 110.0
+texture_normal = ExtResource("8_r7y2m")
+texture_pressed = SubResource("AnimatedTexture_uwrkp")
+texture_hover = SubResource("AnimatedTexture_pm3bg")
+texture_focused = ExtResource("8_r7y2m")
 
 [connection signal="next_turn" from="Board" to="Control/Turn Number" method="_on_board_next_turn"]
