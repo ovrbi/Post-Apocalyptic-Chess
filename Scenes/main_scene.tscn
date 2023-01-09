@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxfulqdn8yuyx"]
+[gd_scene load_steps=3 format=3 uid="uid://cxfulqdn8yuyx"]
 
 [ext_resource type="PackedScene" uid="uid://cyehjbqcd4luk" path="res://Scenes/board.tscn" id="1_y7kby"]
+[ext_resource type="Texture2D" uid="uid://c2ry4wey7uffj" path="res://Textures/gameboard_mockup.png" id="2_uw4gw"]
 
 [node name="MainScene" type="Node2D"]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4096
+texture = ExtResource("2_uw4gw")
+centered = false
+
 [node name="Board" parent="." instance=ExtResource("1_y7kby")]
-position = Vector2(100, 100)
-layer_0/tile_data = PackedInt32Array()
+position = Vector2(137, 144)
