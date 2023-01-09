@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_0bev7"]
 [ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_oawsl"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w2byl"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2x4ns"]
 animations = [{
 "frames": [ExtResource("2_oawsl")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_36c0b"]
+[sub_resource type="GDScript" id="GDScript_epy64"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -34,8 +34,8 @@ func die():
 "
 
 [node name="Foot Soldier" instance=ExtResource("1_0bev7")]
-frames = SubResource("SpriteFrames_w2byl")
-script = SubResource("GDScript_36c0b")
+frames = SubResource("SpriteFrames_2x4ns")
+script = SubResource("GDScript_epy64")
 type = 1
 passable = false
 maxhp = 2
