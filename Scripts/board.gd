@@ -39,6 +39,8 @@ var harvest_cheats = true
 var wrath = 0
 var ms_boost = 0
 var extra_attack = 0
+var frame_time = 0.0
+var prev_frame = 0
 
 var tb_nextturn
 var tb_plant
@@ -104,6 +106,17 @@ func _process(delta):
 					set_cell(2,i,0,Vector2i(0,0))
 		emit_signal("change_hover")
 		prev_cursor_loc = mouseloc
+	
+	
+	frame_time += delta*2
+	if frame_time >= 2:
+		frame_time = frame_time-2
+	if int(frame_time)!=prev_frame:
+		prev_frame = int(frame_time)
+		var children = get_children()
+		for child in children:
+			if child.is_in_group("non_unit"): continue
+			child.frame = prev_frame
 
 func _unhandled_input(event : InputEvent):
 	if input_lock==0:
