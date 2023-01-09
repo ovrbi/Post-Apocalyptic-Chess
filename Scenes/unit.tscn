@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5w8q2qgwrn60"]
+[gd_scene load_steps=4 format=3 uid="uid://b5w8q2qgwrn60"]
 
 [ext_resource type="Script" path="res://Scripts/unit.gd" id="1_8g812"]
+[ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="2_blji8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a0eqf"]
+font = ExtResource("2_blji8")
+font_size = 32
 
 [node name="Unit" type="AnimatedSprite2D"]
 script = ExtResource("1_8g812")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+offset_left = -20.0
+offset_top = 15.0
+offset_right = 20.0
+offset_bottom = 55.0
+text = "2/2"
+label_settings = SubResource("LabelSettings_a0eqf")
+horizontal_alignment = 1

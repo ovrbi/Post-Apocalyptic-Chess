@@ -23,6 +23,7 @@ func _ready():
 	curhp = maxhp
 	if type == 0:
 		modulate.a = alpha_amount
+	update_label()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -156,8 +157,13 @@ func get_moves():
 
 func takedamage(amount:int, from : Vector2i): #returns true if lethal
 	curhp -= amount
+	update_label()
 	if curhp <= 0:
 		if type != 0 || borderlands ==0:
 			die()
 			return true
 	return false
+
+func update_label():
+	if type!=2:
+		$Label.text = str(curhp)+"/"+str(maxhp)
