@@ -1,5 +1,9 @@
 extends TileMap
 
+signal next_turn
+signal change_hover
+signal change_mode
+
 const size = 8
 var input_lock = 0
 var mode = 0 #0:normal 1:plant 2:harvest
@@ -70,6 +74,7 @@ func _process(delta):
 				var places = selected.preview_attacks(mouseloc)
 				for i in places:
 					set_cell(2,i,0,Vector2i(0,0))
+		emit_signal("change_hover")
 		prev_cursor_loc = mouseloc
 
 func _unhandled_input(event : InputEvent):
@@ -143,6 +148,7 @@ func check_friendly(loc:Vector2i):
 	var units = get_units(loc)
 	return !units.is_empty()&&units[0].type==0
 func end_turn():
+	emit_signal("next_turn")
 	select(null)
 	wrath = 0
 	#process dying units
@@ -204,6 +210,7 @@ func select(target : Node2D):
 				var places = target.get_attacks()
 				for i in places:
 					set_cell(1,i,0,Vector2i(0,0))
+	emit_signal("change_mode")
 
 func attack_tile(loc : Vector2i, from : Vector2i, dmg : int):
 	var targets = get_units(loc)

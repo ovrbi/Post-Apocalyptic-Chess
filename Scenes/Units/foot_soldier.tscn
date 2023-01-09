@@ -1,5 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqlf2e8bqq3vb"]
+[gd_scene load_steps=3 format=3 uid="uid://dqlf2e8bqq3vb"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_0bev7"]
 
+[sub_resource type="GDScript" id="GDScript_gevmp"]
+script/source = "extends \"res://Scripts/unit.gd\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func die():
+	tilemap.summon(tilemap.local_to_map(position),8)
+	queue_free()
+"
+
 [node name="Foot Soldier" instance=ExtResource("1_0bev7")]
+script = SubResource("GDScript_gevmp")
