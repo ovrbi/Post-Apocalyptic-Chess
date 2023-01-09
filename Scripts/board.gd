@@ -124,6 +124,13 @@ func _process(delta):
 		for child in children:
 			if child.is_in_group("non_unit"): continue
 			child.frame = prev_frame
+			if child.type==0:
+				var child_w = child.get_node("Wrath")
+				if wrath > 0:
+					child_w.visible=true
+					child_w.frame = prev_frame
+				else:
+					child_w.visible=false
 		tb_five.texture_hover.current_frame = prev_frame
 		tb_five.texture_pressed.current_frame = prev_frame
 		tb_four.texture_hover.current_frame = prev_frame

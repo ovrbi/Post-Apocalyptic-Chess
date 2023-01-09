@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5w8q2qgwrn60"]
+[gd_scene load_steps=6 format=3 uid="uid://b5w8q2qgwrn60"]
 
+[ext_resource type="Texture2D" uid="uid://ki5smb05f8me" path="res://Textures/Wrath_1.png" id="2_05wrs"]
 [ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="2_blji8"]
+[ext_resource type="Texture2D" uid="uid://c2os4bjgi0xyd" path="res://Textures/Wrath_2.png" id="3_hasft"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7fw3j"]
 font = ExtResource("2_blji8")
 font_size = 32
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vrfhc"]
+animations = [{
+"frames": [ExtResource("2_05wrs"), ExtResource("3_hasft")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Unit" type="AnimatedSprite2D"]
 
@@ -18,3 +28,7 @@ offset_bottom = 55.0
 text = "2/2"
 label_settings = SubResource("LabelSettings_7fw3j")
 horizontal_alignment = 1
+
+[node name="Wrath" type="AnimatedSprite2D" parent="."]
+visible = false
+frames = SubResource("SpriteFrames_vrfhc")
