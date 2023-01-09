@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_wnvbh"]
 [ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_plc1p"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_y805g"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kg0pf"]
 animations = [{
 "frames": [ExtResource("2_plc1p")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_nlhgu"]
+[sub_resource type="GDScript" id="GDScript_surty"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -34,10 +34,10 @@ func die():
 "
 
 [node name="Arsonist" instance=ExtResource("1_wnvbh")]
-frames = SubResource("SpriteFrames_y805g")
-script = SubResource("GDScript_nlhgu")
+frames = SubResource("SpriteFrames_kg0pf")
+script = SubResource("GDScript_surty")
 type = 1
-passable = true
+passable = false
 maxhp = 3
 move_amount = 3
 damage = 3
