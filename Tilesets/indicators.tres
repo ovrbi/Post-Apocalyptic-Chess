@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://d3qapdqch1luv"]
 
 [ext_resource type="Texture2D" uid="uid://cqh5hq425d4aq" path="res://Textures/indicators.png" id="1_7bbtw"]
-[ext_resource type="Texture2D" uid="uid://bbeyc3t7g7vsa" path="res://Textures/tile.png" id="2_khsu3"]
+[ext_resource type="Texture2D" uid="uid://bd04kag7s3w83" path="res://Textures/tilmap.png" id="2_23xd5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1hh6s"]
 texture = ExtResource("1_7bbtw")
@@ -18,13 +18,21 @@ use_texture_padding = false
 0:1/animation_frame_1/duration = 1.0
 0:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wcqe0"]
-texture = ExtResource("2_khsu3")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_487yu"]
+texture = ExtResource("2_23xd5")
 texture_region_size = Vector2i(56, 56)
 use_texture_padding = false
 0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
 
 [resource]
 tile_size = Vector2i(56, 56)
-sources/1 = SubResource("TileSetAtlasSource_wcqe0")
 sources/0 = SubResource("TileSetAtlasSource_1hh6s")
+sources/1 = SubResource("TileSetAtlasSource_487yu")

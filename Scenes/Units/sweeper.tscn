@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_00tc8"]
 [ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_e8mwr"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0lhxn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vn77x"]
 animations = [{
 "frames": [ExtResource("2_e8mwr")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_4xhb0"]
+[sub_resource type="GDScript" id="GDScript_dswvs"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -33,7 +33,7 @@ func attack(loc:Vector2i):
 		delta1 = Vector2i((-1)*delta1.y, delta1.x)
 		delta2 = Vector2i((-1)*delta2.y, delta2.x)
 		if tilemap.is_in_map(tilemap.local_to_map(position)+delta1)&&delta1!=dir: do_damage(tilemap.local_to_map(position)+delta1,tilemap.local_to_map(position)+dir*10)
-		if tilemap.is_in_map(tilemap.local_to_map(position)+delta2)&&(delta2-dir).lenght_squared()>1: do_damage(tilemap.local_to_map(position)+delta2,tilemap.local_to_map(position)+dir*10)
+		if tilemap.is_in_map(tilemap.local_to_map(position)+delta2)&&(delta2-dir).length_squared()>1: do_damage(tilemap.local_to_map(position)+delta2,tilemap.local_to_map(position)+dir*10)
 
 func preview_attacks(loc:Vector2i):
 	var ans = []
@@ -44,7 +44,7 @@ func preview_attacks(loc:Vector2i):
 		delta1 = Vector2i((-1)*delta1.y, delta1.x)
 		delta2 = Vector2i((-1)*delta2.y, delta2.x)
 		if tilemap.is_in_map(tilemap.local_to_map(position)+delta1)&&delta1!=dir: ans.append(tilemap.local_to_map(position)+delta1)
-		if tilemap.is_in_map(tilemap.local_to_map(position)+delta2)&&(delta2-dir).lenght_squared()>1: ans.append(tilemap.local_to_map(position)+delta2)
+		if tilemap.is_in_map(tilemap.local_to_map(position)+delta2)&&(delta2-dir).length_squared()>1: ans.append(tilemap.local_to_map(position)+delta2)
 	return ans
 
 func die():
@@ -53,13 +53,13 @@ func die():
 "
 
 [node name="Sweeper" instance=ExtResource("1_00tc8")]
-frames = SubResource("SpriteFrames_0lhxn")
-script = SubResource("GDScript_4xhb0")
+frames = SubResource("SpriteFrames_vn77x")
+script = SubResource("GDScript_dswvs")
 type = 1
 passable = false
 maxhp = 5
 move_amount = 4
 damage = 3
-desc = "A horrifying monstrocity that can barely even be called human.
-Attacks in an area around itself, dealing 3 damage. Doesn't care for what's in its path."
+desc = "A horrifying monstrocity, barely even human.
+Attacks in an area around itself, dealing 3 damage."
 subtype = 4
