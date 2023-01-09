@@ -7,7 +7,7 @@ signal change_mode
 const size = 8
 var input_lock = 0
 var mode = 0 #0:normal 1:plant 2:harvest
-var harvestsize = 5
+var harvestsize = 1
 var selected : Node2D
 var processqueue = []
 @export var node_selector : Node2D
@@ -33,7 +33,7 @@ var summon_units = [
 	preload("res://Scenes/Units/sweeper.tscn"),			#13
 	preload("res://Scenes/Units/war_leader.tscn")		#14
 ]
-
+var costs = [5,9,13,17,21,25]
 
 var wrath = 0
 var ms_boost = 0
@@ -142,7 +142,7 @@ func highlight_plant():
 				show_cell=show_cell||check_friendly(Vector2i(x+1,y-1))
 				show_cell=show_cell||check_friendly(Vector2i(x-1,y+1))
 				show_cell=show_cell||check_friendly(Vector2i(x-1,y-1))
-				show_cell=show_cell&&(units.is_empty()||((units[0].passable || !has_neutral(Vector2i(x,y),2))&&!has_neutral(Vector2i(x,y),0)&&!has_neutral(Vector2i(x,y),1)))
+				show_cell=show_cell&&(units.is_empty()||(units[0].passable && !has_neutral(Vector2i(x,y),0)&&!has_neutral(Vector2i(x,y),1)))
 				if show_cell: 
 					set_cell(1,Vector2i(x,y),0,Vector2i(0,1))
 					
@@ -160,6 +160,12 @@ func end_turn():
 		if unit.curhp<=0:
 			unit.die()
 		if unit.type==1:
+			if unit.passable:
+				var units = get_units(local_to_map(unit.position))
+				if !units.is_empty()&&!units[0].passable:
+					if units[0].type==1 && units[0].subtype == 3: ms_boost-=2
+					if units[0].type==1 && units[0].subtype == 5: extra_attack-=1
+					units[0].queue_free()
 			unit.passable = false
 	#process enemy actions
 	for unit in get_children():
@@ -186,7 +192,36 @@ func process_next():
 		
 
 func spawn_enemies():
-	pass
+	var pts = turn+4
+	var sums = [0,0,0,0,0,0]
+	if pts>costs[4]*(size+size-2):
+		sums = [0,0,0,0,12,2]
+	else:
+		for i in range(6):
+			var amount = randi_range(int(pts/costs[5-i]/4),int(pts/costs[5-i]))
+			if i == 0 || i==2:
+				if pts < int(costs[5-i]*1.5): amount==0
+				else: amount = min(1,amount)
+			for j in range(amount):
+				edge_summon(14-i)
+			pts -= amount*costs[5-i]
+
+func edge_summon(unit:int):
+	var locs = []
+	for i in range(size):
+		if get_units(Vector2i(0,i)).is_empty()||!has_enemy(Vector2i(0,i)): locs.append(Vector2i(0,i))
+		if get_units(Vector2i(size-1,i)).is_empty()||!has_enemy(Vector2i(size-1,i)): locs.append(Vector2i(size-1,i))
+	for i in range(1,size-1):
+		if get_units(Vector2i(i,0)).is_empty()||!has_enemy(Vector2i(i,0)): locs.append(Vector2i(i,0))
+		if get_units(Vector2i(i,size-1)).is_empty()||!has_enemy(Vector2i(i,size-1)): locs.append(Vector2i(i,size-1))
+	if !locs.is_empty(): summon(locs[randi_range(0,locs.size()-1)],unit)
+
+func has_enemy(loc:Vector2i):
+	var ans = false
+	var units = get_units(loc)
+	for i in units:
+		if i.type==1: ans=true
+	return ans
 
 func summon(loc:Vector2i, unit:int):
 	var inst = summon_units[unit].instantiate()
