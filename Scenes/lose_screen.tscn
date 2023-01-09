@@ -34,6 +34,7 @@ texture = ExtResource("1_83mbq")
 centered = false
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 271.0
 offset_top = 240.0
 offset_right = 448.0
@@ -42,6 +43,7 @@ text = "You lose!"
 label_settings = SubResource("LabelSettings_dwvii")
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 1
 offset_left = 206.0
 offset_top = 297.0
 offset_right = 521.0
@@ -51,6 +53,8 @@ label_settings = SubResource("LabelSettings_dwvii")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
+visible = false
+layout_mode = 1
 offset_left = 109.0
 offset_top = 362.0
 offset_right = 607.0
@@ -60,6 +64,7 @@ label_settings = SubResource("LabelSettings_e52jh")
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="."]
+layout_mode = 1
 offset_left = 109.0
 offset_top = 412.0
 offset_right = 607.0
@@ -69,6 +74,7 @@ label_settings = SubResource("LabelSettings_e52jh")
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="."]
+layout_mode = 1
 offset_left = 55.0
 offset_top = 556.0
 offset_right = 666.0
@@ -77,3 +83,5 @@ text = "Made by ovrbi, ruby, BirbMom and Finn Talisker
 in 72 hours for Ludum Dare 52."
 label_settings = SubResource("LabelSettings_h4617")
 horizontal_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
