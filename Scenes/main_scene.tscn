@@ -36,3 +36,5 @@ offset_bottom = 115.0
 text = "TURN #69"
 label_settings = SubResource("LabelSettings_63tcg")
 script = ExtResource("4_n0qe0")
+
+[connection signal="next_turn" from="Board" to="Control/Turn Number" method="_on_board_next_turn"]
