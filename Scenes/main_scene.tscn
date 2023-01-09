@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxfulqdn8yuyx"]
+[gd_scene load_steps=27 format=3 uid="uid://cxfulqdn8yuyx"]
 
 [ext_resource type="Texture2D" uid="uid://cjelmhluee3ba" path="res://Textures/gameboard_clear.png" id="1_afp6s"]
 [ext_resource type="PackedScene" uid="uid://cyehjbqcd4luk" path="res://Scenes/board.tscn" id="1_y7kby"]
@@ -10,6 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://c8ppojj0xldlw" path="res://Textures/WRATH.png" id="8_r7y2m"]
 [ext_resource type="Texture2D" uid="uid://b8mu2jhrrkr6i" path="res://Textures/WRATH_hover0.png" id="9_7lwk8"]
 [ext_resource type="Texture2D" uid="uid://0xwasbpqw20a" path="res://Textures/WRATH_hover1.png" id="10_cs01b"]
+[ext_resource type="Texture2D" uid="uid://c7t8da8c8ixfs" path="res://Textures/PLANT_button.png" id="11_ihdva"]
+[ext_resource type="Texture2D" uid="uid://3qonqhnt2cag" path="res://Textures/PLANT_hover0.png" id="12_sdah8"]
+[ext_resource type="Texture2D" uid="uid://bu7kov8svejfa" path="res://Textures/PLANT_hover1.png" id="13_nw4e0"]
+[ext_resource type="Texture2D" uid="uid://d217t0ugscw4y" path="res://Textures/HARVEST.png" id="14_ii3y3"]
+[ext_resource type="Texture2D" uid="uid://cfvpsw0xx8vbs" path="res://Textures/HARVEST_hover0.png" id="15_okwfl"]
+[ext_resource type="Texture2D" uid="uid://c3ruyqx18x57s" path="res://Textures/HARVEST_hover1.png" id="16_hd18j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_63tcg"]
 line_spacing = -20.0
@@ -51,6 +57,34 @@ frame_0/texture = ExtResource("9_7lwk8")
 frame_1/texture = ExtResource("10_cs01b")
 frame_1/duration = 1.0
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_iwve7"]
+frames = 2
+speed_scale = 2.0
+frame_0/texture = ExtResource("12_sdah8")
+frame_1/texture = ExtResource("13_nw4e0")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_4xac7"]
+frames = 2
+speed_scale = 2.0
+frame_0/texture = ExtResource("12_sdah8")
+frame_1/texture = ExtResource("13_nw4e0")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_1ppxi"]
+frames = 2
+speed_scale = 2.0
+frame_0/texture = ExtResource("15_okwfl")
+frame_1/texture = ExtResource("16_hd18j")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ym6yw"]
+frames = 2
+speed_scale = 2.0
+frame_0/texture = ExtResource("15_okwfl")
+frame_1/texture = ExtResource("16_hd18j")
+frame_1/duration = 1.0
+
 [node name="MainScene" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -89,6 +123,7 @@ label_settings = SubResource("LabelSettings_tvu40")
 horizontal_alignment = 1
 
 [node name="Next Turn" type="TextureButton" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 501.0
 offset_top = 56.0
@@ -109,5 +144,27 @@ texture_normal = ExtResource("8_r7y2m")
 texture_pressed = SubResource("AnimatedTexture_uwrkp")
 texture_hover = SubResource("AnimatedTexture_pm3bg")
 texture_focused = ExtResource("8_r7y2m")
+
+[node name="Plant" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 54.0
+offset_right = 421.0
+offset_bottom = 110.0
+texture_normal = ExtResource("11_ihdva")
+texture_pressed = SubResource("AnimatedTexture_iwve7")
+texture_hover = SubResource("AnimatedTexture_4xac7")
+texture_focused = ExtResource("11_ihdva")
+
+[node name="Harvest" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 54.0
+offset_right = 561.0
+offset_bottom = 110.0
+texture_normal = ExtResource("14_ii3y3")
+texture_pressed = SubResource("AnimatedTexture_1ppxi")
+texture_hover = SubResource("AnimatedTexture_ym6yw")
+texture_focused = ExtResource("14_ii3y3")
 
 [connection signal="next_turn" from="Board" to="Control/Turn Number" method="_on_board_next_turn"]
