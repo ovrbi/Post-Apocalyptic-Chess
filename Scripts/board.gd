@@ -34,7 +34,7 @@ var summon_units = [
 	preload("res://Scenes/Units/war_leader.tscn")		#14
 ]
 var startcost = 8
-var costs = [5,13,18,23,28,33]
+var costs = [5,13,18,23,2,33]
 var harvest_cheats = true
 
 var friendlies_alive = 0
