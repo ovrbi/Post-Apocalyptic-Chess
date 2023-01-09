@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cnqylmikik8ec" path="res://Textures/Solider_1.png" id="2_ufkjp"]
 [ext_resource type="Texture2D" uid="uid://doytwjqg6wilt" path="res://Textures/Solider_2.png" id="3_rmn4h"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_60q5e"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ig3f"]
 animations = [{
 "frames": [ExtResource("2_ufkjp"), ExtResource("3_rmn4h")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_0o7xe"]
+[sub_resource type="GDScript" id="GDScript_mjmdt"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -28,6 +28,8 @@ func _process(delta):
 
 func attack(loc:Vector2i): 
 	do_damage(loc, tilemap.local_to_map(position))
+func preview_attacks(loc:Vector2i):
+	return [loc]
 
 func die():
 	tilemap.summon(tilemap.local_to_map(position),8)
@@ -35,8 +37,8 @@ func die():
 "
 
 [node name="Foot Soldier" instance=ExtResource("1_0bev7")]
-frames = SubResource("SpriteFrames_60q5e")
-script = SubResource("GDScript_0o7xe")
+frames = SubResource("SpriteFrames_1ig3f")
+script = SubResource("GDScript_mjmdt")
 type = 1
 passable = false
 maxhp = 2
