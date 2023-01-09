@@ -1,9 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck1sdbe2hl4ev"]
+[gd_scene load_steps=6 format=3 uid="uid://ck1sdbe2hl4ev"]
 
-[ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_s07a0"]
-[ext_resource type="Texture2D" uid="uid://dwle38pigsyk7" path="res://Textures/tmp_sprout.png" id="2_yc0o4"]
+[ext_resource type="Texture2D" uid="uid://dmqcnnhmpci7w" path="res://Textures/sprout_temp.png" id="1_yemhw"]
 
-[sub_resource type="GDScript" id="GDScript_3cwp2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_giem1"]
+atlas = ExtResource("1_yemhw")
+region = Rect2(0, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv8n1"]
+atlas = ExtResource("1_yemhw")
+region = Rect2(56, 0, 56, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_54qc8"]
+animations = [{
+"frames": [SubResource("AtlasTexture_giem1"), SubResource("AtlasTexture_wv8n1")],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_p42kg"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -31,9 +46,10 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 	return false
 "
 
-[node name="Sprout" instance=ExtResource("1_s07a0")]
-texture = ExtResource("2_yc0o4")
-script = SubResource("GDScript_3cwp2")
+[node name="Sprout" type="AnimatedSprite2D"]
+frames = SubResource("SpriteFrames_54qc8")
+speed_scale = 2.0
+script = SubResource("GDScript_p42kg")
 type = 2
 passable = true
 maxhp = 1
