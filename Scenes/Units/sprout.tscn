@@ -2,23 +2,23 @@
 
 [ext_resource type="Texture2D" uid="uid://dmqcnnhmpci7w" path="res://Textures/sprout_temp.png" id="1_yemhw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0tj3t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bhcb"]
 atlas = ExtResource("1_yemhw")
 region = Rect2(0, 0, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fxx3a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu4qm"]
 atlas = ExtResource("1_yemhw")
 region = Rect2(56, 0, 56, 56)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rrbrx"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehq2y"]
 animations = [{
-"frames": [SubResource("AtlasTexture_0tj3t"), SubResource("AtlasTexture_fxx3a")],
+"frames": [SubResource("AtlasTexture_6bhcb"), SubResource("AtlasTexture_iu4qm")],
 "loop": true,
 "name": &"default",
 "speed": 1.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_c1h1a"]
+[sub_resource type="GDScript" id="GDScript_734bc"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -47,9 +47,10 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 "
 
 [node name="Sprout" type="AnimatedSprite2D"]
-frames = SubResource("SpriteFrames_rrbrx")
+frames = SubResource("SpriteFrames_ehq2y")
 speed_scale = 2.0
-script = SubResource("GDScript_c1h1a")
+playing = true
+script = SubResource("GDScript_734bc")
 type = 2
 passable = true
 maxhp = 1
