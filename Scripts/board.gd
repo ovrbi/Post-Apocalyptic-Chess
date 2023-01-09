@@ -14,7 +14,7 @@ var processqueue = []
 @export var node_selected : Node2D
 var turn = 0
 var points = 0
-var can_harvest = true
+var can_harvest = false
 var prev_cursor_loc 
 var summon_units = [
 	preload("res://Scenes/Units/druid.tscn"),			#0
@@ -33,6 +33,7 @@ var summon_units = [
 	preload("res://Scenes/Units/sweeper.tscn"),			#13
 	preload("res://Scenes/Units/war_leader.tscn")		#14
 ]
+
 
 var wrath = 0
 var ms_boost = 0
@@ -149,6 +150,7 @@ func check_friendly(loc:Vector2i):
 	var units = get_units(loc)
 	return !units.is_empty()&&units[0].type==0
 func end_turn():
+	turn+=1
 	emit_signal("next_turn")
 	select(null)
 	wrath = 0
@@ -179,9 +181,9 @@ func process_next():
 			if unit.is_in_group("non_unit"): continue
 			if unit.type==0:
 				unit.state = 0
-		if turn>0:
+		if turn>1:
 			can_harvest = true
-		turn+=1
+		
 
 func spawn_enemies():
 	pass
@@ -256,6 +258,8 @@ func try_harvest(loc:Vector2i, size:int):
 	if canharvest:
 		for i in targets:
 			get_units(i)[0].queue_free()
+		points+=size
+		if size==5: points+=5
 		summon(loc,size)
 		mode = 0
 		can_harvest = false

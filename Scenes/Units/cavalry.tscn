@@ -37,6 +37,7 @@ func die():
 frames = SubResource("SpriteFrames_vmcdd")
 script = SubResource("GDScript_b32tx")
 type = 1
+passable = true
 maxhp = 3
 move_amount = 4
 damage = 3
