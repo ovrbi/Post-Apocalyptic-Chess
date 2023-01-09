@@ -4,18 +4,18 @@
 [ext_resource type="Script" path="res://Scripts/lose_screen.gd" id="1_ri158"]
 [ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="1_w81tr"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_dwvii"]
+[sub_resource type="LabelSettings" id="LabelSettings_7qtra"]
 font = ExtResource("1_w81tr")
 font_size = 72
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_e52jh"]
+[sub_resource type="LabelSettings" id="LabelSettings_x77qe"]
 line_spacing = -17.0
 font = ExtResource("1_w81tr")
 font_size = 51
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_h4617"]
+[sub_resource type="LabelSettings" id="LabelSettings_tl0ed"]
 font = ExtResource("1_w81tr")
 font_size = 51
 font_color = Color(0, 0, 0, 1)
@@ -35,42 +35,42 @@ centered = false
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 271.0
-offset_top = 240.0
-offset_right = 448.0
-offset_bottom = 324.0
-text = "You lose!"
-label_settings = SubResource("LabelSettings_dwvii")
+offset_left = 236.0
+offset_top = 85.0
+offset_right = 486.0
+offset_bottom = 169.0
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_7qtra")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 1
-offset_left = 206.0
-offset_top = 297.0
-offset_right = 521.0
-offset_bottom = 381.0
-text = "Final SCORE: xyz"
-label_settings = SubResource("LabelSettings_dwvii")
+offset_left = 191.0
+offset_top = 147.0
+offset_right = 506.0
+offset_bottom = 231.0
+text = "Final Score: xyz"
+label_settings = SubResource("LabelSettings_7qtra")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
-visible = false
 layout_mode = 1
-offset_left = 109.0
-offset_top = 362.0
-offset_right = 607.0
-offset_bottom = 446.0
-text = "Congrats on reaching 100!"
-label_settings = SubResource("LabelSettings_e52jh")
+offset_left = 112.0
+offset_top = 204.0
+offset_right = 610.0
+offset_bottom = 288.0
+text = "Well done!"
+label_settings = SubResource("LabelSettings_x77qe")
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="."]
 layout_mode = 1
-offset_left = 109.0
-offset_top = 412.0
-offset_right = 607.0
-offset_bottom = 496.0
-text = "Press ENTER or CLICK to TRY AGAIN."
-label_settings = SubResource("LabelSettings_e52jh")
+offset_left = 80.0
+offset_top = 343.0
+offset_right = 641.0
+offset_bottom = 458.0
+text = "Press enter or click anywhere
+to try again!"
+label_settings = SubResource("LabelSettings_x77qe")
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="."]
@@ -81,7 +81,7 @@ offset_right = 666.0
 offset_bottom = 678.0
 text = "Made by ovrbi, ruby, BirbMom and Finn Talisker
 in 72 hours for Ludum Dare 52."
-label_settings = SubResource("LabelSettings_h4617")
+label_settings = SubResource("LabelSettings_tl0ed")
 horizontal_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

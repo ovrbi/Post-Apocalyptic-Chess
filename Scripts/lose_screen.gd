@@ -2,9 +2,10 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Label2.text = "Final SCORE: "+str($/root/MainScene/Board.points)
-	if $/root/MainScene/Board.points>=100:
+	$Label2.text = "Final Score: "+str($/root/MainScene/Board.points)
+	if $/root/MainScene/Board.points>=30:
 		$Label3.visible = true
+	$/root/MainScene/Music.stop()
 	#$/root/MainScene.queue_free()
 
 
