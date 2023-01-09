@@ -2,7 +2,9 @@ extends Label
 
 var board
 
-var hovering = null
+var unithp = 0
+var unitmaxhp = 0
+var hover = null
 var button = "none" # hovers = none | endturn | plant | harvest | wrath | one | two | three | four | five
 var mode = 0
 
@@ -40,22 +42,26 @@ func update_text():
 		text = "Choose where to seed the new sprout."
 	elif button == "plant":
 		text = "Plant a new sprout.\nSprouts need to be fertilized by corses to grow."
-	elif hovering != null: # hovering over a unit
+	elif hover != null: # hovering over a unit
 		pass
 	else: # nothing is being hovered
 		text = " "
 	
 
-
+# hover change
 func _on_board_change_hover():
-	pass # Replace with function body.
+	board = $/root/MainScene/Board
+	var units = board.get_units(board.local_to_map(get_viewport().get_mouse_position()-position))
+	if units.is_empty(): hover = null
+	else: 
+		hover = units[0]
+	update_text()
 
-
+# mode change
 func _on_board_change_mode():
 	board = $/root/MainScene/Board
 	mode = board.mode
 	update_text()
-	print(mode)
 
 # next turn button
 func _on_next_turn_mouse_entered():
