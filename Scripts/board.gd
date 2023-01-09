@@ -203,7 +203,7 @@ func highlight_plant():
 	if can_harvest: 
 		prev_cursor_loc = null
 		mode=1
-		select(null)
+		emit_signal("change_mode")
 		for x in range(size):
 			for y in range(size):
 				var show_cell = false
