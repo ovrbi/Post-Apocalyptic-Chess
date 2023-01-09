@@ -31,19 +31,19 @@
 [ext_resource type="Texture2D" uid="uid://c41fj56oml1gh" path="res://Textures/4_0.png" id="25_ny1if"]
 [ext_resource type="Texture2D" uid="uid://b3po4lbnay5s6" path="res://Textures/4_1.png" id="26_1s5xm"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_63tcg"]
+[sub_resource type="LabelSettings" id="LabelSettings_sxon4"]
 line_spacing = -20.0
 font = ExtResource("3_jyos6")
 font_size = 44
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_tvu40"]
+[sub_resource type="LabelSettings" id="LabelSettings_6fb5q"]
 line_spacing = -17.0
 font = ExtResource("3_jyos6")
 font_size = 44
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_1ive8"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_x4eud"]
 frames = 2
 pause = true
 speed_scale = 2.0
@@ -51,7 +51,7 @@ frame_0/texture = ExtResource("6_gyr0k")
 frame_1/texture = ExtResource("7_vfelc")
 frame_1/duration = 1.0
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_xiqtj"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_wb4kq"]
 frames = 2
 pause = true
 speed_scale = 2.0
@@ -59,7 +59,7 @@ frame_0/texture = ExtResource("6_gyr0k")
 frame_1/texture = ExtResource("7_vfelc")
 frame_1/duration = 1.0
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_uwrkp"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_uuofx"]
 frames = 2
 pause = true
 speed_scale = 2.0
@@ -67,7 +67,7 @@ frame_0/texture = ExtResource("9_7lwk8")
 frame_1/texture = ExtResource("10_cs01b")
 frame_1/duration = 1.0
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_pm3bg"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_s7wkg"]
 frames = 2
 pause = true
 speed_scale = 2.0
@@ -75,7 +75,7 @@ frame_0/texture = ExtResource("9_7lwk8")
 frame_1/texture = ExtResource("10_cs01b")
 frame_1/duration = 1.0
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_iwve7"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_bpyjx"]
 frames = 2
 pause = true
 speed_scale = 2.0
@@ -83,7 +83,7 @@ frame_0/texture = ExtResource("12_sdah8")
 frame_1/texture = ExtResource("13_nw4e0")
 frame_1/duration = 1.0
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_4xac7"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_gp1ba"]
 frames = 2
 pause = true
 speed_scale = 2.0
@@ -91,7 +91,7 @@ frame_0/texture = ExtResource("12_sdah8")
 frame_1/texture = ExtResource("13_nw4e0")
 frame_1/duration = 1.0
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_1ppxi"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_jiarg"]
 frames = 2
 pause = true
 speed_scale = 2.0
@@ -99,7 +99,7 @@ frame_0/texture = ExtResource("15_okwfl")
 frame_1/texture = ExtResource("16_hd18j")
 frame_1/duration = 1.0
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_ym6yw"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_x6wwa"]
 frames = 2
 pause = true
 speed_scale = 2.0
@@ -107,7 +107,7 @@ frame_0/texture = ExtResource("15_okwfl")
 frame_1/texture = ExtResource("16_hd18j")
 frame_1/duration = 1.0
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_tlwfn"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_x7htt"]
 frames = 2
 pause = true
 speed_scale = 2.0
@@ -115,7 +115,7 @@ frame_0/texture = ExtResource("17_v2nwm")
 frame_1/texture = ExtResource("18_a5jsc")
 frame_1/duration = 1.0
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_sm3px"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_qknbx"]
 frames = 2
 pause = true
 speed_scale = 2.0
@@ -123,7 +123,7 @@ frame_0/texture = ExtResource("17_v2nwm")
 frame_1/texture = ExtResource("18_a5jsc")
 frame_1/duration = 1.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_iq5bc"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qae6b"]
 animations = [{
 "frames": [ExtResource("19_h0yhr"), ExtResource("20_k6wfs")],
 "loop": true,
@@ -131,7 +131,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8gkbb"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkmnr"]
 animations = [{
 "frames": [ExtResource("21_f3gej"), ExtResource("22_wrrxw")],
 "loop": true,
@@ -139,7 +139,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bbbww"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4itx"]
 animations = [{
 "frames": [ExtResource("23_po1dk"), ExtResource("24_smg3s")],
 "loop": true,
@@ -147,7 +147,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2ckqr"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fm0nn"]
 animations = [{
 "frames": [ExtResource("25_ny1if"), ExtResource("26_1s5xm")],
 "loop": true,
@@ -155,7 +155,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3tb3d"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_njxx2"]
 animations = [{
 "frames": [ExtResource("20_rv0lr"), ExtResource("20_v47vd")],
 "loop": true,
@@ -180,175 +180,159 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Score" type="Label" parent="Control"]
-layout_mode = 0
 offset_left = 72.0
 offset_top = 37.0
 offset_right = 212.0
 offset_bottom = 90.0
 text = "SCORE: 6969"
-label_settings = SubResource("LabelSettings_63tcg")
+label_settings = SubResource("LabelSettings_sxon4")
 script = ExtResource("4_gpd3u")
 
 [node name="Turn Number2" type="Label" parent="Control"]
-layout_mode = 0
 offset_left = 72.0
 offset_top = 75.0
 offset_right = 197.0
 offset_bottom = 128.0
 text = "TURN #69"
-label_settings = SubResource("LabelSettings_63tcg")
+label_settings = SubResource("LabelSettings_sxon4")
 script = ExtResource("4_n0qe0")
 
 [node name="Hover" type="Label" parent="Control"]
-layout_mode = 0
 offset_left = 20.0
 offset_top = 609.0
 offset_right = 701.0
 offset_bottom = 722.0
 text = "Choose the shape of the harvest:"
-label_settings = SubResource("LabelSettings_tvu40")
+label_settings = SubResource("LabelSettings_6fb5q")
 horizontal_alignment = 1
 script = ExtResource("5_42i8b")
 
 [node name="NextTurn" type="TextureButton" parent="Control"]
-layout_mode = 0
 offset_left = 501.0
 offset_top = 52.0
 offset_right = 669.0
 offset_bottom = 108.0
 texture_normal = ExtResource("5_l4j6t")
-texture_pressed = SubResource("AnimatedTexture_1ive8")
-texture_hover = SubResource("AnimatedTexture_xiqtj")
+texture_pressed = SubResource("AnimatedTexture_x4eud")
+texture_hover = SubResource("AnimatedTexture_wb4kq")
 texture_focused = ExtResource("5_l4j6t")
 
 [node name="Wrath" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 0
 offset_left = 561.0
 offset_top = 54.0
 offset_right = 673.0
 offset_bottom = 110.0
 texture_normal = ExtResource("8_r7y2m")
-texture_pressed = SubResource("AnimatedTexture_uwrkp")
-texture_hover = SubResource("AnimatedTexture_pm3bg")
+texture_pressed = SubResource("AnimatedTexture_uuofx")
+texture_hover = SubResource("AnimatedTexture_s7wkg")
 texture_focused = ExtResource("8_r7y2m")
 
 [node name="Plant" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 0
 offset_left = 309.0
 offset_top = 54.0
 offset_right = 421.0
 offset_bottom = 110.0
 toggle_mode = true
 texture_normal = ExtResource("11_ihdva")
-texture_pressed = SubResource("AnimatedTexture_iwve7")
-texture_hover = SubResource("AnimatedTexture_4xac7")
+texture_pressed = SubResource("AnimatedTexture_bpyjx")
+texture_hover = SubResource("AnimatedTexture_gp1ba")
 texture_focused = ExtResource("11_ihdva")
 
 [node name="Harvest" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 0
 offset_left = 421.0
 offset_top = 54.0
 offset_right = 561.0
 offset_bottom = 110.0
 toggle_mode = true
 texture_normal = ExtResource("14_ii3y3")
-texture_pressed = SubResource("AnimatedTexture_1ppxi")
-texture_hover = SubResource("AnimatedTexture_ym6yw")
+texture_pressed = SubResource("AnimatedTexture_jiarg")
+texture_hover = SubResource("AnimatedTexture_x6wwa")
 texture_focused = ExtResource("14_ii3y3")
 
 [node name="One" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 0
 offset_left = 222.0
 offset_top = 645.0
 offset_right = 278.0
 offset_bottom = 701.0
 toggle_mode = true
 button_pressed = true
-texture_pressed = SubResource("AnimatedTexture_tlwfn")
-texture_hover = SubResource("AnimatedTexture_sm3px")
+texture_pressed = SubResource("AnimatedTexture_x7htt")
+texture_hover = SubResource("AnimatedTexture_qknbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/One"]
 position = Vector2(28, 28)
-frames = SubResource("SpriteFrames_iq5bc")
+frames = SubResource("SpriteFrames_qae6b")
 speed_scale = 2.0
 playing = true
 
 [node name="Two" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 0
 offset_left = 278.0
 offset_top = 645.0
 offset_right = 334.0
 offset_bottom = 701.0
 toggle_mode = true
-texture_pressed = SubResource("AnimatedTexture_tlwfn")
-texture_hover = SubResource("AnimatedTexture_sm3px")
+texture_pressed = SubResource("AnimatedTexture_x7htt")
+texture_hover = SubResource("AnimatedTexture_qknbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Two"]
 position = Vector2(28, 28)
-frames = SubResource("SpriteFrames_8gkbb")
+frames = SubResource("SpriteFrames_vkmnr")
 speed_scale = 2.0
 playing = true
 
 [node name="Three" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 0
 offset_left = 333.0
 offset_top = 645.0
 offset_right = 389.0
 offset_bottom = 701.0
 toggle_mode = true
-texture_pressed = SubResource("AnimatedTexture_tlwfn")
-texture_hover = SubResource("AnimatedTexture_sm3px")
+texture_pressed = SubResource("AnimatedTexture_x7htt")
+texture_hover = SubResource("AnimatedTexture_qknbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Three"]
 position = Vector2(28, 28)
-frames = SubResource("SpriteFrames_bbbww")
+frames = SubResource("SpriteFrames_c4itx")
 speed_scale = 2.0
 playing = true
 
 [node name="Four" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 0
 offset_left = 389.0
 offset_top = 645.0
 offset_right = 445.0
 offset_bottom = 701.0
 toggle_mode = true
-texture_pressed = SubResource("AnimatedTexture_tlwfn")
-texture_hover = SubResource("AnimatedTexture_sm3px")
+texture_pressed = SubResource("AnimatedTexture_x7htt")
+texture_hover = SubResource("AnimatedTexture_qknbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Four"]
 position = Vector2(28, 28)
-frames = SubResource("SpriteFrames_2ckqr")
+frames = SubResource("SpriteFrames_fm0nn")
 speed_scale = 2.0
 playing = true
 
 [node name="Five" type="TextureButton" parent="Control"]
 visible = false
-layout_mode = 0
 offset_left = 445.0
 offset_top = 645.0
 offset_right = 501.0
 offset_bottom = 701.0
 toggle_mode = true
-texture_pressed = SubResource("AnimatedTexture_tlwfn")
-texture_hover = SubResource("AnimatedTexture_sm3px")
+texture_pressed = SubResource("AnimatedTexture_x7htt")
+texture_hover = SubResource("AnimatedTexture_qknbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Five"]
 position = Vector2(28, 28)
-frames = SubResource("SpriteFrames_3tb3d")
+frames = SubResource("SpriteFrames_njxx2")
 speed_scale = 2.0
 playing = true
 
-[connection signal="change_hover" from="Board" to="Control/Hover" method="_on_board_change_hover"]
-[connection signal="change_mode" from="Board" to="Control/Score" method="_on_board_change_mode"]
-[connection signal="change_mode" from="Board" to="Control/Hover" method="_on_board_change_mode"]
-[connection signal="next_turn" from="Board" to="Control/Turn Number2" method="_on_board_next_turn"]
 [connection signal="hidden" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_hidden"]
 [connection signal="mouse_entered" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_mouse_entered"]
 [connection signal="mouse_exited" from="Control/NextTurn" to="Control/Hover" method="_on_next_turn_mouse_exited"]

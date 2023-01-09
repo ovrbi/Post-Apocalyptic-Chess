@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cyehjbqcd4luk"]
 
-[ext_resource type="Script" path="res://Scripts/board.gd" id="1_6iyyg"]
 [ext_resource type="TileSet" uid="uid://d3qapdqch1luv" path="res://Tilesets/indicators.tres" id="1_8agqs"]
+[ext_resource type="Script" path="res://Scripts/board.gd" id="2_lfmgj"]
 [ext_resource type="Texture2D" uid="uid://j7rhy7ksff0v" path="res://Textures/select0.png" id="3_c5jvy"]
 [ext_resource type="Texture2D" uid="uid://crc6lbd80vphw" path="res://Textures/select1.png" id="4_v2ofp"]
 [ext_resource type="Texture2D" uid="uid://csvsqgaxcggtl" path="res://Textures/selected0.png" id="5_xnxyk"]
@@ -40,7 +40,7 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 2
 layer_2/tile_data = PackedInt32Array()
-script = ExtResource("1_6iyyg")
+script = ExtResource("2_lfmgj")
 node_selector = NodePath("selector")
 node_selected = NodePath("selected")
 
