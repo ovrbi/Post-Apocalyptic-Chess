@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://in7f8v762ndq" path="res://Textures/Plant_corpse_Flowers_1.png" id="2_dpkm8"]
 [ext_resource type="Texture2D" uid="uid://je86k4new7me" path="res://Textures/Plant_corpse_Flowers_2.png" id="3_myu3d"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_fdb5t"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_d6iye"]
 animations = [{
 "frames": [ExtResource("2_dpkm8"), ExtResource("3_myu3d")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_c63eg"]
+[sub_resource type="GDScript" id="GDScript_eecjm"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -35,12 +35,12 @@ func attack(loc:Vector2i):
 	
 func die():
 	tilemap.summon(tilemap.local_to_map(position),6)
-	queue_free()
+	super.die()
 "
 
 [node name="Plant" instance=ExtResource("1_5xinb")]
-frames = SubResource("SpriteFrames_fdb5t")
-script = SubResource("GDScript_c63eg")
+frames = SubResource("SpriteFrames_d6iye")
+script = SubResource("GDScript_eecjm")
 type = 2
 maxhp = 1
 desc = "A plant which has fed and grown fully.

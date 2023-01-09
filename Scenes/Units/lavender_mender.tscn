@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://r0r05iye52xq" path="res://Textures/Lavender_Mender_1.png" id="2_tdf54"]
 [ext_resource type="Texture2D" uid="uid://78iyhd0ttljg" path="res://Textures/Lavender_Mender_2.png" id="3_i1e1f"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2gdl2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfhrb"]
 animations = [{
 "frames": [ExtResource("2_tdf54"), ExtResource("3_i1e1f")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_ysrfm"]
+[sub_resource type="GDScript" id="GDScript_i2w7s"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -54,13 +54,13 @@ func attack(loc:Vector2i):
 
 func die():
 	tilemap.summon(tilemap.local_to_map(position),6)
-	queue_free()
+	super.die()
 "
 
 [node name="Lavender Mender" instance=ExtResource("1_0ympl")]
-frames = SubResource("SpriteFrames_2gdl2")
+frames = SubResource("SpriteFrames_gfhrb")
 speed_scale = 2.0
-script = SubResource("GDScript_ysrfm")
+script = SubResource("GDScript_i2w7s")
 maxhp = 3
 move_amount = 4
 desc = "A mystical Lavender-Bender, who uses scents to heal the natural.

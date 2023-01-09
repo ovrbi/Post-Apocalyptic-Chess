@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dtp3r8ecrfcww" path="res://Textures/Sprout_1.png" id="1_whv5c"]
 [ext_resource type="Texture2D" uid="uid://dj2xhdqihqc08" path="res://Textures/Sprout_2.png" id="2_u246i"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_joubh"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_y1tfm"]
 animations = [{
 "frames": [ExtResource("1_whv5c"), ExtResource("2_u246i")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_uy28u"]
+[sub_resource type="GDScript" id="GDScript_7bf3w"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -41,9 +41,9 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 
 [node name="Sprout" type="AnimatedSprite2D"]
 z_index = -10
-frames = SubResource("SpriteFrames_joubh")
+frames = SubResource("SpriteFrames_y1tfm")
 speed_scale = 2.0
-script = SubResource("GDScript_uy28u")
+script = SubResource("GDScript_7bf3w")
 type = 2
 passable = true
 maxhp = 1

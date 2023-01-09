@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_jkwib"]
 [ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_stwa8"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2b1rj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dawse"]
 animations = [{
 "frames": [ExtResource("2_stwa8")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_drgsj"]
+[sub_resource type="GDScript" id="GDScript_oil76"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -50,12 +50,12 @@ func attack(loc:Vector2i):
 
 func die():
 	tilemap.summon(tilemap.local_to_map(position),6)
-	queue_free()
+	super.die()
 "
 
 [node name="Vine Ghoul" instance=ExtResource("1_jkwib")]
-frames = SubResource("SpriteFrames_2b1rj")
-script = SubResource("GDScript_drgsj")
+frames = SubResource("SpriteFrames_dawse")
+script = SubResource("GDScript_oil76")
 maxhp = 3
 move_amount = 4
 damage = 1

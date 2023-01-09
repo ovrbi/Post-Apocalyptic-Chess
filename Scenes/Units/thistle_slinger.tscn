@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_35b1r"]
 [ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_glewo"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_v45bc"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_cp8vt"]
 animations = [{
 "frames": [ExtResource("2_glewo")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_tb7e4"]
+[sub_resource type="GDScript" id="GDScript_15wwp"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -45,12 +45,12 @@ func attack(loc:Vector2i):
 
 func die():
 	tilemap.summon(tilemap.local_to_map(position),6)
-	queue_free()
+	super.die()
 "
 
 [node name="ThistleSlinger" instance=ExtResource("1_35b1r")]
-frames = SubResource("SpriteFrames_v45bc")
-script = SubResource("GDScript_tb7e4")
+frames = SubResource("SpriteFrames_cp8vt")
+script = SubResource("GDScript_15wwp")
 maxhp = 1
 move_amount = 3
 damage = 1
