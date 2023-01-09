@@ -26,7 +26,7 @@ func update_text():
 		text = "Summon a Lavender-Mender."
 	elif button == "five":
 		text = "Summon a Monstrous Treant."
-	if mode == 2: #harvesting
+	elif mode == 2: #harvesting
 		text = "Choose the shape of the harvest:"
 	elif button != "none" && button != "plant": # hovering button
 		match button:

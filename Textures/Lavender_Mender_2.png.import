@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjbbbbquol855"
-path="res://.godot/imported/Druid_color_1.png-e40e6c79b4e20c93b55a3bf06262b86a.ctex"
+uid="uid://78iyhd0ttljg"
+path="res://.godot/imported/Lavender_Mender_2.png-13727eec2656f19e3607769c3f21d242.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Druid_color_1.png"
-dest_files=["res://.godot/imported/Druid_color_1.png-e40e6c79b4e20c93b55a3bf06262b86a.ctex"]
+source_file="res://Textures/Lavender_Mender_2.png"
+dest_files=["res://.godot/imported/Lavender_Mender_2.png-13727eec2656f19e3607769c3f21d242.ctex"]
 
 [params]
 

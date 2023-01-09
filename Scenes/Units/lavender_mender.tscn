@@ -1,18 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxklxcqtn0vff"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_0ympl"]
-[ext_resource type="Texture2D" uid="uid://m5cbctj68eer" path="res://Textures/LVM_color_1.png" id="2_oqsmo"]
-[ext_resource type="Texture2D" uid="uid://4hxoak50es03" path="res://Textures/LVM_color_2.png" id="3_2rtgs"]
+[ext_resource type="Texture2D" uid="uid://r0r05iye52xq" path="res://Textures/Lavender_Mender_1.png" id="2_tdf54"]
+[ext_resource type="Texture2D" uid="uid://78iyhd0ttljg" path="res://Textures/Lavender_Mender_2.png" id="3_i1e1f"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_db7ku"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gdl2"]
 animations = [{
-"frames": [ExtResource("2_oqsmo"), ExtResource("3_2rtgs")],
+"frames": [ExtResource("2_tdf54"), ExtResource("3_i1e1f")],
 "loop": true,
 "name": &"default",
 "speed": 1.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_jexlb"]
+[sub_resource type="GDScript" id="GDScript_ysrfm"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -49,7 +49,6 @@ func attack(loc:Vector2i):
 		else:
 			do_damage(loc, tilemap.local_to_map(position))
 	state = 2
-	modulate.a=alpha_amount
 	tilemap.select(null)
 
 func die():
@@ -58,10 +57,9 @@ func die():
 "
 
 [node name="Lavender Mender" instance=ExtResource("1_0ympl")]
-frames = SubResource("SpriteFrames_db7ku")
-frame = 1
+frames = SubResource("SpriteFrames_2gdl2")
 speed_scale = 2.0
-script = SubResource("GDScript_jexlb")
+script = SubResource("GDScript_ysrfm")
 maxhp = 3
 move_amount = 4
 subtype = 4
