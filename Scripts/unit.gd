@@ -32,6 +32,7 @@ func _process(delta):
 					tilemap.select(self)
 				elif type ==2:
 					tilemap.try_fertilize(tilemap.local_to_map(position))
+				tilemap.prev_cursor_loc = null
 				tilemap.input_lock -=1
 		else:
 			position += (tilemap.map_to_local(movequeue[0])-position).normalized()*speed*delta
