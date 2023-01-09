@@ -196,15 +196,21 @@ func spawn_enemies():
 	var sums = [0,0,0,0,0,0]
 	if pts>costs[4]*(size+size-2):
 		sums = [0,0,0,0,12,2]
+		for i in range(2):
+			edge_summon(14)
+		for i in range(12):
+			edge_summon(13)
 	else:
 		for i in range(6):
 			var amount = randi_range(int(pts/costs[5-i]/4),int(pts/costs[5-i]))
 			if i == 0 || i==2:
 				if pts < int(costs[5-i]*1.5): amount==0
 				else: amount = min(1,amount)
+			sums[5-i]=amount
 			for j in range(amount):
 				edge_summon(14-i)
 			pts -= amount*costs[5-i]
+	if sums == [0,0,0,0,0,0]: edge_summon(9)
 
 func edge_summon(unit:int):
 	var locs = []
