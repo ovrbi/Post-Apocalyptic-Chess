@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_nfriy"]
 [ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_ekdt3"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nt3yt"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ol3uw"]
 animations = [{
 "frames": [ExtResource("2_ekdt3")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_5ym7f"]
+[sub_resource type="GDScript" id="GDScript_ryjkd"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -48,6 +48,7 @@ func attack(loc:Vector2i):
 	var dir = tilemap.biggest_dimension(tilemap.local_to_map(position)-loc)
 	for i in targets:
 		do_damage(i, tilemap.local_to_map(position)+dir*10)
+	modulate.a=alpha_amount
 	state = 2
 	tilemap.select(null)
 
@@ -57,8 +58,8 @@ func die():
 "
 
 [node name="Monstrous Treant" instance=ExtResource("1_nfriy")]
-frames = SubResource("SpriteFrames_nt3yt")
-script = SubResource("GDScript_5ym7f")
+frames = SubResource("SpriteFrames_ol3uw")
+script = SubResource("GDScript_ryjkd")
 maxhp = 4
 move_amount = 3
 damage = 3

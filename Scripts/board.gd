@@ -259,6 +259,7 @@ func process_next():
 			if unit.is_in_group("non_unit"): continue
 			if unit.type==0:
 				unit.state = 0
+				unit.modulate.a=1
 		if turn>1:
 			can_harvest = true
 		input_lock-=1
@@ -276,7 +277,7 @@ func spawn_enemies():
 		for i in range(6):
 			var amount = randi_range(int(pts/costs[5-i]/4),int(pts/costs[5-i]))
 			if i == 0 || i==2:
-				if pts < int(costs[5-i]*1.5): amount==0
+				if pts < int(costs[5-i]*1.5): amount=0
 				else: amount = min(1,amount)
 			sums[5-i]=amount
 			for j in range(amount):
@@ -372,18 +373,18 @@ func try_fertilize(loc : Vector2i):
 				i.die()
 		summon(loc, 7)
 
-func get_harvest(loc:Vector2i, size:int):
+func get_harvest(loc:Vector2i, hsize:int):
 	var ans = [loc]
-	if size != 1 && size != 3 && is_in_map(loc+Vector2i(0,1)): ans.append(loc+Vector2i(0,1))
-	if size>2 && is_in_map(loc+Vector2i(1,0)): ans.append(loc+Vector2i(1,0))
-	if size==3||size==5 && is_in_map(loc+Vector2i(-1,0)): ans.append(loc+Vector2i(-1,0))
-	if size == 4 && is_in_map(loc+Vector2i(1,1)): ans.append(loc+Vector2i(1,1))
-	if size == 5 && is_in_map(loc+Vector2i(0,-1)): ans.append(loc+Vector2i(0,-1))
+	if hsize != 1 && hsize != 3 && is_in_map(loc+Vector2i(0,1)): ans.append(loc+Vector2i(0,1))
+	if hsize>2 && is_in_map(loc+Vector2i(1,0)): ans.append(loc+Vector2i(1,0))
+	if hsize==3||hsize==5 && is_in_map(loc+Vector2i(-1,0)): ans.append(loc+Vector2i(-1,0))
+	if hsize == 4 && is_in_map(loc+Vector2i(1,1)): ans.append(loc+Vector2i(1,1))
+	if hsize == 5 && is_in_map(loc+Vector2i(0,-1)): ans.append(loc+Vector2i(0,-1))
 	return ans
 
-func try_harvest(loc:Vector2i, size:int):
-	var targets = get_harvest(loc,size)
-	var canharvest = harvest_cheats || targets.size()==size
+func try_harvest(loc:Vector2i, hsize:int):
+	var targets = get_harvest(loc,hsize)
+	var canharvest = harvest_cheats || targets.size()==hsize
 	for i in targets:
 		canharvest = canharvest && has_neutral(i,1) 
 	if canharvest:
@@ -393,7 +394,7 @@ func try_harvest(loc:Vector2i, size:int):
 		tb_wrath.visible = false
 		for i in targets:
 			get_units(i)[0].queue_free()
-		points+=size
+		points+=hsize
 		if size==5: points+=5
 		summon(loc,size)
 		mode = 0

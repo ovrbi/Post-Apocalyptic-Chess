@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://m5cbctj68eer" path="res://Textures/LVM_color_1.png" id="2_oqsmo"]
 [ext_resource type="Texture2D" uid="uid://4hxoak50es03" path="res://Textures/LVM_color_2.png" id="3_2rtgs"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2gdl2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_db7ku"]
 animations = [{
 "frames": [ExtResource("2_oqsmo"), ExtResource("3_2rtgs")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_ysrfm"]
+[sub_resource type="GDScript" id="GDScript_jexlb"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -49,6 +49,7 @@ func attack(loc:Vector2i):
 		else:
 			do_damage(loc, tilemap.local_to_map(position))
 	state = 2
+	modulate.a=alpha_amount
 	tilemap.select(null)
 
 func die():
@@ -57,10 +58,10 @@ func die():
 "
 
 [node name="Lavender Mender" instance=ExtResource("1_0ympl")]
-frames = SubResource("SpriteFrames_2gdl2")
+frames = SubResource("SpriteFrames_db7ku")
+frame = 1
 speed_scale = 2.0
-playing = true
-script = SubResource("GDScript_ysrfm")
+script = SubResource("GDScript_jexlb")
 maxhp = 3
 move_amount = 4
 subtype = 4

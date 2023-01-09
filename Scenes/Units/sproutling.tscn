@@ -37,6 +37,7 @@ func preview_attacks(loc:Vector2i):
 func attack(loc:Vector2i): 
 	do_damage(loc, tilemap.local_to_map(position))
 	state = 2
+	modulate.a=alpha_amount
 	tilemap.select(null)
 
 func die():

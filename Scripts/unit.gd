@@ -15,11 +15,14 @@ var movequeue = []
 @export var subtype : int
 var rooted = false
 var atk_dir
+var alpha_amount = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tilemap = get_parent()
 	curhp = maxhp
+	if type == 0:
+		modulate.a = alpha_amount
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

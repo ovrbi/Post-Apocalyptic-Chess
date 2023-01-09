@@ -1,18 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjkbqugsyppoy"]
+[gd_scene load_steps=5 format=3 uid="uid://cjkbqugsyppoy"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_nvba8"]
-[ext_resource type="Texture2D" uid="uid://cjbbbbquol855" path="res://Textures/Druid_color_1.png" id="2_77kap"]
-[ext_resource type="Texture2D" uid="uid://cl3grmsd76g5b" path="res://Textures/Druid_color_2.png" id="3_8wlt6"]
+[ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_sa0mb"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3oasf"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_totwu"]
 animations = [{
-"frames": [ExtResource("2_77kap"), ExtResource("3_8wlt6")],
+"frames": [ExtResource("2_sa0mb")],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_f3u3s"]
+[sub_resource type="GDScript" id="GDScript_84ldk"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -43,6 +42,7 @@ func preview_attacks(loc:Vector2i):
 func attack(loc:Vector2i): 
 	do_damage(loc, tilemap.local_to_map(position))
 	state = 2
+	modulate.a=alpha_amount
 	tilemap.select(null)
 
 func die():
@@ -51,10 +51,8 @@ func die():
 "
 
 [node name="Druid" instance=ExtResource("1_nvba8")]
-frames = SubResource("SpriteFrames_3oasf")
-speed_scale = 2.0
-playing = true
-script = SubResource("GDScript_f3u3s")
+frames = SubResource("SpriteFrames_totwu")
+script = SubResource("GDScript_84ldk")
 maxhp = 3
 move_amount = 3
 damage = 1
