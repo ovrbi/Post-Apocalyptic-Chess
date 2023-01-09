@@ -36,6 +36,7 @@ var summon_units = [
 var costs = [5,9,13,17,21,25]
 var harvest_cheats = true
 
+var friendlies_alive = 0
 var wrath = 0
 var ms_boost = 0
 var extra_attack = 0
@@ -328,6 +329,10 @@ func edge_summon(unit:int):
 		var loc = backuplocs[randi_range(0,backuplocs.size()-1)]
 		var units = get_units(loc)
 		if !units[0].passable:
+			if units[0].type==0:
+				friendlies_alive-=1
+				if friendlies_alive<=0:
+					get_tree().change_scene_to_file("res://Scenes/lose_screen.tscn")
 			units[0].queue_free()
 		summon(loc, unit)
 
