@@ -35,7 +35,7 @@ var summon_units = [
 ]
 var startcost = 8
 var costs = [5,13,18,23,28,33]
-var harvest_cheats = true
+var harvest_cheats = false
 
 var friendlies_alive = 0
 var wrath = 0
