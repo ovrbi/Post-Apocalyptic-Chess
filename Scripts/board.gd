@@ -64,10 +64,15 @@ func _ready():
 	
 	selected = null
 	prev_cursor_loc = null
-	summon(Vector2i(2,2),0)
-	summon(Vector2i(3,2),0)
-	summon(Vector2i(2,3),0)
-	summon(Vector2i(3,3),0)
+	var rand = randi() % 4
+	if rand!=0:
+		summon(Vector2i(3,3),0)
+	if rand!=1:
+		summon(Vector2i(3,4),0)
+	if rand!=2:
+		summon(Vector2i(4,3),0)
+	if rand!=3:
+		summon(Vector2i(4,4),0)
 	#spawn initial enemies
 	end_turn()
 	
