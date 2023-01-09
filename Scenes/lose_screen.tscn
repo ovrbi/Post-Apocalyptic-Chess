@@ -4,18 +4,18 @@
 [ext_resource type="FontFile" uid="uid://b3ifmdsmwqt6x" path="res://Fonts/Snake.ttf" id="1_w81tr"]
 [ext_resource type="Texture2D" uid="uid://s2ve7ywk3smd" path="res://Textures/gameboard_new.png" id="2_d8p01"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_q8l5f"]
+[sub_resource type="LabelSettings" id="LabelSettings_4vlf5"]
 font = ExtResource("1_w81tr")
 font_size = 72
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_gry08"]
+[sub_resource type="LabelSettings" id="LabelSettings_6reej"]
 line_spacing = -17.0
 font = ExtResource("1_w81tr")
 font_size = 51
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_v2pqo"]
+[sub_resource type="LabelSettings" id="LabelSettings_naaqf"]
 font = ExtResource("1_w81tr")
 font_size = 51
 font_color = Color(0, 0, 0, 1)
@@ -39,7 +39,7 @@ offset_top = 85.0
 offset_right = 486.0
 offset_bottom = 169.0
 text = "GAME OVER!"
-label_settings = SubResource("LabelSettings_q8l5f")
+label_settings = SubResource("LabelSettings_4vlf5")
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 191.0
@@ -47,7 +47,7 @@ offset_top = 147.0
 offset_right = 506.0
 offset_bottom = 231.0
 text = "Final Score: xyz"
-label_settings = SubResource("LabelSettings_q8l5f")
+label_settings = SubResource("LabelSettings_4vlf5")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
@@ -57,7 +57,7 @@ offset_top = 204.0
 offset_right = 610.0
 offset_bottom = 288.0
 text = "Well done!"
-label_settings = SubResource("LabelSettings_gry08")
+label_settings = SubResource("LabelSettings_6reej")
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="."]
@@ -67,7 +67,7 @@ offset_right = 641.0
 offset_bottom = 458.0
 text = "Press enter or click anywhere
 to try again!"
-label_settings = SubResource("LabelSettings_gry08")
+label_settings = SubResource("LabelSettings_6reej")
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="."]
@@ -77,7 +77,7 @@ offset_right = 666.0
 offset_bottom = 678.0
 text = "Made by ovrbi, ruby, BirbMom and Finn Talisker
 in 72 hours for Ludum Dare 52."
-label_settings = SubResource("LabelSettings_v2pqo")
+label_settings = SubResource("LabelSettings_naaqf")
 horizontal_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://r0r05iye52xq" path="res://Textures/Lavender_Mender_1.png" id="2_tdf54"]
 [ext_resource type="Texture2D" uid="uid://78iyhd0ttljg" path="res://Textures/Lavender_Mender_2.png" id="3_i1e1f"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gwof1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_5oj6r"]
 animations = [{
 "frames": [ExtResource("2_tdf54"), ExtResource("3_i1e1f")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_fqm54"]
+[sub_resource type="GDScript" id="GDScript_g5spj"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -60,9 +60,9 @@ func die():
 "
 
 [node name="Lavender Mender" instance=ExtResource("1_0ympl")]
-frames = SubResource("SpriteFrames_gwof1")
+frames = SubResource("SpriteFrames_5oj6r")
 speed_scale = 2.0
-script = SubResource("GDScript_fqm54")
+script = SubResource("GDScript_g5spj")
 maxhp = 3
 move_amount = 4
 desc = "A mystical healer who makes use of scents.
