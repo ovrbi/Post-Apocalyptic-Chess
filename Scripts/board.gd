@@ -88,10 +88,14 @@ func _process(delta):
 	var mouseloc = local_to_map(get_viewport().get_mouse_position()-position)
 	if mouseloc != prev_cursor_loc:
 		var tmp = get_units(mouseloc)
-		if !tmp.is_empty()&&tmp[0].type !=2: tmp[0].get_node("Label").visible = true
+		if !tmp.is_empty()&&tmp[0].type !=2: 
+			tmp[0].hp_vis +=1
+			tmp[0].update_label()
 		if prev_cursor_loc!=null:
 			tmp = get_units(prev_cursor_loc)
-			if !tmp.is_empty()&&tmp[0].type !=2&&selected!=tmp[0]: tmp[0].get_node("Label").visible = false
+			if !tmp.is_empty()&&tmp[0].type !=2: 
+				tmp[0].hp_vis -= 1
+				tmp[0].update_label()
 			
 		if mouseloc.x>=0&&mouseloc.y>=0&&mouseloc.x<size &&mouseloc.y<size: 
 			node_selector.visible=true
@@ -365,7 +369,8 @@ func select(target : Node2D):
 	clear_layer(2)
 	if target == null:
 		if selected!= null&&selected.type!=2:
-			selected.get_node("Label").visible = false
+			selected.hp_vis -= 1
+			selected.update_label()
 		tb_one.visible = false
 		tb_two.visible = false
 		tb_three.visible = false
@@ -377,11 +382,15 @@ func select(target : Node2D):
 		node_selected.visible=false
 		selected = null
 	else:
+		if selected!=null && selected.type!=2:
+			selected.hp_vis -=1
+			selected.update_label()
 		node_selected.position=map_to_local(local_to_map(target.position))
 		node_selected.visible = true
 		selected = target
 		if selected.type!=2:
-			selected.get_node("Label").visible = true
+			selected.hp_vis +=1
+			selected.update_label()
 		#add show desc here
 		if target.type == 0:
 			if target.state == 0:

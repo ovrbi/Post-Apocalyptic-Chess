@@ -17,6 +17,7 @@ var rooted = false
 var atk_dir
 var alpha_amount = 0.5
 var cooldown = 0
+var hp_vis = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,7 +35,13 @@ func _process(delta):
 	if cooldown >0:
 		cooldown -= delta
 		if cooldown <= 0:
-
+			var tgets = preview_attacks(tilemap.local_to_map(position)+atk_dir)
+			for i in tgets:
+				tilemap.set_cell(2,i,0,Vector2i(0,0))
+				var uits = tilemap.get_units(i)
+				if !uits.is_empty() && uits[0].type!=2:
+					uits[0].hp_vis -=1
+					uits[0].update_label()
 			attack(tilemap.local_to_map(position)+atk_dir)
 			tilemap.clear_layer(2)
 			tilemap.input_lock -=1
@@ -55,7 +62,10 @@ func _process(delta):
 						var tgets = preview_attacks(tilemap.local_to_map(position)+atk_dir)
 						for i in tgets:
 							tilemap.set_cell(2,i,0,Vector2i(0,0))
-							
+							var uits = tilemap.get_units(i)
+							if !uits.is_empty() && uits[0].type!=2:
+								uits[0].hp_vis +=1
+								uits[0].update_label()
 					else: tilemap.process_next()
 				tilemap.prev_cursor_loc = null
 				tilemap.input_lock -=1
@@ -189,5 +199,9 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 	return false
 
 func update_label():
+	if hp_vis > 0:
+		$Label.visible=true
+	else:
+		$Label.visible=false
 	if type!=2:
 		$Label.text = str(curhp)+"/"+str(maxhp)
