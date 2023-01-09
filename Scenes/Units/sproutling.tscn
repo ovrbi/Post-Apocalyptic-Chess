@@ -1,18 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://wl3qeo0aop32"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_siyu0"]
-[ext_resource type="Texture2D" uid="uid://cnqubxovq2cox" path="res://Textures/Sproutling_1.png" id="2_5eg55"]
-[ext_resource type="Texture2D" uid="uid://uqo081i7d64a" path="res://Textures/Sproutling_2.png" id="3_qjxvh"]
+[ext_resource type="Texture2D" uid="uid://nemk1t2fob8a" path="res://Textures/Sproutling_thick_1.png" id="2_joden"]
+[ext_resource type="Texture2D" uid="uid://b3haf2pxdxn2" path="res://Textures/sproutling_thick_2.png" id="3_5qogl"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6lfn8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_mv80r"]
 animations = [{
-"frames": [ExtResource("2_5eg55"), ExtResource("3_qjxvh")],
+"frames": [ExtResource("2_joden"), ExtResource("3_5qogl")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_s4o5d"]
+[sub_resource type="GDScript" id="GDScript_r1bqx"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -42,12 +42,12 @@ func attack(loc:Vector2i):
 
 func die():
 	tilemap.summon(tilemap.local_to_map(position),6)
-	super.die()
+	queue_free()
 "
 
 [node name="Sproutling" instance=ExtResource("1_siyu0")]
-frames = SubResource("SpriteFrames_6lfn8")
-script = SubResource("GDScript_s4o5d")
+frames = SubResource("SpriteFrames_mv80r")
+script = SubResource("GDScript_r1bqx")
 maxhp = 1
 move_amount = 5
 damage = 1

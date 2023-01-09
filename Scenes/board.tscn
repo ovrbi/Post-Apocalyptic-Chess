@@ -1,9 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyehjbqcd4luk"]
+[gd_scene load_steps=9 format=3 uid="uid://cyehjbqcd4luk"]
 
 [ext_resource type="Script" path="res://Scripts/board.gd" id="1_6iyyg"]
 [ext_resource type="TileSet" uid="uid://d3qapdqch1luv" path="res://Tilesets/indicators.tres" id="1_8agqs"]
-[ext_resource type="Texture2D" uid="uid://b3f6qdv4q2u1q" path="res://Textures/tmp_selector.png" id="3_4fp7k"]
-[ext_resource type="Texture2D" uid="uid://c5md238axscnw" path="res://Textures/tmp_selected.png" id="4_hk28d"]
+[ext_resource type="Texture2D" uid="uid://j7rhy7ksff0v" path="res://Textures/select0.png" id="3_c5jvy"]
+[ext_resource type="Texture2D" uid="uid://crc6lbd80vphw" path="res://Textures/select1.png" id="4_v2ofp"]
+[ext_resource type="Texture2D" uid="uid://csvsqgaxcggtl" path="res://Textures/selected0.png" id="5_xnxyk"]
+[ext_resource type="Texture2D" uid="uid://8mw5iufva23l" path="res://Textures/selected1.png" id="6_ixyqj"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ox4td"]
+frames = 2
+pause = true
+frame_0/texture = ExtResource("3_c5jvy")
+frame_1/texture = ExtResource("4_v2ofp")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_y5nj3"]
+frames = 2
+pause = true
+frame_0/texture = ExtResource("5_xnxyk")
+frame_1/texture = ExtResource("6_ixyqj")
+frame_1/duration = 1.0
 
 [node name="Board" type="TileMap" node_paths=PackedStringArray("node_selector", "node_selected")]
 tile_set = ExtResource("1_8agqs")
@@ -29,8 +45,8 @@ node_selector = NodePath("selector")
 node_selected = NodePath("selected")
 
 [node name="selector" type="Sprite2D" parent="." groups=["non_unit"]]
-texture = ExtResource("3_4fp7k")
+texture = SubResource("AnimatedTexture_ox4td")
 
 [node name="selected" type="Sprite2D" parent="." groups=["non_unit"]]
 visible = false
-texture = ExtResource("4_hk28d")
+texture = SubResource("AnimatedTexture_y5nj3")
