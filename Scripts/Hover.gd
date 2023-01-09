@@ -7,6 +7,7 @@ var unitmaxhp = 0
 var hover = null
 var button = "none" # hovers = none | endturn | plant | harvest | wrath | one | two | three | four | five
 var mode = 0
+var attacking = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,6 +43,8 @@ func update_text():
 		text = "Choose where to seed the new sprout."
 	elif button == "plant":
 		text = "Plant a new sprout.\nSprouts need to be fertilized by corses to grow."
+	elif attacking == 1:
+		text = "Choose attack target."
 	elif hover != null: # hovering over a unit
 		text = hover.desc
 	else: # nothing is being hovered
@@ -61,6 +64,10 @@ func _on_board_change_hover():
 func _on_board_change_mode():
 	board = $/root/MainScene/Board
 	mode = board.mode
+	if board.selected != null:
+		attacking = board.selected.state
+	else:
+		attacking = 0
 	update_text()
 
 # next turn button
