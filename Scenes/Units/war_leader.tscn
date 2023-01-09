@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_mbp0x"]
 [ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_d0uys"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a5c3y"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_wxi2s"]
 animations = [{
 "frames": [ExtResource("2_d0uys")],
 "loop": true,
@@ -11,7 +11,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_bdk54"]
+[sub_resource type="GDScript" id="GDScript_2jyce"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -32,12 +32,12 @@ func attack(loc:Vector2i):
 func die():
 	tilemap.extra_attack-=1
 	tilemap.summon(tilemap.local_to_map(position),8)
-	super.die()
+	queue_free()
 "
 
 [node name="War Leader" instance=ExtResource("1_mbp0x")]
-frames = SubResource("SpriteFrames_a5c3y")
-script = SubResource("GDScript_bdk54")
+frames = SubResource("SpriteFrames_wxi2s")
+script = SubResource("GDScript_2jyce")
 type = 1
 passable = false
 maxhp = 5
