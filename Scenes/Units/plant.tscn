@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://mjheoiwvq0nk"]
+[gd_scene load_steps=6 format=3 uid="uid://mjheoiwvq0nk"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_5xinb"]
-[ext_resource type="Texture2D" uid="uid://brjen4f24ivci" path="res://Textures/tmp_plant.png" id="2_qffnv"]
+[ext_resource type="Texture2D" uid="uid://in7f8v762ndq" path="res://Textures/Plant_corpse_Flowers_1.png" id="2_dpkm8"]
+[ext_resource type="Texture2D" uid="uid://je86k4new7me" path="res://Textures/Plant_corpse_Flowers_2.png" id="3_myu3d"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a2r7p"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fdb5t"]
 animations = [{
-"frames": [ExtResource("2_qffnv")],
+"frames": [ExtResource("2_dpkm8"), ExtResource("3_myu3d")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_2nhxo"]
+[sub_resource type="GDScript" id="GDScript_c63eg"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -38,8 +39,8 @@ func die():
 "
 
 [node name="Plant" instance=ExtResource("1_5xinb")]
-frames = SubResource("SpriteFrames_a2r7p")
-script = SubResource("GDScript_2nhxo")
+frames = SubResource("SpriteFrames_fdb5t")
+script = SubResource("GDScript_c63eg")
 type = 2
 maxhp = 1
 subtype = 1
