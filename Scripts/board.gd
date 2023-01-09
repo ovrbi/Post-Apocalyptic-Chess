@@ -59,9 +59,9 @@ func _process(delta):
 				var places = get_harvest(mouseloc,harvestsize)
 				for i in places:
 					if has_neutral(i,1):
-						set_cell(1,i,0,Vector2i(0,0))
+						set_cell(1,i,0,Vector2i(0,1))
 					else:
-						set_cell(1,i,0,Vector2i(1,0))
+						set_cell(1,i,0,Vector2i(0,0))
 		else:
 			node_selector.visible=false
 		if selected != null && selected.type == 0 && selected.state == 1:
@@ -69,7 +69,7 @@ func _process(delta):
 			if get_cell_source_id(1,mouseloc)!=-1:
 				var places = selected.preview_attacks(mouseloc)
 				for i in places:
-					set_cell(2,i,0,Vector2i(1,0))
+					set_cell(2,i,0,Vector2i(0,0))
 		prev_cursor_loc = mouseloc
 
 func _unhandled_input(event : InputEvent):
@@ -137,7 +137,7 @@ func highlight_plant():
 				show_cell=show_cell||check_friendly(Vector2i(x-1,y-1))
 				show_cell=show_cell&&(units.is_empty()||((units[0].passable || !has_neutral(Vector2i(x,y),2))&&!has_neutral(Vector2i(x,y),0)&&!has_neutral(Vector2i(x,y),1)))
 				if show_cell: 
-					set_cell(1,Vector2i(x,y),0,Vector2i(0,0))
+					set_cell(1,Vector2i(x,y),0,Vector2i(0,1))
 					
 func check_friendly(loc:Vector2i):
 	var units = get_units(loc)
@@ -199,11 +199,11 @@ func select(target : Node2D):
 			if target.state == 0:
 				var places = target.get_moves()
 				for i in places:
-					set_cell(1,i,0,Vector2i(0,0))
+					set_cell(1,i,0,Vector2i(0,1))
 			elif target.state == 1:
 				var places = target.get_attacks()
 				for i in places:
-					set_cell(1,i,0,Vector2i(1,0))
+					set_cell(1,i,0,Vector2i(0,0))
 
 func attack_tile(loc : Vector2i, from : Vector2i, dmg : int):
 	var targets = get_units(loc)
