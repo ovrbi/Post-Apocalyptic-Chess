@@ -314,13 +314,13 @@ func edge_summon(unit:int):
 	var locs = []
 	var backuplocs = []
 	for i in range(size):
-		if get_units(Vector2i(0,i)).is_empty()||!get_units(Vector2i(0,i))[0].passable: locs.append(Vector2i(0,i))
-		if get_units(Vector2i(size-1,i)).is_empty()||!get_units(Vector2i(size-1,i))[0].passable: locs.append(Vector2i(size-1,i))
+		if get_units(Vector2i(0,i)).is_empty()||get_units(Vector2i(0,i))[0].passable: locs.append(Vector2i(0,i))
+		if get_units(Vector2i(size-1,i)).is_empty()||get_units(Vector2i(size-1,i))[0].passable: locs.append(Vector2i(size-1,i))
 		backuplocs.append(Vector2i(0,i))
 		backuplocs.append(Vector2i(size-1,i))
 	for i in range(1,size-1):
-		if get_units(Vector2i(i,0)).is_empty()||!get_units(Vector2i(i,0))[0].passable: locs.append(Vector2i(i,0))
-		if get_units(Vector2i(i,size-1)).is_empty()||!get_units(Vector2i(i,size-1))[0].passable: locs.append(Vector2i(i,size-1))
+		if get_units(Vector2i(i,0)).is_empty()||get_units(Vector2i(i,0))[0].passable: locs.append(Vector2i(i,0))
+		if get_units(Vector2i(i,size-1)).is_empty()||get_units(Vector2i(i,size-1))[0].passable: locs.append(Vector2i(i,size-1))
 		backuplocs.append(Vector2i(i,0))
 		backuplocs.append(Vector2i(i,size-1))
 	if !locs.is_empty(): summon(locs[randi_range(0,locs.size()-1)],unit)
