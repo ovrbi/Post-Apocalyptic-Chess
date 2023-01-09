@@ -16,6 +16,7 @@ var movequeue = []
 var rooted = false
 var atk_dir
 var alpha_amount = 0.5
+var cooldown = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,6 +31,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if cooldown >0:
+		cooldown -= delta
+		if cooldown <= 0:
+			attack(tilemap.local_to_map(position)+atk_dir)
+			tilemap.clear_layer(2)
+			tilemap.input_lock -=1
+			tilemap.process_next()
 	if !movequeue.is_empty():
 		if position.distance_to(tilemap.map_to_local(movequeue[0]))<speed * delta:
 			position = tilemap.map_to_local(movequeue[0])
@@ -41,8 +49,12 @@ func _process(delta):
 					tilemap.try_fertilize(tilemap.local_to_map(position))
 				elif type==1:
 					if atk_dir != Vector2i(0,0):
-						attack(tilemap.local_to_map(position)+atk_dir)
-					tilemap.process_next()
+						cooldown = 1.0
+						tilemap.input_lock+=1
+						var tgets = preview_attacks(tilemap.local_to_map(position)+atk_dir)
+						for i in tgets:
+							tilemap.set_cell(2,i,0,Vector2i(0,0))
+					else: tilemap.process_next()
 				tilemap.prev_cursor_loc = null
 				tilemap.input_lock -=1
 		else:
