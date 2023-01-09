@@ -12,4 +12,3 @@ centered = false
 
 [node name="Board" parent="." instance=ExtResource("1_y7kby")]
 position = Vector2(137, 144)
-layer_0/tile_data = PackedInt32Array()
