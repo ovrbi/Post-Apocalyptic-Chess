@@ -54,6 +54,9 @@ var tb_three
 var tb_four
 var tb_five
 
+var audio
+var audio1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#import buttons
@@ -66,6 +69,8 @@ func _ready():
 	tb_three = $/root/MainScene/Control/Three
 	tb_four = $/root/MainScene/Control/Four
 	tb_five = $/root/MainScene/Control/Five
+	audio = $/root/MainScene/Audio
+	audio1 = $/root/MainScene/Audio1
 	
 	selected = null
 	prev_cursor_loc = null
@@ -176,6 +181,7 @@ func _unhandled_input(event : InputEvent):
 				else:
 					if selected.state == 0:
 						selected.move_to(mouseloc)
+						audio.play()
 					else:
 						selected.attack(mouseloc)
 			elif mode == 1: #planting
@@ -280,6 +286,8 @@ func end_turn():
 		tb_plant.visible = true
 		tb_harvest.visible = true
 		tb_wrath.visible = true
+		audio1.stream = preload("res://Sounds/nextturn_2.wav")
+		audio1.play()
 	turn+=1
 	input_lock+=1
 	emit_signal("next_turn")

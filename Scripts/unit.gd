@@ -1,5 +1,8 @@
 extends AnimatedSprite2D
 
+var audio
+var audio_punch
+
 const speed = 1000
 @export var type : int #0:player side 1:enemy 2:neutral (no one controls)
 var state : int #0:base 1:has moved 2:has attacked (player controlled only)
@@ -22,7 +25,9 @@ var hp_vis = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tilemap = get_parent()
-
+	audio = $/root/MainScene/Audio
+	audio_punch = $/root/MainScene/PunchAudio
+	
 	curhp = maxhp
 	if type == 0:
 		modulate.a = alpha_amount
@@ -61,6 +66,7 @@ func _process(delta):
 					tilemap.try_fertilize(tilemap.local_to_map(position))
 				elif type==1:
 					if atk_dir != Vector2i(0,0):
+						audio_punch.play()
 						cooldown = 0.5
 						state = 0
 						tilemap.input_lock+=1
@@ -79,6 +85,8 @@ func _process(delta):
 						tmp[0].update_label()
 				tilemap.prev_cursor_loc = null
 				tilemap.input_lock -=1
+			else:
+				audio.play()
 		else:
 			position += (tilemap.map_to_local(movequeue[0])-position).normalized()*speed*delta
 
