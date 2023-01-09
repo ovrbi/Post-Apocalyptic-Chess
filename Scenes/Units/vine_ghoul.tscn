@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdixql75bxjvj"]
+[gd_scene load_steps=6 format=3 uid="uid://cdixql75bxjvj"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_jkwib"]
-[ext_resource type="Texture2D" uid="uid://4aoh4nkecusq" path="res://Textures/tmp_friendly.png" id="2_stwa8"]
+[ext_resource type="Texture2D" uid="uid://qdhohqiqimp1" path="res://Textures/Vineghoul_1.png" id="2_k8xd1"]
+[ext_resource type="Texture2D" uid="uid://dbof146qbtqsl" path="res://Textures/Vineghoul_2.png" id="3_u2f6q"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dawse"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_crjdx"]
 animations = [{
-"frames": [ExtResource("2_stwa8")],
+"frames": [ExtResource("2_k8xd1"), ExtResource("3_u2f6q")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_oil76"]
+[sub_resource type="GDScript" id="GDScript_p00rf"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -54,8 +55,8 @@ func die():
 "
 
 [node name="Vine Ghoul" instance=ExtResource("1_jkwib")]
-frames = SubResource("SpriteFrames_dawse")
-script = SubResource("GDScript_oil76")
+frames = SubResource("SpriteFrames_crjdx")
+script = SubResource("GDScript_p00rf")
 maxhp = 3
 move_amount = 4
 damage = 1

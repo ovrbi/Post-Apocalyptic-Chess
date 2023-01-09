@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7e7lcs4drj73"]
+[gd_scene load_steps=6 format=3 uid="uid://b7e7lcs4drj73"]
 
 [ext_resource type="PackedScene" uid="uid://b5w8q2qgwrn60" path="res://Scenes/unit.tscn" id="1_mbp0x"]
-[ext_resource type="Texture2D" uid="uid://bjj8eruhp840l" path="res://Textures/tmp_enemy.png" id="2_d0uys"]
+[ext_resource type="Texture2D" uid="uid://tx7pc6auofwj" path="res://Textures/War_Leader_1.png" id="2_xkll3"]
+[ext_resource type="Texture2D" uid="uid://ij2teuk4isvw" path="res://Textures/War_Leader_2.png" id="3_1fwy0"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a5c3y"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrq2o"]
 animations = [{
-"frames": [ExtResource("2_d0uys")],
+"frames": [ExtResource("2_xkll3"), ExtResource("3_1fwy0")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_bdk54"]
+[sub_resource type="GDScript" id="GDScript_54xv8"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -36,8 +37,8 @@ func die():
 "
 
 [node name="War Leader" instance=ExtResource("1_mbp0x")]
-frames = SubResource("SpriteFrames_a5c3y")
-script = SubResource("GDScript_bdk54")
+frames = SubResource("SpriteFrames_jrq2o")
+script = SubResource("GDScript_54xv8")
 type = 1
 passable = false
 maxhp = 5
