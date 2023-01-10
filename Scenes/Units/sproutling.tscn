@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nemk1t2fob8a" path="res://Textures/Sproutling_thick_1.png" id="2_joden"]
 [ext_resource type="Texture2D" uid="uid://b3haf2pxdxn2" path="res://Textures/sproutling_thick_2.png" id="3_5qogl"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gyfxb"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_26tvx"]
 animations = [{
 "frames": [ExtResource("2_joden"), ExtResource("3_5qogl")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_ymtt5"]
+[sub_resource type="GDScript" id="GDScript_pnpl2"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -42,12 +42,12 @@ func attack(loc:Vector2i):
 
 func die():
 	tilemap.summon(tilemap.local_to_map(position),6)
-	queue_free()
+	super.die()
 "
 
 [node name="Sproutling" instance=ExtResource("1_siyu0")]
-frames = SubResource("SpriteFrames_gyfxb")
-script = SubResource("GDScript_ymtt5")
+frames = SubResource("SpriteFrames_26tvx")
+script = SubResource("GDScript_pnpl2")
 maxhp = 1
 move_amount = 5
 damage = 1

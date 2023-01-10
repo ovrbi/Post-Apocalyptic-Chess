@@ -4,6 +4,7 @@ var audio
 var audio_punch
 
 const speed = 1000
+const subs_class = preload("res://Scripts/subscription.gd")
 @export var type : int #0:player side 1:enemy 2:neutral (no one controls)
 var state : int #0:base 1:has moved 2:has attacked (player controlled only)
 @export var passable : bool
@@ -20,7 +21,7 @@ var rooted = false
 var atk_dir
 var alpha_amount = 0.5
 var cooldown = 0
-var hp_vis = 0
+var hp_vis = subs_class.subscription.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,7 +50,7 @@ func _process(delta):
 				for i in tgets:
 					var uits = tilemap.get_units(i)
 					if !uits.is_empty() && uits[0].type!=2:
-						uits[0].hp_vis -=1
+						uits[0].hp_vis.unsubscribe("attack")
 						uits[0].update_label()
 				state = 0
 				tilemap.clear_layer(2)
@@ -75,13 +76,13 @@ func _process(delta):
 							tilemap.set_cell(2,i,0,Vector2i(0,0))
 							var uits = tilemap.get_units(i)
 							if !uits.is_empty() && uits[0].type!=2:
-								uits[0].hp_vis +=1
+								uits[0].hp_vis.subscribe("attack")
 								uits[0].update_label()
 					else: tilemap.process_next()
 				if tilemap.prev_cursor_loc!=null:
 					var tmp = tilemap.get_units(tilemap.prev_cursor_loc)
 					if !tmp.is_empty()&&tmp[0].type !=2: 
-						tmp[0].hp_vis -= 1
+						tmp[0].hp_vis.unsubscribe("hover")
 #						print("a")
 						tmp[0].update_label()
 				tilemap.prev_cursor_loc = null
@@ -218,9 +219,8 @@ func takedamage(amount:int, from : Vector2i): #returns true if lethal
 	return false
 
 func update_label():
-	if hp_vis<0: hp_vis=0
 	if type!=2:
-		if hp_vis > 0:
+		if !hp_vis.is_empty():
 			$Label.visible=true
 		else:
 			$Label.visible=false

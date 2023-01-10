@@ -96,13 +96,13 @@ func _process(delta):
 	if mouseloc != prev_cursor_loc:
 		var tmp = get_units(mouseloc)
 		if !tmp.is_empty()&&tmp[0].type !=2: 
-			tmp[0].hp_vis +=1
+			tmp[0].hp_vis.subscribe("hover")
 #			print("+hover"+str(tmp[0]))
 			tmp[0].update_label()
 		if prev_cursor_loc!=null:
 			tmp = get_units(prev_cursor_loc)
 			if !tmp.is_empty()&&tmp[0].type !=2: 
-				tmp[0].hp_vis -= 1
+				tmp[0].hp_vis.unsubscribe("hover")
 #				print("-hover"+str(tmp[0]))
 				tmp[0].update_label()
 			
@@ -242,7 +242,7 @@ func button_harvest():
 			if prev_cursor_loc!=null:
 				var tmp = get_units(prev_cursor_loc)
 				if !tmp.is_empty()&&tmp[0].type !=2: 
-					tmp[0].hp_vis -= 1
+					tmp[0].hp_vis.unsubscribe("hover")
 #					print("-harvest"+str(tmp[0]))
 					tmp[0].update_label()
 			prev_cursor_loc = null
@@ -270,7 +270,7 @@ func highlight_plant():
 		if prev_cursor_loc!=null:
 			var tmp = get_units(prev_cursor_loc)
 			if !tmp.is_empty()&&tmp[0].type !=2: 
-				tmp[0].hp_vis -= 1
+				tmp[0].hp_vis.unsubscribe("hover")
 #				print("-plant"+str(tmp[0]))
 				tmp[0].update_label()
 		prev_cursor_loc = null
@@ -407,7 +407,7 @@ func select(target : Node2D):
 	clear_layer(2)
 	if target == null:
 		if selected!= null&&selected.type!=2:
-			selected.hp_vis -= 1
+			selected.hp_vis.unsubscribe("select")
 #			print("-selectnull"+str(selected))
 			selected.update_label()
 		tb_one.visible = false
@@ -422,14 +422,14 @@ func select(target : Node2D):
 		selected = null
 	else:
 		if selected!=null && selected.type!=2:
-			selected.hp_vis -=1
+			selected.hp_vis.unsubscribe("select")
 #			print("-select"+str(selected))
 			selected.update_label()
 		node_selected.position=map_to_local(local_to_map(target.position))
 		node_selected.visible = true
 		selected = target
 		if selected.type!=2:
-			selected.hp_vis +=1
+			selected.hp_vis.subscribe("select")
 #			print("+select"+str(selected))
 			selected.update_label()
 		#add show desc here
@@ -491,7 +491,7 @@ func try_harvest(loc:Vector2i, hsize:int):
 		for i in targets:
 			get_units(i)[0].queue_free()
 		points+=hsize
-		if size==5: points+=5
+		if hsize==5: points+=5
 		summon(loc,hsize)
 		mode = 0
 		can_harvest = false
