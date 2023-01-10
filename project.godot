@@ -58,3 +58,4 @@ Wrath={
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.721569, 0.509804, 0.239216, 1)
