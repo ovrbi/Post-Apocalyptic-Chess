@@ -100,7 +100,7 @@ func _process(delta):
 			if tmp[0].type !=2: 
 				tmp[0].hp_vis.subscribe("hover")
 				tmp[0].update_label()
-			if tmp[0].type == 1:
+			if tmp[0].type == 1 && mode==0:
 				var places = tmp[0].get_moves()
 				for i in places:
 					set_cell(3,i,0,Vector2i(0,1))
