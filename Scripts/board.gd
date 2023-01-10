@@ -94,11 +94,16 @@ func _ready():
 func _process(delta):
 	var mouseloc = local_to_map(get_viewport().get_mouse_position()-position)
 	if mouseloc != prev_cursor_loc:
+		clear_layer(3)
 		var tmp = get_units(mouseloc)
-		if !tmp.is_empty()&&tmp[0].type !=2: 
-			tmp[0].hp_vis.subscribe("hover")
-#			print("+hover"+str(tmp[0]))
-			tmp[0].update_label()
+		if !tmp.is_empty():
+			if tmp[0].type !=2: 
+				tmp[0].hp_vis.subscribe("hover")
+				tmp[0].update_label()
+			if tmp[0].type == 1:
+				var places = tmp[0].get_moves()
+				for i in places:
+					set_cell(3,i,0,Vector2i(0,1))
 		if prev_cursor_loc!=null:
 			tmp = get_units(prev_cursor_loc)
 			if !tmp.is_empty()&&tmp[0].type !=2: 

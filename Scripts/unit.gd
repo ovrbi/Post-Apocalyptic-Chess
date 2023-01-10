@@ -124,7 +124,14 @@ func autopilot():
 			else: atk_dir=Vector2i(1,0)
 			move_to(i)
 			return
-	move_to(alllocs[randi()%alllocs.size()])
+	var tmp = []
+	for i in alllocs:
+		if i.x>0&&i.y>0&&i.x<tilemap.size-1&&i.y<tilemap.size-1:
+			tmp.append(i)
+	if !tmp.is_empty():
+		move_to(tmp[randi()%tmp.size()])
+	else:
+		move_to(alllocs[randi()%alllocs.size()])
 
 func check_all_adjacent(loc:Vector2i, plant:bool):
 	var ans = 0
