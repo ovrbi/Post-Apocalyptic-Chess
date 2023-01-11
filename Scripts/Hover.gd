@@ -46,7 +46,10 @@ func update_text():
 	elif attacking == 1:
 		text = "Choose attack target."
 	elif hover != null: # hovering over a unit
-		text = hover.desc
+		if hover.curhp <= 0:
+			text = "This unit is lingering. It will die\nat the end of next turn."
+		else:
+			text = hover.desc
 	else: # nothing is being hovered
 		text = " "
 	
