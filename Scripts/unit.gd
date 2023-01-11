@@ -154,6 +154,13 @@ func die():
 			get_node("/root").add_child(preload("res://Scenes/lose_screen.tscn").instantiate())
 			tilemap.input_lock+=1
 	queue_free()
+	if tilemap.prev_cursor_loc!=null:
+		var tmp = tilemap.get_units(tilemap.prev_cursor_loc)
+		if !tmp.is_empty()&&tmp[0].type !=2: 
+			tmp[0].hp_vis.unsubscribe("hover")
+	#						print("a")
+			tmp[0].update_label()
+	tilemap.prev_cursor_loc = null
 
 func move_to(to : Vector2i):
 	tilemap.input_lock +=1
