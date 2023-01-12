@@ -184,6 +184,8 @@ func _unhandled_input(event : InputEvent):
 					if mouse_t.is_empty():
 						select(null)
 					else:
+						audio1.stream = preload("res://Sounds/button.wav")
+						audio1.play()
 						if mouse_t[0] == selected:
 							if mouse_t.size()>1:
 								select(mouse_t[1])
@@ -225,20 +227,20 @@ func button_endturn():
 		end_turn()
 
 func button_plant():
+	audio1.stream = preload("res://Sounds/button.wav")
+	audio1.play()
 	if tb_plant.button_pressed == true:
 		highlight_plant()
-		audio1.stream = preload("res://Sounds/button.wav")
-		audio1.play()
 		tb_plant.button_pressed = true
 	else:
 		select(null)
 
 func button_harvest():
+	audio1.stream = preload("res://Sounds/button.wav")
+	audio1.play()
 	if tb_harvest.button_pressed == true:
 		select(null)
 		if can_harvest: 
-			audio1.stream = preload("res://Sounds/button.wav")
-			audio1.play()
 			tb_one.visible = true
 			tb_two.visible = true
 			tb_three.visible = true
