@@ -10,3 +10,5 @@ class subscription:
 			list.erase(a)
 	func is_empty():
 		return list.is_empty()
+	func clear():
+		list = []

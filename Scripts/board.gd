@@ -43,6 +43,7 @@ var ms_boost = 0
 var extra_attack = 0
 var frame_time = 0.0
 var prev_frame = 0
+var states = []
 
 var tb_nextturn
 var tb_plant
@@ -57,6 +58,9 @@ var tb_five
 var audio
 var audio1
 var punch_audio
+
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -193,13 +197,16 @@ func _unhandled_input(event : InputEvent):
 							select(mouse_t[0])
 				else:
 					if selected.state == 0:
+						save_state()
 						selected.move_to(mouseloc)
 						audio.play()
 					else:
+						save_state()
 						selected.attack(mouseloc)
 						punch_audio.play()
 			elif mode == 1: #planting
 				if get_cell_source_id(1,mouseloc)!=-1:
+					save_state()
 					tb_nextturn.visible = true
 					tb_plant.visible = false
 					tb_harvest.visible = false
@@ -221,6 +228,8 @@ func _unhandled_input(event : InputEvent):
 			button_harvest()
 		if event.is_action_pressed("Wrath"):
 			button_wrath()
+		if event.is_action_pressed("Undo"):
+			button_undo()
 
 func button_endturn():
 	if !can_harvest:
@@ -260,6 +269,7 @@ func button_harvest():
 
 func button_wrath():
 	if can_harvest:
+		save_state()
 		audio1.stream = preload("res://Sounds/button.wav")
 		audio1.play()
 		tb_nextturn.visible = true
@@ -270,6 +280,69 @@ func button_wrath():
 		can_harvest = false
 		select(null)
 
+func button_undo():
+	if states.size() > 0:
+		undo_move()
+
+func undo_move():
+	var prev_state = states.pop_front()
+	can_harvest = prev_state["can_harvest"]
+	wrath = prev_state["wrath"]
+	ms_boost = prev_state["ms_boost"]
+	extra_attack = prev_state["extra_attack"]
+	friendlies_alive = prev_state["friendlies_alive"]
+	
+	tb_nextturn.visible = !can_harvest
+	tb_plant.visible = can_harvest
+	tb_harvest.visible = can_harvest
+	tb_wrath.visible = can_harvest
+	
+	var unitlist = prev_state["units"]
+	for unit in get_children():
+		if unit.is_in_group("non_unit"): continue
+		if unitlist.has(unit):
+			unit.state = unitlist[unit]["state"]
+			unit.curhp = unitlist[unit]["curhp"]
+			unit.rooted = unitlist[unit]["rooted"]
+			unit.position = unitlist[unit]["position"]
+			unit.dead = unitlist[unit]["dead"]
+			unit.modulate.a = unitlist[unit]["alpha"]
+		else:
+			unit.position = Vector2(1024.0,1024.0)
+			unit.queue_free()
+	select(null)
+	mode = 0;
+	emit_signal("change_mode")
+	if prev_cursor_loc!=null:
+		var tmp = get_units(prev_cursor_loc)
+		if !tmp.is_empty()&&tmp[0].type !=2: 
+			tmp[0].hp_vis.unsubscribe("hover")
+			tmp[0].update_label()
+	prev_cursor_loc = null
+
+func save_state():
+	print("boop")
+	var ans = {
+		"can_harvest" = can_harvest,
+		"wrath" = wrath,
+		"ms_boost" = ms_boost,
+		"extra_attack" = extra_attack,
+		"friendlies_alive" = friendlies_alive,
+		"units" = {}
+	}
+	
+	for unit in get_children():
+		if unit.is_in_group("non_unit"): continue
+		var dict = {
+			"state" = unit.state,
+			"curhp" = unit.curhp,
+			"rooted" = unit.rooted,
+			"position" = unit.position,
+			"dead" = unit.dead,
+			"alpha" = unit.modulate.a
+		}
+		ans["units"][unit] = dict
+	states.push_front(ans)
 
 func highlight_plant():
 	select(null)
@@ -303,6 +376,7 @@ func check_friendly(loc:Vector2i):
 	var units = get_units(loc)
 	return !units.is_empty()&&units[0].type==0
 func end_turn():
+	states = []
 	if turn!=0:
 		#tb_nextturn.disabled = true
 		tb_nextturn.visible = false
@@ -319,12 +393,14 @@ func end_turn():
 	#process dying units
 	for unit in get_children():
 		if unit.is_in_group("non_unit"): continue
-		if unit.curhp<=0:
+		if unit.curhp<=0&&!unit.dead:
 			unit.die()
+		if unit.dead:
+			unit.queue_free()
 	#process enemy actions
 	for unit in get_children():
 		if unit.is_in_group("non_unit"): continue
-		if unit.type==1:
+		if unit.type==1&&!unit.dead:
 			for i in range(extra_attack+1):
 				processqueue.append(unit)
 	process_next()
@@ -490,6 +566,7 @@ func try_harvest(loc:Vector2i, hsize:int):
 	for i in targets:
 		canharvest = canharvest && has_neutral(i,1) 
 	if canharvest:
+		save_state()
 		audio.play()
 		tb_nextturn.visible = true
 		tb_plant.visible = false

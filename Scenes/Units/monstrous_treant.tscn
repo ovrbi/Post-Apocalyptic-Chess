@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c55j5xnlqqs2l" path="res://Textures/Treant_1.png" id="2_noen4"]
 [ext_resource type="Texture2D" uid="uid://2l15aqoafnai" path="res://Textures/Treant_2.png" id="3_pihy1"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_pdwjn"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ocgm"]
 animations = [{
 "frames": [ExtResource("2_noen4"), ExtResource("3_pihy1")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_j8ddh"]
+[sub_resource type="GDScript" id="GDScript_hvn3d"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -59,8 +59,8 @@ func die():
 "
 
 [node name="Monstrous Treant" instance=ExtResource("1_nfriy")]
-frames = SubResource("SpriteFrames_pdwjn")
-script = SubResource("GDScript_j8ddh")
+frames = SubResource("SpriteFrames_2ocgm")
+script = SubResource("GDScript_hvn3d")
 maxhp = 4
 move_amount = 3
 damage = 3

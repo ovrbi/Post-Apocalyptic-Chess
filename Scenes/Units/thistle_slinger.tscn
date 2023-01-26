@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://r845f4knxyak" path="res://Textures/Thistleslinder_2.png" id="2_plnlu"]
 [ext_resource type="Texture2D" uid="uid://c23dt3yueefp6" path="res://Textures/Thistleslinger_1.png" id="3_xe071"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_pofsv"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fq60t"]
 animations = [{
 "frames": [ExtResource("2_plnlu"), ExtResource("3_xe071")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_xfb5a"]
+[sub_resource type="GDScript" id="GDScript_hty0x"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -51,8 +51,8 @@ func die():
 "
 
 [node name="ThistleSlinger" instance=ExtResource("1_35b1r")]
-frames = SubResource("SpriteFrames_pofsv")
-script = SubResource("GDScript_xfb5a")
+frames = SubResource("SpriteFrames_fq60t")
+script = SubResource("GDScript_hty0x")
 maxhp = 1
 move_amount = 3
 damage = 1

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://hi8sqyjwrdmf" path="res://Textures/Druid_1.png" id="2_88syq"]
 [ext_resource type="Texture2D" uid="uid://cyto3fji8gixx" path="res://Textures/Druid_2.png" id="3_35urx"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_n7gh2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ms25c"]
 animations = [{
 "frames": [ExtResource("2_88syq"), ExtResource("3_35urx")],
 "loop": true,
@@ -12,7 +12,7 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_islj0"]
+[sub_resource type="GDScript" id="GDScript_cct87"]
 script/source = "extends \"res://Scripts/unit.gd\"
 
 
@@ -52,10 +52,10 @@ func die():
 "
 
 [node name="Druid" instance=ExtResource("1_nvba8")]
-frames = SubResource("SpriteFrames_n7gh2")
+frames = SubResource("SpriteFrames_ms25c")
 frame = 1
 speed_scale = 2.0
-script = SubResource("GDScript_islj0")
+script = SubResource("GDScript_cct87")
 maxhp = 3
 move_amount = 3
 damage = 1

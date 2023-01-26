@@ -22,6 +22,7 @@ var atk_dir
 var alpha_amount = 0.5
 var cooldown = 0
 var hp_vis = subs_class.subscription.new()
+var dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -153,7 +154,11 @@ func die():
 		if tilemap.friendlies_alive<=0:
 			get_node("/root").add_child(preload("res://Scenes/lose_screen.tscn").instantiate())
 			tilemap.input_lock+=1
-	queue_free()
+			queue_free()
+	dead=true
+	position = Vector2(1024.0,1024.0)
+	hp_vis.clear()
+	update_label()
 	if tilemap.prev_cursor_loc!=null:
 		var tmp = tilemap.get_units(tilemap.prev_cursor_loc)
 		if !tmp.is_empty()&&tmp[0].type !=2: 
